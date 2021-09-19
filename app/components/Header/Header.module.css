@@ -1,0 +1,13 @@
+.header{
+    grid-area: headerPustbudet;
+    background-color: #063762;
+}.header img{
+    width: 100px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.b{
+    color: white;
+}
+
