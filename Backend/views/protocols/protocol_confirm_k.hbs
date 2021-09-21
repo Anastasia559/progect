@@ -1,0 +1,90 @@
+<link rel=" stylesheet" href="/stylesheets/protocol.css" /> 
+  <div id="control" class="do-not-print">
+<button title="О зачислении абитуриентов, прошедших {{obja.0.tout}} тура.doc" onclick="export2Word(window.inner, 'О зачислении абитуриентов, прошедших '+{{obja.0.tout}}+' тура')">Экспорт Word</button> 
+<button title="Печать" onclick="window.print()">Печать</button>
+
+</div> 
+<script type="text/javascript" src="/javascripts/export2word.js"></script>
+
+<div id="inner">
+
+{{#each obja}}
+{{#ifCond @index '==' 0}}
+<center>
+<h3 class="b">  
+{{this.university_name}}
+<br><br>
+ПРОТОКОЛ № <input type="text" size="4" value="_____">
+
+<br>
+<input type="text" size="25" value="от 10 июля 2020 года">
+<br><br>
+{{this.tout}} ТУР
+<br>
+«О зачислении абитуриентов, прошедших {{this.tout}} тура»
+</h3>
+<div class="indent">
+Комиссия на основе конкурсного отбора абитуриентов в рамках контрактной формы обучения, в соответствии с количеством мест утвержденных протоколом 
+<input type="text" size="25" value="№______ от________2020 г.">
+решила зачислить нижеследующих абитуриентов, <span style="font-weight: bolder;">подтвердивших </span>свое желание учиться по направлении / специальности
+ <span style="font-weight: bolder;text-decoration:underline;  font-style: italic;">{{this.direction_cipher}} {{this.direction}} ({{this.learning}})</span> 
+для обучения <span style="font-weight: bolder;text-decoration:underline;  font-style: italic;"></span> по результатам {{this.tout}} тура:
+</div>
+</center>
+ 
+<br>
+ 
+
+<table class="tb1">
+     <tr>
+        <th class="td1" width =5%>№</th>    
+        <th class="td1" >ФИО абитуриента</>
+        <th class="td1" ><center>Номер сертификата</center></>
+        <th class="td1" ><center>Сумма баллов по основному тесту</center></>
+        <th class="td1" ><center>Сумма балов по предметному тесту</center></>
+        <th class="td1" ><center>Сумма баллов по основному и предметному тесту</center></>
+        <th class="td1" ><center>Категория местности</center></>
+
+    </tr>
+
+ {{/ifCond}} 
+ 
+    <tr>
+        <td class="td1" width =5%><center>{{incremented @index}}</center></td>
+        <td class="td1" >{{fio_abit}}</td>
+        <td class="td1" ><center>{{NumberSert}}</center></td>
+        <td class="td1" ><center>{{BallOnRepsTest}}</center></td>
+        <td class="td1" ><center>{{summ_dop}}</center></td>
+        <td class="td1" ><center>{{summ}}</center></td>
+        <td class="td1" ><center>{{nameplase}}</center></td>
+
+    </tr>
+ 
+{{/each}}
+</table>
+
+
+<br>
+<br>
+<table>
+        <tbody>
+    {{#each objb}}
+        <tr>
+        <td width =40%  height=25px; style="vertical-align:top;" rowspan={{maxindex this}}>
+        {{@key}}  
+        </td>
+        </tr>
+        {{#each this}}
+        <tr>
+ 
+            <td  height=25px; width =20%><center><input type="text" size="15" value="_________________"></center></td>
+            <td  height=25px;>  <input type="text" size="15" style="text-align:left;" value="{{grant_commission}}"></td>
+        </tr>
+        
+        {{/each}}
+    {{/each}}
+  </tbody>
+</table>
+<br>
+ </div>
+ </div>

@@ -1,0 +1,267 @@
+   <div class="main" style="margin-top: -40px;">
+        <div class="content">
+                <div class="title mt-5">
+                        <p class="secondary-text tn-text "> <a href="/" class="yellow_text underline">{{{__ "Главная"}}}</a>
+                            &nbsp;/&nbsp; <a href="/school" class="yellow_text underline">{{{__ "Школа"}}}</a>
+                            &nbsp;/&nbsp;  <span class="secondary-text">{{title}} </span>
+                          </p>
+                        <h2 class="white-text  title_text mt-5">{{title}}</h2>
+                    </div>
+        </div>
+    </div>
+
+
+<div id="content" class="content mt-4">
+ <style>
+    @media only screen and (min-width: 992px) {
+#forms, .login {
+  max-width: 50%;
+}
+
+
+.custom-file {
+  margin-top: .1rem !important;
+}
+    }
+    @media only screen and (max-width: 767px) {
+.custom-file {
+  margin-bottom: 2.5rem !important;
+}
+    }
+  </style>
+{{!--    <div class="text-center py-3 mt-4">
+        <h4 class="color-blue font-weight-normal px-2"> {{title}}</h4>
+    </div>
+--}}
+    <div id="message" style="display:none;" class="alert animated fadeIn text-center">
+        {{!-- <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> --}}
+        <h6 id="message_content"> </h6>
+    </div>
+    <div class="container my-4 mx-auto" id="forms">  
+     <div id="file_form" class="animated ">
+         {{!-- pasport 1 --}}
+       <form class="custom-file my-5" id="passport"> 
+     <span>{{{__ "Паспорт 1 сторона"}}}</span>
+      <div class="row">
+        <div class="col-md-10 my-1">
+       <input class="custom-file-input mx-1" id="passportinput"   type="file" name="passport" required/>
+       <label class="custom-file-label" data-browse={{{__ "Выберите файл"}}} for="passport">{{{__ "Паспорт 1 сторона"}}}</label>
+        </div>
+        <div class="col-md-2 text-center my-1">
+          <button id="passportShowImage" type="button" title="{{{__ "Показать фото"}}}" class="btn btn-primary py-2 mx-2 my-0 disabled"  data-toggle="modal" data-target="#passportModal"><i class="fas fa-images"></i>
+          </button>
+        </div>
+      </div>
+     
+<div id="passportModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body text-center">
+            <img src="img/mon.png" id="passportImage" class="img-responsive img-fluid">
+        </div>
+    </div>
+  </div>
+</div>      
+       </form>
+     {{!-- pasport 2 --}}
+       <form class="custom-file my-5" id="passport2"> 
+     <span>{{{__ "Паспорт 2 сторона"}}}</span>
+
+      <div class="row">
+        <div class="col-md-10 my-1">
+       <input class="custom-file-input mx-1" id="passport2input" type="file" name="passport2" required/>
+       <label class="custom-file-label" data-browse={{{__ "Выберите файл"}}} for="passport2">{{{__ "Паспорт 2 сторона"}}}</label>
+        </div>
+        <div class="col-md-2 text-center my-1">
+          <button id="passport2ShowImage" type="button" title="{{{__ "Показать фото"}}}" class="btn btn-primary py-2 mx-2 my-0 disabled" data-toggle="modal" data-target="#passport2Modal"><i class="fas fa-images"></i>
+          </button>
+        </div>
+      </div>
+     
+<div id="passport2Modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body text-center">
+            <img src="img/mon.png" id="passport2Image" class="img-responsive img-fluid">
+        </div>
+    </div>
+  </div>
+</div>      
+       </form>
+
+
+     {{!-- bilet --}}
+       <form class="custom-file my-5" id="military">
+     <span>{{{__ "Военный билет"}}}</span>
+      <div class="row">
+        <div class="col-md-10 my-1">
+       <input class="custom-file-input mx-1" id="militaryinput" type="file" name="military" required/>
+       <label class="custom-file-label" data-browse={{{__ "Выберите файл"}}} for="military">{{{__ "Военный билет"}}}</label>
+        </div>
+        <div class="col-md-2 text-center my-1">
+          <button id="militaryShowImage" type="button" title="{{{__ "Показать фото"}}}" class="btn btn-primary py-2 mx-2 my-0 disabled" data-toggle="modal" data-target="#militaryModal"><i class="fas fa-image"></i>
+          </button>
+        </div>
+      </div>
+
+<div id="militaryModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body text-center">
+            <img src="img/mon.png" id="militaryImage" class="img-responsive img-fluid">
+        </div>
+    </div>
+  </div>
+</div>
+       </form>
+
+
+
+    {{!-- atestat --}}
+       <form class="custom-file my-5" id="atestat">
+     <span>{{{__ "Аттестат"}}}</span> 
+      <div class="row">
+        <div class="col-md-10 my-1">
+       <input class="custom-file-input mx-1" id="atestatinput" type="file" name="atestat" required />
+       <label class="custom-file-label" data-browse={{{__ "Выберите файл"}}} for="atestat">{{{__ "Аттестат"}}}</label>
+        </div>
+        <div class="col-md-2 text-center my-1">
+          <button id="atestatShowImage" type="button" title="{{{__ "Показать фото"}}}" class="btn btn-primary py-2 mx-2 disabled my-0" data-toggle="modal" data-target="#atestatModal"><i class="fas fa-images"></i>
+          </button>
+        </div>
+      </div>
+     
+<div id="atestatModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body text-center">
+            <img src="img/mon.png" id="atestatImage" class="img-responsive img-fluid">
+        </div>
+    </div>
+  </div>
+</div>      
+       </form>
+  {{!-- ort --}}
+       <form class="custom-file my-5" id="ort">
+     <span>{{{__ "ОРТ Сертификат"}}}</span> 
+      <div class="row">
+        <div class="col-md-10 my-1">
+       <input class="custom-file-input mx-1"  id="ortinput" type="file" name="ort" required />
+       <label class="custom-file-label" data-browse={{{__ "Выберите файл"}}} for="ort">{{{__ "ОРТ Сертификат"}}}</label>
+        </div>
+        <div class="col-md-2 text-center my-1">
+          <button id="ortShowImage" type="button" title="{{{__ "Показать фото"}}}" class="btn btn-primary py-2 mx-2 my-0 disabled" data-toggle="modal" data-target="#ortModal"><i class="fas fa-images"></i>
+          </button>
+        </div>
+      </div>
+     
+<div id="ortModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body text-center">
+            <img src="img/mon.png" id="ortImage" class="img-responsive img-fluid">
+        </div>
+    </div>
+  </div>
+</div>      
+       </form>
+
+    </div>
+
+ <div class="form-group mx-auto animated fadeIn" id="phone_form">
+    <label for="phone">{{{__ "Номер  телефона"}}}</label>
+    <input   type="tel" value="0" required id="phone" name="phone" pattern="[0-9]{10}" minlength="10" maxlength="10" class="form-control" placeholder={{{__ "Номер телефона"}}}>
+    <small id="phonetHelp" class="form-text text-muted">{{{__ "Введите номер Вашего телефона"}}}</small>
+ </div>  
+   
+
+  <div class="form-group animated fadeIn" id="search_form">
+       <div class="form-row">
+        <div class="form-group col-md-4">
+
+        <label for="numberSert">{{{__ "Номер  сертификата"}}}</label>
+    <input type="number" size="3" value="0" id="numberSert" name="numberSert" min="0" class="form-control" placeholder={{{__ "Номер сертификата"}}}>
+    <small id="numberSertHelp" class="form-text text-muted">{{{__ "Введите номер Вашего сертификата"}}}</small>
+        </div>
+
+
+        <div class="form-group col-md-4">
+
+        <label for="ball">{{{__ "Основной балл"}}}</label>
+    <input type="number" size="3" value="0" id="ball" name="ball" min="0" max="250" class="form-control" placeholder={{{__ "Основной балл"}}}>
+        </div>
+
+                <div class="form-group col-md-4">
+
+    <label for="place">{{{__ "Тип сертификата"}}}</label>
+    <select class="form-control" id="place"  name="place">
+      <option value="0" selected>{{{__ "Выберите"}}}</option>  
+      <option value="1">{{{__ "Бишкек - Красный"}}}</option>
+      <option value="2">{{{__ "Малый город - Синий"}}}</option>
+      <option value="3">{{{__ "Село - Желтый"}}}</option>
+      <option value="4">{{{__ "Высокогорье - Фиолетовый"}}}</option>
+      <option value="5">{{{__ "Золотой сертификат - Золотой"}}}</option>
+    </select>
+               </div>
+      </div>
+
+          <div class="form-row">
+        <div class="form-group col-md-3">
+
+    <label for="ort_biology">{{{__ "Биология"}}}</label>
+    <input type="number" size="2" value="0" id="ort_biology" name="ort_biology" min="0" max="150" class="form-control" >
+  
+        </div>  
+        
+        
+             <div class="form-group col-md-3">
+
+    <label for="ort_history">  {{{__ "История"}}}</label>
+    <input type="number" size="2" value="0" id="ort_history" name="ort_history" min="0" max="150" class="form-control" >
+  </div>
+        <div class="form-group col-md-3">
+
+
+    <label for="ort_chemistry">{{{__ "Химия"}}}</label>
+    <input type="number" size="2" value="0" id="ort_chemistry" name="ort_chemistry" min="0" max="150" class="form-control" >
+
+
+        </div>        <div class="form-group col-md-3">
+  <label for="ort_physics">  {{{__ "Физика"}}}</label>
+    <input type="number" size="2" value="0" id="ort_physics" name="ort_physics" min="0" max="150" class="form-control" >
+          </div>       
+          </div>   
+         <div class="form-row">
+
+     
+           
+          <div class="form-group col-md-3">
+    <label for="ort_english">  {{{__ "Английский язык"}}}</label>
+    <input type="number" size="2" value="0" id="ort_english" name="ort_english" min="0" max="150" class="form-control" >
+  
+  </div> 
+   <div class="form-group col-md-3">
+
+    <label for="ort_math">  {{{__ "Математика"}}}</label>
+    <input type="number" size="2" value="0" id="ort_math" name="ort_math" min="0" max="150" class="form-control" >
+  
+        </div>     
+        <div class="form-group col-md-3">
+  
+  <label for="ort_kyrgyz">  {{{__ "Кыргызский язык"}}}</label>
+    <input type="number" size="2" value="0" id="ort_kyrgyz" name="ort_kyrgyz" min="0" max="150" class="form-control" >
+
+  </div>   
+                 <div class="form-group col-md-3">
+ <label for="ort_russian">  {{{__ "Русский язык"}}}</label>
+    <input type="number" size="2" value="0" id="ort_russian" name="ort_russian" min="0" max="150" class="form-control" >
+  
+  </div>
+  </div>
+ 
+  </div>
+  <button type="submit" id="checksertbutton" class="btn btn-primary animated fadeIn">{{{__ "Добавить"}}}</button>
+
+  </div>
+</div>
+{{> restore_army_js}}

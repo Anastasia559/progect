@@ -1,0 +1,171 @@
+ <script type="text/javascript" defer src="javascripts/mask.js"></script>
+
+ <script>
+   {{!-- message --}}
+ function showAlert(text,cls) {
+    document.getElementById("message_content").innerHTML=text;
+    $('#message').addClass(cls);
+    $("#message").fadeTo(2000, 500).slideUp(500, function() {
+      $("#message").slideUp(500);
+    });
+  }
+$(document).ready(function() {
+  $("#message").hide();
+});
+
+ 
+     let search_form = document.getElementById("search_form");
+     let phone_form = document.getElementById("phone_form");
+     let file_form = document.getElementById("file_form");
+     let next=0;
+     phone_form.style.display = 'none';
+     file_form.style.display = 'none';
+
+     let checksertbutton = document.getElementById("checksertbutton");
+     checksertbutton.addEventListener('click', addListItem);
+ 
+
+//////////////////////////////// 
+//////////////////////////////// 
+
+function addListItem() {
+     let numberSert = document.getElementById("numberSert").value;
+     let phone = document.getElementById("phone").value;
+     let ball = document.getElementById("ball").value;
+     let ort_biology = document.getElementById("ort_biology").value;
+     let ort_history = document.getElementById("ort_history").value;
+     let ort_chemistry = document.getElementById("ort_chemistry").value;
+     let ort_physics = document.getElementById("ort_physics").value;
+     let ort_math = document.getElementById("ort_math").value;
+     let ort_english = document.getElementById("ort_english").value;
+     let ort_kyrgyz = document.getElementById("ort_kyrgyz").value;
+     let ort_russian = document.getElementById("ort_russian").value;
+  
+     let promise = fetch('/restore_search?numberSert=' + numberSert + '&phone=' + phone + '&next=' + next + '&ball=' + ball+ '&ort_biology=' + ort_biology+ '&ort_history=' + ort_history+ '&ort_chemistry=' + ort_chemistry+ '&ort_physics=' + ort_physics+ '&ort_math=' + ort_math+ '&ort_english=' + ort_english+ '&ort_kyrgyz=' + ort_kyrgyz+ '&ort_russian=' + ort_russian);
+          promise.then(
+            response => {
+                return response.text();
+            }
+        ).then(text => {switch (text) {
+                    case 'NEXT':
+                        next=0;
+                        showAlert({{{ __ "'Номер изменен!!!'" }}},'alert-success');
+                        setTimeout(function() { window.location.href = "https://enrol.edu.gov.kg/personalcabinet/#enrollee";}, 3000);
+                        break;
+                    case 'FALSE':
+                        showAlert({{{ __ "'Введите правильные данные!!!'" }}},'alert-danger');
+                        topFunction();
+                        next=0;
+                        break;
+                    default: 
+                        formData = new FormData();
+                        formData.append('numberSert', numberSert);
+                        topFunction();
+                        next=1;
+                        search_form.style.display="none";
+                        phone_form.style.display="none";
+                        $("#passport2").hide();
+                        $("#atestat").hide();
+                        $("#ort").hide();
+                        file_form.style.display="block";
+                        document.getElementById('checksertbutton').style.display="none";
+                        document.getElementById("phonetHelp").innerHTML={{{ __ "'Введите номер телефона, ваш старый номер: '" }}} + text;
+                        $("#phone").inputmask({"mask":  "9999999999" });  
+                         checksertbutton.innerHTML={{{__ "'Изменить'"}}}
+
+
+ break;
+}});
+         }
+
+ var intervalID = window.setInterval(chek1, 2000)
+
+function chek1(){
+if (next==1){window.setInterval(chek, 1000);}};
+
+function chek(){
+  if( document.getElementById('passportinput').files.length == 1 ){
+ $('#passport2').show();
+ if( document.getElementById('passport2input').files.length == 1 ){
+ $('#atestat').show();
+ if( document.getElementById('atestatinput').files.length == 1 ){
+ $('#ort').show();
+  if( document.getElementById('ortinput').files.length == 1 ){
+ $('#phone_form').delay(3000).show(0);
+ $('#checksertbutton').delay(3000).show(0);
+
+};
+};
+};
+};
+} 
+
+ 
+
+function readURL(input) {
+    var div = input.name;
+    var name = input.name;
+    var inp = '#'+input.name+'input';
+    var img = '#'+input.name+'Image';
+    var btn = '#'+input.name+'ShowImage';
+    var response = '#'+input.name+'response';
+    var url = input.value;
+    var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+    if (input.files && input.files[0]&& (ext == "gif" || ext == "pdf" ||ext == "png" || ext == "jpeg" || ext == "jpg")) {
+        {{!-- img link --}}
+        {{!-- $(response).innerHTML = "Скан копия загружается . . ." --}}
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(img).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $(btn).removeClass('disabled');
+
+       {{!-- form send --}}
+
+    
+         if (formData!== undefined) {formData.append(name, input.files[0]);};
+    }else{
+      var text={{{ __ "'Выберите фото в формате png, jpeg или jpg!!!'" }}};
+          topFunction();
+          showAlert(text,'alert-danger');
+          $(inp).val(null);
+          $(btn).addClass('disabled');
+          $(img).attr('src', 'img/mon.png');
+    }
+}
+
+function send(input) {
+           if (formData!== undefined) {
+            $.ajax({
+              url: "/upload_files",
+              type: "POST",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (res) {
+               showAlert(res.message,'alert-success'); 
+               $('#file_form').delay(3000).hide(0);
+              },
+             error: function (error) {
+             showAlert(error.responseJSON.message,'alert-danger'); 
+}
+
+
+            });
+          }
+}
+$("#passportinput").change(function(){ 
+        readURL(this);
+    });
+$("#passport2input").change(function(){ 
+        readURL(this);
+    });
+$("#atestatinput").change(function(){ 
+        readURL(this);
+    });
+$("#ortinput").change(function(){ 
+        readURL(this);
+        send(this)
+    });
+ </script>  

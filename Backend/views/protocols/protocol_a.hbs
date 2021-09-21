@@ -1,0 +1,79 @@
+<link rel=" stylesheet" href="/stylesheets/protocol.css" /> 
+  <div id="control" class="do-not-print">
+<button title="О расчете квот для категории абитуриентов грантовой формы обучения {{obja.0.Tour}}-Тур.doc" onclick="export2Word(window.inner, 'О расчете квот для категории абитуриентов грантовой формы обучения '+{{obja.0.Tour}}+'-Тур')">Экспорт Word</button> 
+<button title="Печать" onclick="window.print()">Печать</button>
+
+</div> 
+<script type="text/javascript" src="/javascripts/export2word.js"></script>
+
+<div id="inner">
+<center>
+<h3 class="b">
+{{obja.0.university_name}}
+<br><br>
+
+ПРОТОКОЛ № <input type="text" size="4" value="_____">
+<br>
+Заседание грантовой комиссии
+<br>
+<input type="text" size="25" value="от 10 июля 2020 года">
+
+<br>
+{{obja.0.Tour}} ТУР
+<br>
+«О расчете квот для категории абитуриентов грантовой формы обучения»
+</h3>
+</center>
+<p>
+<br>
+Направление: {{obja.0.direction_cipher}} {{obja.0.direction}} 
+<br>
+зарегистрировано <span style="text-decoration:underline;font-weight: bolder;"> {{totalSum obja 'kol'}} </span> сертификатов, из них по категориям:
+</p>
+
+<table class="tb1">
+    {{#each obja}}
+    <tr>
+        <td class="td1" width =50%>{{NamePlase}}</td>
+        <td class="td1" ><center>{{kol}}</center></td>
+    </tr>
+    {{/each}}
+</table>
+
+ 
+<br>
+<div class="indent">
+Грантовая комиссия, рассмотрев данные о количестве абитуриентов, зарегистрировавших в отдельных категория, на основе расчета по утвержденной формуле «Положением об отборе и зачисления абитуриентов по результатам общереспубликанского тестирования» (постановление Правительства КР от 27.05.2011 г. № 256) решила выделить для категорий: 
+ </div>
+<br> 
+<table class="tb1">
+    {{#each obja}}
+    <tr>
+        <td class="td1" width =50%>{{NamePlase}}</td>
+        <td class="td1" ><center>{{kol_reg}}</center></td>
+    </tr>
+    {{/each}}
+</table>
+<br>
+
+<br>
+<table>
+    {{#each objb}}
+        <tr>
+          <td width =40% height=25px; style="vertical-align:top;" colspan=3 rowspan={{maxindex this}}>
+        {{@key}}
+        </td>
+        </tr>
+        {{#each this}}
+        <tr>
+ 
+            <td  height=25px; width =20%><center><input type="text" size="15" value="_________________"></center></td>
+            <td height=25px; ><input type="text" size="15" style="text-align:left;" value="{{grant_commission}}">  </td>
+        </tr>
+        
+        {{/each}}
+    {{/each}}
+</table>
+<br>
+ </div>
+ </div>

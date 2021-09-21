@@ -1,0 +1,228 @@
+html{
+  scroll-behavior: smooth;
+
+}
+#content {
+  min-height: 80vh;
+}
+.navbar {
+  padding: .5rem;
+}
+  .color-blue {
+    color: #33b5e5; /* info color */
+  }
+  .display-5 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+  .display-6 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+  .line_height_1_5 {
+    line-height: 1.5;
+  }
+  .center_align {
+    margin: 0 auto;
+    width: 100%;
+  }
+  /* sidenav */
+  body {
+    overflow-x: hidden;
+  }
+  .color-white {
+    color: white !important;
+  }
+
+  .link_border {
+    border: 2px solid #33b5e5;
+    border-radius: 5px;
+  }
+
+.media {
+  align-items: center;
+  justify-content: center;
+}
+
+
+.big_blur_content {
+  width: 100%;
+  border: 0px;
+  background-color: #33b5e5;
+  margin-top: 20px;
+  padding: 1rem;
+  text-align: center; 
+  font: 1.5rem "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: white;
+}
+.bg-color{
+  background-color:#33b5e5;
+}
+.site_link{
+  color: white !important;
+  background-color: #33b5e5;
+  padding: .8rem;
+  border-radius: .5rem;
+}
+.site_link:hover{
+  color:white !important;
+  text-decoration:none;
+  -webkit-transition:all 0.2s ease-in-out;transition:all 0.2s ease-in-out
+}
+/* table faculty sort */
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  bottom: .5em;
+}
+/* serch text */
+.found {
+  background-color: yellow;   
+}
+
+#myBtn {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Fixed/sticky position */
+  bottom: 10px;
+  /* Place the button at the bottom of the page */
+  right: 10px;
+  /* Place the button 30px from the right */
+  z-index: 99;
+  /* Make sure it does not overlap */
+  border: none;
+  /* Remove borders */
+  outline: none;
+  /* Remove outline */
+  background-color: #f4424275;
+  /* Set a background color */
+  color: white;
+  /* Text color */
+  cursor: pointer;
+  /* Add a mouse pointer on hover */
+  padding: 15px;
+  /* Some padding */
+  border-radius: 10px;
+  /* Rounded corners */
+  font-size: 18px;
+  /* Increase font size */
+}
+#myBtn:hover {
+  background-color: #007bff;
+  /* Add a dark-grey background on hover */
+}
+table {
+  vertical-align: middle !important;
+}
+
+.header th {
+  vertical-align: middle !important;
+  text-align: center;
+  background-color: #33b5e5;
+  /*33b5e5; 4BDAEC*/
+  font-weight: 500;
+  border: 0px;
+}
+
+.university {
+  padding: 0.5rem !important;
+  font-weight: 700;
+  background-color: #90e0ef;
+  /*33b5e5;*/
+  font-size: 1rem;
+}
+
+
+.faculty {
+  padding: .1rem !important;
+  font-weight: 500;
+  background-color: #caf0f8;
+  /*33b5e52e;*/
+  font-size: .99rem;
+}
+
+#ReportTable td {
+  padding: .1rem .5rem !important;
+  vertical-align: middle !important;
+}
+
+tr:hover {
+  background-color: #caf0f87c !important;
+}
+
+table tr td:nth-child(1),
+td:nth-child(4) {
+  text-align: center;
+}
+
+table tr td:nth-child(5) {
+  line-height: 1rem;
+  font-size: .85rem;
+}
+
+.faculty-user {
+  padding: .1rem !important;
+  font-weight: 500;
+  /* background-color: #caf0f8; */
+  /*33b5e52e;*/
+  font-size: 1.5rem;
+  vertical-align: middle !important;
+}
+.header2 th {
+  vertical-align: middle !important;
+  text-align: center;
+  background-color: #caf0f8;
+  /*33b5e5; 4BDAEC*/
+  font-weight: 500;
+  border: 0px;
+}
+.nav-link {
+font-weight: 500;
+}
+.logowrap {
+  vertical-align: middle;
+  display: inline-block;
+}
+.logo{
+  display: inline-block;
+  margin: 0px;
+  vertical-align: middle;
+
+    max-width: 100%;
+    border-radius: 15px 15px;
+
+}
+.logo-text {
+  display: inline-block;
+  margin: 0px;
+  vertical-align: middle;
+  font-size:.89rem;
+  font-weight:600;
+  max-width: 290px; 
+  color:white;
+}/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 7px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #33b5e5;
+  border-radius: 7px;
+}

@@ -1,0 +1,82 @@
+  <div id="control" class="do-not-print">
+<button title="Контакты {{obj.0.specialty_cipher}} - {{obj.0.specialty}}.doc" onclick="export2Word(window.inner, 'Контакты {{obj.0.specialty_cipher}} - {{obj.0.specialty}}')">Экспорт Word</button> 
+<button title="Печать" onclick="window.print()">Печать</button>
+
+</div> 
+<script type="text/javascript" src="/javascripts/export2word.js"></script>
+
+<div id="inner">
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding:2px 2px 2px 5px;
+}
+th {
+font-size:15px;
+}
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 15px 15px 15px 60px;  /* this affects the margin in the printer settings */
+}
+ 
+
+@media print {
+    div.do-not-print {display: none;}
+input {
+  font-size: 14px;
+}
+
+  table {
+    width: 100%; 
+  }
+}
+
+#control button {
+font-size:16px;
+width:140px;
+height:40px;
+border-radius:4px;
+background-color:#234182;
+color:white;
+padding:8px;
+border:none;
+box-shadow:0px 15px 25px rgba(0, 0, 0, 0.05);
+}
+
+#control button:hover {
+background-color:#EF7F1A;
+box-shadow:0px 15px 25px rgba(0, 0, 0, 0.5);
+}
+</style>
+   <center> 
+<h1>{{title}}</h1>  
+  <table>
+                  <tr>
+                    <th>№</th>
+                    <th>{{{__ "Сертификат"}}}</th>
+                    <th>{{{__ "Имя"}}}</th>
+                    <th>{{{__ "Телефон"}}}</th>
+                    <th>{{{__ "Примечание"}}}</th>
+
+                  </tr>  
+          
+               	  <tr>
+                    <td colspan="5" style="  text-align:center;"><b>{{obj.0.specialty_cipher}} - {{obj.0.specialty}}</b></td>
+                  </tr>
+                {{#each obj}}
+                  <tr>
+                    <td style="  text-align:center;">{{incremented @index}}</td>
+                    <td style="  text-align:left;">{{NumberSert}}</a></td>
+                    <td style="  text-align:left;">{{names}}</td>
+                    <td style="  text-align:center;">{{telefon_ab}}</td>
+                    <td style="  text-align:center;"></td>
+
+                  </tr>
+             {{/each}}
+ 
+        </table>
+    </center>  
+
+</div> 

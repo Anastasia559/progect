@@ -1,0 +1,101 @@
+<script type="text/javascript" src="/spuz/javascripts/mask.js"></script>
+<script>
+   
+    let txtAr = document.getElementById("textarea");
+    let userSert = document.getElementById("usersert");
+    let userSertCont = document.getElementById("usersertcont");
+    let checksertbutton = document.getElementById("checksertbutton");
+    let emtydiv = document.getElementById("emtydiv");
+    let first=true;
+    var onloadCallback = function() {
+        alert("grecaptcha is ready!");
+    }
+
+
+    checksertbutton.addEventListener('click', addListItem);
+    function addListItem() {
+        getFetch();
+    }
+
+//Капча начало
+  function getFetch() {
+//      grecaptcha.execute('6LfTPq8ZAAAAAC6pmmVMNC6oSgSbR3Pdya_faHaE', {action: 'auth'}).then(function(token) {
+
+        let sert;
+        let tel;
+        let act;
+        if (userSertCont.value == 0) {
+            sert = userSert.value;
+            tel = 0;
+            act = 0;
+        } else {
+            sert = userSertCont.value;
+            tel = userSert.value;
+            act = 1; 
+        }
+        var idschool = document.getElementById('school').value;
+        console.log(idschool);
+       
+        //let promise = fetch('/authA/?numberSert=' + sert + '&numberPhone=' + tel + '&act=' + act + '&grecaptcharesponse=' + token + '&id_school=' + idschool);
+        let promise = fetch('/spuz/authA/?numberSert=' + sert + '&numberPhone=' + tel + '&act=' + act + '&id_school=' + idschool);
+        
+        promise.then(
+            response => {
+                return response.text();
+            }
+        ).then(
+            text => {
+                switch (text) {
+                    case '0':
+                        $('#modalOk').modal('show');
+                          setTimeout(function(){ window.location.href = "https://2021.edu.gov.kg/personalcabinet/#enrollee"; },10000);
+                        
+                        break;
+
+                    case '1':
+                       // grecaptcha.reset(widget);
+                        emtydiv.style.display = 'false';
+                        emtydiv.innerHTML = {{{ __ "'Проверьте Ваш номер сертификата!!!'" }}};
+                        checksertbutton.disabled =true;
+                        txtAr.innerHTML = {{{ __ "'Проверьте Ваш номер сертификата!!!'" }}};
+                        txtAr.style.color = "red";
+                        first=true;
+                    break;
+
+                        case '2':
+                      //  grecaptcha.reset(widget);
+                        emtydiv.innerHTML = '';
+                        checksertbutton.disabled =true;
+                        txtAr.innerHTML = {{{ __ "'Проверьте номер Вашего телефона!!!'"}}};
+                        txtAr.style.color = "red";
+                    break;
+                        default:
+                      //  grecaptcha.reset(widget);
+                        emtydiv.innerHTML = '';
+                        checksertbutton.disabled =true;
+                        checksertbutton.innerHTML = {{{ __ "'Отправить'"}}};
+                        document.getElementById("sert_link").style.display = 'none';
+                        document.getElementById("phone_link").style.display = 'block';
+                        txtAr.innerHTML = {{{ __ "'Введите номер Вашего телефона, для получения SMS (логин и пароль):'" }}};
+                        userSertCont.value = userSert.value;
+                        userSert.value = text;   
+                        txtAr.style.color = "orange";
+                        $("#usersert").attr("placeholder",{{{ __ "'Введите номер Вашего телефона, для получения SMS (логин и пароль):'" }}} ).val("").focus().blur();
+                        userSert.setAttribute( "oninput", "if(value.length>10)value=value.slice(0,10)");
+                        userSert.addEventListener("input", function(){ if (!first&&userSert.value.length>9){ document.getElementById('checksertbutton').disabled = false;};});
+
+                    break;
+                        }
+                }
+                );
+    //   }); Капча конец
+    }
+ 
+userSert.addEventListener("input", function(){ if (first&&userSert.value.length>6){ checksertbutton.disabled = false; first=false;};});
+userSert.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    checksertbutton.click();
+  }
+});
+</script>

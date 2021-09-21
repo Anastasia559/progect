@@ -1,0 +1,71 @@
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src='compress/com.js'></script>
+
+<script>
+   const compressor = new Compress();
+  
+  
+  
+  function uploadFile(fileelem, textelem, responseelem, divelem){
+        let image = document.getElementById(fileelem)
+        let response = document.getElementById(responseelem)
+        let text = document.getElementById(textelem)
+        let div = document.getElementById(divelem)
+        
+        response.innerHTML = 'Файл загружается...';
+        var formData=new FormData();
+     
+      var src=image.files[0].name;
+ 
+      formart=image.files[0].type.substring(6,12); 
+      if(formart=="jpg"||formart=="png"||formart=="jpeg"){
+
+      const files = [image.files[0]];
+            compressor.compress(files, {
+                size: 3,
+                quality: .25,
+                maxWidth: 1920, 
+                maxHeight: 1920,
+                resize: true, 
+
+            }).then((results) => {
+                console.log(results);
+                const output = results[0];
+                const file = Compress.convertBase64ToFile(output.data, output.ext);
+
+                    formData.append('file',file);
+                    
+                                  $.ajax({
+                                          url: '/upload',
+                                          type: 'POST',
+                                          data: formData,
+                                          cache: false,
+                                          contentType: false,
+                                          processData: false,
+                                          success: function(data){
+                                              if(data.code>0){
+                                                  text.value=data.filename;
+                                                  div.style.display = "none"
+                                                  response.innerHTML = "{{{__ "Файл загружен"}}}";
+                                                  response.style.color="green"
+                                                  response.style.fontSize = "18px"
+                                              } else{
+                                                  console.log('NOT Success!!!!');
+                                                  
+                                              }
+                                          }
+                                 }); formdata = new FormData();
+
+             });
+          } else {
+            response.innerHTML = "{{{__ "Загружайте картинку в формате JPEG и PNG"}}}";
+            response.style.color="red";
+            response.style.fontSize = "xx-large";
+
+          }
+
+
+
+
+      };
+</script>

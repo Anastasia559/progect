@@ -1,0 +1,94 @@
+ 
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+
+<style>
+
+html {    font-family: Roboto !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    background: linear-gradient(45deg, rgba(238, 207, 186, 0.3), rgba(197, 221, 232, 0.3));
+    }
+
+#control {
+
+  display: table;
+  margin: 50px auto;
+  max-width:1200px;
+  font-family: Roboto !important;
+}
+
+#control a {
+font-family: Roboto !important;
+font-size:16px;
+border-radius:4px;
+width:250px !important;
+background-color:#234182;
+color:white;
+padding:8px;
+margin:100px;
+border:none;
+text-decoration:none;
+box-shadow:0px 15px 25px rgba(0, 0, 0, 0.05);
+}
+
+#control a:hover {
+background-color:#EF7F1A;
+text-decoration:underline;
+box-shadow:0px 15px 25px rgba(0, 0, 0, 0.5);
+}
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f8f9fa!important;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 12px 20px;  
+  text-decoration: none;
+  font-size: 16px;
+  color: #818181;
+  display: block;
+  border: 1px solid rgba(0,0,0,.125);
+
+}
+.active {
+  background-color: #007bff4d !important;
+
+}
+.sidenav a:hover {
+  color: #000;
+  background-color: rgb(218, 224, 229)!important;
+
+}
+
+</style>
+<div class="sidenav">
+    <a href="/vuzabittelefon">{{{__ "Телефоны абитуриентов"}}}</a>
+    <a href="/vuzprofession">{{{__ "Профессии"}}}</a>
+ 
+</div>
+
+<div id="control">
+<a href="/vuzabittelefon">{{{__ "Телефоны абитуриентов"}}}</a>  <br><br>
+<a href="/vuzprofession">{{{__ "Профессии"}}}</a>  <br><br>
+ 
+
+
+</div> 
+
+<script>
+document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener("keydown", function(e) {
+  if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+    e.preventDefault();
+  }
+}, false);
+</script>

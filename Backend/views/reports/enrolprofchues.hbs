@@ -1,0 +1,289 @@
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="\javascripts\convertTable.js"></script>
+<script src="\javascripts\searchButtons.js"></script>
+
+ 
+ <script src= "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"> 
+</script> 
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"> 
+</script> 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js">
+  </script>
+
+<script src= "https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"> 
+</script> 
+ <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js">
+  </script>
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css"> -->
+<!--table-->
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+       <!--Table and divs that hold the pie charts-->
+  
+<!--table-->
+<style>
+	
+.buttons-copy{
+  cursor: pointer;
+  height: 40px;
+  width: 70px;
+  background: #4267B7 ;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+.buttons-copy:hover{
+background:#EE7F1A;
+}
+
+.buttons-csv{
+  cursor: pointer;
+  height: 40px;
+  width: 70px;
+  background: #4267B7 ;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+.buttons-csv:hover{
+background:#EE7F1A;
+}
+
+.buttons-excel{
+  cursor: pointer;
+  height: 40px;
+  width: 70px;
+  background: #4267B7 ;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+.buttons-excel:hover{
+background:#EE7F1A;
+}
+
+.buttons-pdf{
+  cursor: pointer;
+  height: 40px;
+  width: 70px;
+  background: #4267B7 ;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+.buttons-pdf:hover{
+background:#EE7F1A;
+}
+
+.buttons-print{
+  cursor: pointer;
+  height: 40px;
+  width: 70px;
+  background: #4267B7 ;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+.buttons-print:hover{
+background:#EE7F1A;
+}
+
+
+  @media screen and (max-height: 30em) {
+    .header{
+      display: none;
+    }
+    }
+}
+#example_wrapper{
+  width: 70%;
+
+}
+  .parent {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 22.5%;
+    left: 0;   
+}
+.block {
+   width: 70%;
+    position: absolute;
+    left: 15%;
+    margin: -60px 0 0 -60px;
+}
+body {
+   background: #F9FBFF;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #234182;
+  color: #fff;
+  z-index: 1000;
+  height: 80px;
+  overflow: hidden;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  transition: height 0.3s;
+  text-align: center;
+  line-height: 160px;
+  border-bottom-left-radius: 50px 30px;
+  border-bottom-right-radius: 50px 30px;
+}
+.header.shrink {
+  height: 100px;
+  line-height: 80px;
+}
+.header h1 {
+  font-size: 30px;
+  font-weight: normal;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.header.shrink h1 {
+  font-size: 24px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.content {
+  height: 2000px;
+  /*just to get the page to scroll*/
+}
+
+</style>
+<div class="header">
+  <img src="img/logo2.png" height="40" alt="" style="position:absolute; left:35px; top:15px;">
+  <h1>Header</h1>
+</div>
+<div class="content">
+</div>
+<div class="parent">
+    <div class="block">
+
+  <center><table class="columns" style="width: 50%;">
+      <tr>
+        <td><div id="Sarah_chart_div" ></div></td>
+        <td><div id="Anthony_chart_div"></div></td>
+      </tr>
+    </table></center>
+
+<center><h2 style="color: #234182;">{{{__ "Информация о количестве зачисленных в вузы КР (по сферам деятельности)"}}}</h2></center>
+
+<table border="1" id="example" class="display wrap" style="max-width:100%; border-collapse: collapse;">
+<thead>
+  <tr style="background: #BCD0EB;">    
+     <th>{{{__ "Профессии"}}}</th>
+     <th>{{{__ "Всего"}}}</th>
+     <th>{{{__ "Бюджет"}}}</th>
+     <th>{{{__ "Контракт"}}}</th>
+     <th>{{{__ "Очная"}}}</th> 
+      <th>{{{__ "Заочная"}}}</th> 
+      
+  </tr>
+</thead>
+<tbody>
+                {{#each obj}}
+                <tr>
+                 
+                   <td> <a style="color:#234182;" class="href" href=/enrolprofchuesdetal_A?id_prof={{id_profession}}>{{profession_ru}}</a></td>
+                    <td style="text-align: center;">{{kol_enrolle}}</td>
+                    <td  style="text-align: center;">{{kol_budjet}}</td>
+                    <td style="text-align: center;"> {{kol_kontract}}</td>
+                    <td  style="text-align: center;">{{kol_ochnik}}</td>
+                     <td  style="text-align: center;">{{kol_zaochnik}}</td>
+                </tr> 
+               {{/each}}{{id_profession}}
+
+
+</tbody>
+</table>
+</div>
+</div>
+<script>
+
+$(document).ready(function () {
+  
+  $("#example").DataTable({
+    dom: "ZBflrtip",
+    buttons: ["copy", "csv", "excel", "pdf", "print"],
+    colResize: {
+      exclude: []
+    },
+    "bSort": false,
+    "lengthChange": false ,
+    
+    "pageLength": 200
+  });
+});
+
+       // Load Charts and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Draw the pie chart for Sarah's pizza when Charts is loaded.
+      google.charts.setOnLoadCallback(drawSarahChart);
+
+      // Draw the pie chart for the Anthony's pizza when Charts is loaded.
+      google.charts.setOnLoadCallback(drawAnthonyChart);
+
+      // Callback that draws the pie chart for Sarah's pizza.
+      function drawSarahChart() {
+
+        // Create the data table for Sarah's pizza
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+         data.addRows([
+       
+            ['бюджет:{{totalSum obj 'kol_budjet'}}', {{totalSum obj 'kol_budjet'}}],
+            ['контракт:{{totalSum obj 'kol_kontract'}}', {{totalSum obj 'kol_kontract'}}]
+       
+        ]);
+
+       
+        var options = {title:'Бюджет-Контракт',
+                        width:400,
+                       height:200};
+
+        // Instantiate and draw the chart for Sarah's pizza.
+        var chart = new google.visualization.PieChart(document.getElementById('Sarah_chart_div'));
+        chart.draw(data, options);
+      }
+
+      // Callback that draws the pie chart for Anthony's pizza.
+      function drawAnthonyChart() {
+
+        // Create the data table for Anthony's pizza.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+           data.addRows([
+       
+            ['очная:{{totalSum obj 'kol_ochnik'}}', {{totalSum obj 'kol_ochnik'}}],
+            ['заочная:{{totalSum obj 'kol_zaochnik'}}', {{totalSum obj 'kol_zaochnik'}}]
+       
+        ]);
+
+        // Set options for Anthony's pie chart.
+        var options = {title:'Очная-Заочная',
+                       width:400,
+                       height:200};
+
+        // Instantiate and draw the chart for Anthony's pizza.
+        var chart = new google.visualization.PieChart(document.getElementById('Anthony_chart_div'));
+        chart.draw(data, options);
+      }
+
+
+</script>

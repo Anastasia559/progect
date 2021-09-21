@@ -1,0 +1,156 @@
+<style>
+    li.sm-text {
+    list-style-type: decimal;
+}
+
+p.font-20.color-blue.font-weight-bold {
+    color: #090833;
+    font: 700 18px/1.5 Gotham Pro,sans-serif;
+}
+</style>
+
+
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LfTPq8ZAAAAAC6pmmVMNC6oSgSbR3Pdya_faHaE" async
+    defer>
+</script>
+
+<div class="modal fade mt-5" tabindex="-1" role="dialog" id="modalOk">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="p-2 m-2 md-text">
+                <button data-toggle="modal" data-target="#modalOk" class="close float-right p-0 animated fadeIn">
+                   
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p class="sm-text">{{{__ "На указанный номер телефона выслано SMS сообщение с доступами в систему.
+                    Успехов!"}}} </p>
+            </div>
+            <div class="modal-footer">
+                <a href="/personalcabinet/#enrollee" class="btn   btn-default bg-yellow btn-sm">Войти</a>
+                <button type="button" class="btn bg-blue btn-sm white-text" onclick='window.location.replace("/")'
+                    data-dismiss="modal">OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div id="content_statistics" class="content_statistics">
+    <div class="row mx-md-3 mt-4 mx-0">
+        <div class="col-12 mt-2">
+            <div class="shadow bg-white  ml-2  p-4 border-r8">
+                <div class="  mx-0">
+                    <div class="rows">
+                        <p class="font-20 color-blue font-weight-bold">{{{__ "Инструкция"}}}</p>
+                    </div>
+
+
+
+                    <ol>
+                        <li class="sm-text">{{{__ "Для прохождения регистрации на портале необходимо получить логин и
+                            пароль с помощью SMS сообщения."}}}</li>
+                        <li class="sm-text">{{{__ "Для получения логина и пароля необходимо на странице регистрации
+                            ввести номер сертификата (регистрационный номер в уведомлении о месте, дате и времени
+                            начала тестирования)."}}}</li>
+                        <li class="sm-text">{{{__ "Нажмите 'ПРОВЕРИТЬ'."}}}</li>
+                        <li class="sm-text">{{{__ "Если все введено правильно, то Ваш номер сертификата числится в
+                            базе."}}}</li>
+                        <li class="sm-text">{{{__ "Далее необходимо ввести номер телефона, который Вы указывали при
+                            регистрации (формат номера телефона 0 ххх хх хх хх)."}}}</li>
+                        <li class="sm-text">{{{__ "Нажмите 'ОТПРАВИТЬ'."}}}</li>
+                        <li class="sm-text">{{{__ "Если номер телефона указан верно (совпал с тем, который указывали при
+                            регистрации), то Вы получите SMS сообщение с логином и паролем для входа в
+                            систему."}}}</li>
+                        <li class="sm-text">{{{__ 'Введите полученные данные на странице "Входа"'}}} <a
+                                href="https://2021.edu.gov.kg/personalcabinet/#enrollee" style="word-wrap: break-word;"
+                                class="color-yellow sm-text"> (https://2021.edu.gov.kg/personalcabinet/#enrollee)</a>
+                            {{{__ 'и завершите регистрацию.'}}}</li>
+                    </ol>
+                    <br>
+                    <p class="sm-text">
+                        {{{__ 'В случае если при вводе номера сертификата система выдает
+                        "Проверьте Ваш номер сертификата!", то, перепроверив вводимые данные, внимательно наберите номер
+                        сертификата еще раз. Если проблема не решается, то заполните следующую форму: '}}}<a
+                            href="/spuz/authmessagetochange" style="word-wrap: break-word;"
+                            class="color-yellow sm-text">(https://2021.edu.gov.kg/authmessagetochange)</a>
+                    </p>
+                    <p class="sm-text">
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+         {{!-- <div class="col-md-6 mt-2">
+            <div class="row   mb-5  float-md-left">
+                <div class="col-11 m-auto" style="max-width:500px;">
+                    <div class="shadow pt-4 pb-3 bg-white border-r8">
+                        <div class=" px-3 mx-auto">
+                           <div class="form-group p-2 border  border-r8" hidden>
+                                <label class="textarea display-5 sm-text color-blue font-weight-normal"
+                                    for="region">{{{__ "Выберите область"}}}</label>
+                                <select style="max-width:300px;"
+                                    class="usersert form-control  text-center mx-auto border-none" id="region"
+                                    onchange=getRegions('region','district')>
+                                    <option value="0"></option>
+                                </select>
+                            </div> 
+                         <div class="form-group  p-2 border  border-r8" hidden>
+                                <label class="textarea display-5 sm-text color-blue font-weight-normal"
+                                    for="district">{{{__ "Выберите район"}}}</label>
+                                <select style="max-width:300px;"
+                                    class="usersert border-none form-control  text-center mx-auto" id="district"
+                                    onchange=getRegions('district','school')>
+                                    <option value="0"></option>
+                                </select>
+                            </div> 
+
+                            <div class="form-group p-2 border  border-r8" hidden> 
+                              <label class="textarea display-5 sm-text  color-blue font-weight-normal"
+                                    for="school">{{{__ "Выберите учебное заведение"}}}</label>
+                                <select style="max-width:300px;"
+                                    class="usersert form-control border-none text-center mx-auto" id="school"
+                                    onchange=getRegions('school','usersert')>
+                                    <option value="0"></option>
+                                </select>
+                            </div>
+                            <div class="form-group p-2 border  border-r8">
+                                <label style="color: #000;">{{{__ "Введите ваш регистрационный номер"}}}</label>
+                                <input type="number" style="max-width:500px;"
+                                    class="usersert form-control  text-center mx-auto" placeholder="Сертификат"
+                                    id="usersert" oninput="if(value.length>7)value=value.slice(0,7)">
+                                <input type="text" value="0" hidden
+                                    class="usersertcont form-control  text-center border-none mx-auto"
+                                    placeholder="Телефон" id="usersertcont">
+                                <br> 
+
+                                <center><a href="/authmessagetochange" id="sert_link" hidden="true"
+                                        class="color-yellow tn-text">{{{__ "Возникли проблемы с номером
+                                        сертификата?"}}}</a></center>
+                                <center><a href="/authmessagetochange" id="phone_link" class="color-yellow tn-text"
+                                        style="display:none;">{{{__ "Я НЕ ПОМНЮ / ПОТЕРЯЛ НОМЕР ТЕЛЕФОНА"}}}</a>
+                                </center>
+
+                            </div>
+
+                            <div class="form-group p-2">
+
+                                <div id="emtydiv" style="display: none"></div>
+
+                                <br>
+                                <button type="submit" class="checksertbutton bg-yellow btn btn-primary btn-block"
+                                    id="checksertbutton" disabled>{{{__ "Проверить"}}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  --}}
+    </div>
+</div>
+
+<script type="text/javascript">
+</script>
+{{> mask }}

@@ -1,0 +1,105 @@
+<link rel=" stylesheet" href="/stylesheets/protocol.css" /> 
+  <div id="control" class="do-not-print">
+<button title="Об утверждении списка абитуриентов, рекомендованных к зачислению {{tour}}-Тур.doc" onclick="export2Word(window.inner, 'Об утверждении списка абитуриентов, рекомендованных к зачислению '+{{tour}}+'-Тур')">Экспорт Word</button> 
+<button title="Печать" onclick="window.print()">Печать</button>
+
+</div> 
+<script type="text/javascript" src="/javascripts/export2word.js"></script>
+
+<div id="inner">
+
+{{#each obja}}
+{{#ifCond @index '==' 0}}
+<center>
+<h3  class="b">  
+{{this.0.university_name}}
+<br><br>
+ПРОТОКОЛ № <input type="text" size="4" value="_____">
+<br>
+Заседание грантовой комиссии
+<br>
+<input type="text" size="25" value="от 10 июля 2020 года">
+<br><br>
+{{../tour}} ТУР
+<br>
+«Об утверждении списка абитуриентов, рекомендованных к зачислению»
+</h3>
+<div class="indent">
+Грантовая комиссия на основе конкурсного отбора абитуриентов в рамках отдельных категорий, в соответствии с количеством мест утвержденных протоколом 
+<input type="text" size="25" value="№______ от________2020 г."> 
+решила рекомендовать к зачислению по направлении / специальности 
+ <span style="font-weight: bolder;text-decoration:underline;  font-style: italic;">{{this.0.specialty_cipher}} {{this.0.specialty}} ({{this.0.learning}})</span> для обучения на грантовой основе по результатам {{../tour}} тура следующих абитуриентов:
+</div>
+</center>
+ 
+{{/ifCond}} 
+ 
+<p>
+-выпускники  <span style="font-weight: bolder"> 
+{{#ifCond this.0.id_PlaseSertORT '==' 1}}
+г. Бишкек
+{{/ifCond}}
+{{#ifCond this.0.id_PlaseSertORT '==' 2}}
+областных центров, малых городов
+{{/ifCond}}
+{{#ifCond this.0.id_PlaseSertORT '==' 3}}
+сел
+{{/ifCond}}
+{{#ifCond this.0.id_PlaseSertORT '==' 4}}
+высокогорий
+{{/ifCond}}
+{{#ifCond this.0.id_PlaseSertORT '==' 5}}
+золотой сертификат
+{{/ifCond}}
+
+</span> (выделено  {{total_nameplase_num this}} мест)
+</p>
+<table class="tb1">
+     <tr>
+        <th class="td1" width =5%>№</th>
+        <th class="td1" ><center>Номер сертификата</center></>
+        <th class="td1" ><center>Сумма баллов по основному тесту</center></>
+        <th class="td1" ><center>Сумма балов по предметному тесту</center></>
+        <th class="td1" ><center>Сумма баллов по основному и предметному тесту</center></>
+
+    </tr>
+
+{{#each this}}
+ {{#ifCond nameplase_num '==' 1}}
+    <tr>
+        <td class="td1" width =5%><center>{{incremented @index}}</center></td>
+        <td class="td1" ><center>{{NumberSert}}</center></td>
+        <td class="td1" ><center>{{BallOnRepsTest}}</center></td>
+        <td class="td1" ><center>{{summ_dop}}</center></td>
+        <td class="td1" ><center>{{summ}}</center></td>
+    </tr>
+{{/ifCond}}
+ {{/each}}
+
+</table>
+{{/each}}
+
+<br>
+<br>
+<table>
+        <tbody>
+    {{#each objb}}
+        <tr>
+        <td width =40%  height=25px; style="vertical-align:top;" rowspan={{maxindex this}}>
+        {{@key}}  
+        </td>
+        </tr>
+        {{#each this}}
+        <tr>
+ 
+            <td  height=25px; width =20%><center><input type="text" size="15" value="_________________"></center></td>
+            <td  height=25px;>  <input type="text" size="15" style="text-align:left;" value="{{grant_commission}}"></td>
+        </tr>
+        
+        {{/each}}
+    {{/each}}
+  </tbody>
+</table>
+<br>
+ </div>
+ </div>

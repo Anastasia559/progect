@@ -1,0 +1,36 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding:2px 2px 2px 5px;
+}
+th {
+font-size:20px;
+}
+</style>
+   <center>   
+<h1>Статистика проблемных директоров “Абитуриент Online” 2020"</h1>  
+
+  <table>
+                    <tr >
+                    <th style="width:20px;" >{{{__ "Номер"}}}</th>
+                    <th  style="width:100px;">{{{__ "Район"}}}</th>
+                    <th   style="width:250px;">{{{__ "Школа"}}}</th>
+                    <th   style="width:250px;">{{{__ "Директор"}}}</th>
+                    <th  style="width:100px;" >{{{__ "Телефон"}}}</th>
+                    <th style="width:20px" >{{{__ "Количество сообщений в ожидании"}}}</th>
+                   </tr>              
+                </tr>
+                {{#each obj}}
+ 
+                <tr>
+                    <td style="width:20px;  text-align:center;">{{incremented @index}}</td>
+                    <td style="width:100px;  text-align:left;">{{district}}</a></td>
+                    <td style="width:250px;  text-align:left;">  {{school_name}}</td>
+                    <td style="width:250px;  text-align:left;">  {{fio_director}}</td>
+                    <td style="width:100px;  text-align:left;">  {{school_phone}}</td>
+                    <td style="width:20px;  text-align:center;" >{{count}}</td>
+                </tr>
+             {{/each}}
+        </table>
+    </center>  

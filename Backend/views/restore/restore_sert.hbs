@@ -1,0 +1,216 @@
+   <div class="main" style="margin-top: -40px;">
+        <div class="content">
+                <div class="title mt-5">
+                        <p class="secondary-text tn-text "> <a href="/" class="yellow_text underline">{{{__ "Главная"}}}</a>
+                            &nbsp;/&nbsp; <a href="/soomo" class="yellow_text underline">{{{__ "ЦООМО"}}}</a>
+                            &nbsp;/&nbsp;  <span class="secondary-text">{{title}} </span>
+                          </p>
+                        <h2 class="white-text  title_text mt-5">{{title}}</h2>
+                    </div>
+        </div>
+    </div>
+
+
+<div id="content" class="mt-4">
+    <style>
+        @media only screen and (min-width: 992px) {
+            #forms {
+                max-width: 75%;
+            }
+        }
+    </style>
+{{!--    <div class="bg-color text-center py-3 mt-4">
+        <h4 class="white-text font-weight-normal px-2"> {{title}}</h4>
+    </div>
+--}}
+    <div id="message" style="display:none;" class="alert animated fadeIn text-center">
+        {{!-- <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> --}}
+        <h6 id="message_content"> </h6>
+    </div>
+    <div class="container my-4 mx-auto" id="forms">
+
+
+
+
+        <div class="form-group animated fadeIn" id="search_form">
+            <div class="form-row">
+                <div class="form-group col-md-8">
+
+                    <label for="numberSert">{{{__ "Номер  сертификата"}}}</label>
+                    <input type="text" size="3" value="0" id="numberSert" name="numberSert" maxlength="9"
+                        class="form-control" placeholder={{{__ "Номер сертификата"}}}>
+                    <small id="numberSertHelp"
+                        class="form-text text-muted">{{{__ "Введите номер Вашего сертификата"}}}</small>
+                </div>
+                <div class="form-group col-md-4">
+
+                    <label for="ball">{{{__ "Основной балл"}}}</label>
+                    <input type="number" size="2" value="0" id="ball" name="ball" min="0" max="246" class="form-control"
+                        placeholder={{{__ "Основной балл"}}}>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+
+                    <label for="ort_biology">{{{__ "Биология"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_biology" name="ort_biology" min="0" max="150"
+                        class="form-control">
+
+                </div>
+
+
+                <div class="form-group col-md-3">
+
+                    <label for="ort_history"> {{{__ "История"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_history" name="ort_history" min="0" max="150"
+                        class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+
+
+                    <label for="ort_chemistry">{{{__ "Химия"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_chemistry" name="ort_chemistry" min="0" max="150"
+                        class="form-control">
+
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="ort_physics"> {{{__ "Физика"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_physics" name="ort_physics" min="0" max="150"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="form-row">
+
+
+
+                <div class="form-group col-md-3">
+                    <label for="ort_english"> {{{__ "Английский язык"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_english" name="ort_english" min="0" max="150"
+                        class="form-control">
+
+                </div>
+                <div class="form-group col-md-3">
+
+                    <label for="ort_math"> {{{__ "Математика"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_math" name="ort_math" min="0" max="150"
+                        class="form-control">
+
+                </div>
+                <div class="form-group col-md-3">
+
+                    <label for="ort_kyrgyz"> {{{__ "Кыргызский язык"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_kyrgyz" name="ort_kyrgyz" min="0" max="150"
+                        class="form-control">
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="ort_russian"> {{{__ "Русский язык"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_russian" name="ort_russian" min="0" max="150"
+                        class="form-control">
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="form-group animated fadeIn" id="update_form">
+            <div class="form-row">
+                <div class="form-group col-md-8">
+
+                    <label for="numberSertn">{{{__ "Номер  сертификата"}}}</label>
+                    <label for="numberSertn">{{{__ "Номер  сертификата"}}}</label>
+                    <input type="text" size="3" value="0" id="numberSertn" name="numberSertn" maxlength="9"
+                        class="form-control" placeholder={{{__ "Номер сертификата"}}}>
+                </div>
+                <div class="form-group col-md-4">
+
+                    <label for="balln">{{{__ "Основной балл"}}}</label>
+                    <input type="number" size="2" value="0" id="balln" name="balln" min="0" max="246"
+                        class="form-control" placeholder={{{__ "Основной балл"}}}>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+
+                    <label for="ort_biologyn">{{{__ "Биология"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_biologyn" name="ort_biologyn" min="0" max="150"
+                        class="form-control">
+
+                </div>
+
+
+                <div class="form-group col-md-3">
+
+                    <label for="ort_historyn"> {{{__ "История"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_historyn" name="ort_historyn" min="0" max="150"
+                        class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+
+
+                    <label for="ort_chemistryn">{{{__ "Химия"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_chemistryn" name="ort_chemistryn" min="0" max="150"
+                        class="form-control">
+
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="ort_physicsn"> {{{__ "Физика"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_physicsn" name="ort_physicsn" min="0" max="150"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="form-row">
+
+
+
+                <div class="form-group col-md-3">
+                    <label for="ort_englishn"> {{{__ "Английский язык"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_englishn" name="ort_englishn" min="0" max="150"
+                        class="form-control">
+
+                </div>
+                <div class="form-group col-md-3">
+
+                    <label for="ort_mathn"> {{{__ "Математика"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_mathn" name="ort_mathn" min="0" max="150"
+                        class="form-control">
+
+                </div>
+                <div class="form-group col-md-3">
+
+                    <label for="ort_kyrgyzn"> {{{__ "Кыргызский язык"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_kyrgyzn" name="ort_kyrgyzn" min="0" max="150"
+                        class="form-control">
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="ort_russiann"> {{{__ "Русский язык"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_russiann" name="ort_russiann" min="0" max="150"
+                        class="form-control">
+
+                </div>
+
+
+
+            </div>
+            <div class="form-group mx-auto row" id="phone_form">
+                <label for="phone">{{{__ "Номер  телефона"}}}</label>
+                <input type="tel" value="0" required id="phone" name="phone" pattern="[0-9]{10}" minlength="10"
+                    maxlength="10" class="form-control" placeholder={{{__ "Номер телефона"}}}>
+                <small id="phonetHelp" class="form-text text-muted">{{{__ "Введите номер Вашего телефона"}}}</small>
+            </div>
+        </div>
+
+
+        <button type="submit" id="checksertbutton" class="animated fadeIn btn btn-primary">{{{__ "Проверить"}}}</button>
+
+    </div>
+
+</div>
+{{> restore_sert_js}}

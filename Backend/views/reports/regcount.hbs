@@ -1,0 +1,438 @@
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css"> -->
+<style>
+table, th, td {
+  border: 1px solid #66ADCC;
+  border-collapse: collapse;
+  padding:2px 2px 2px 5px;
+}
+th {
+color:#EE7F1A;
+font-size:14px;
+background-color: #EDFDFE;
+}
+td {
+font-size:12px;
+}
+body {
+    padding: 15px;
+    
+    background-color: rgb(255, 255, 255);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size:14px;
+  }
+  .tb1, .td1 {
+    border: 1px solid rgb(186, 188, 194);
+    padding: 5px;
+  }
+  .indent{
+    text-align: justify;
+    text-justify: inter-word;
+    text-indent: 50px;
+    font-size: 14px;
+  }
+  p{font-size: 14px;}
+h3{font-size: 15px;}
+h3 input{font-size: 15px;}
+
+#inner {
+  display: table;
+  margin: 0 auto;
+  max-width:1200px;
+}
+#outer {
+  border: 1px solid red;
+  width:100%}
+.b{font-weight:bolder;}
+.b input {font-weight:bolder;}
+.i{font-style: italic;}
+.u{text-decoration:underline;}
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 15px 15px 15px 60px;  /* this affects the margin in the printer settings */
+}
+ 
+
+@media print {
+    div.do-not-print {display: none;}
+input {
+  font-size: 14px;
+}
+
+}
+
+.buttons-pdf{
+  cursor: pointer;
+  height: 40px;
+  width: 70px;
+  background: #4267B7 ;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  outline: none;
+  margin-bottom: 20px;
+}
+.buttons-pdf:hover{
+  background:#EE7F1A;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #234182;
+  color: #fff;
+  z-index: 1000;
+  height: 80px;
+  overflow: hidden;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  transition: height 0.3s;
+  text-align: center;
+  line-height: 160px;
+  border-bottom-left-radius: 50px 30px;
+  border-bottom-right-radius: 50px 30px;
+}
+.header.shrink {
+  height: 100px;
+  line-height: 80px;
+}
+.header h1 {
+  font-size: 30px;
+  font-weight: normal;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.header.shrink h1 {
+  font-size: 24px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+</style>
+
+
+<div class="header">
+  <img src="img/logo2.png" height="40" alt="" style="position:absolute; left:35px; top:15px;">
+  <h1>Header</h1>
+</div>
+<div class="content">
+</div>
+<br><br><br><br>
+<div id="docx">
+  <div class="WordSection1">
+<center> 
+<h3 style="color:#234182">{{{__ 'Открытые данные по регистрации талонов и зачисления в вузы по системе "Абитуриент Online 2020"'}}}</h1> </center> 
+<div id="control" class="do-not-print">
+<button onclick="window.print()" class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="example"><span>Print</span></button>
+<button id="export" class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="example"><span>Word</span></button>
+</div>
+<center>
+  <table id="TableExport">
+  				  <tr>
+                    <th  rowspan="3">{{{__ "№"}}}</th>
+                    <th  rowspan="3">{{{__ "Вузы"}}}</th>
+                    <th  colspan="2">{{{__ "План набора"}}}</th>
+                    <th  colspan="11">{{{__ "Регистрация талонов"}}}</th>
+                    <th  colspan="11">{{{__ "Рекоменендованы вузами"}}}</th>
+                    <th  colspan="11">{{{__ "Подтверждено абитуриентами"}}}</th>
+                    <th  colspan="11">{{{__ "Подтверждено вузами"}}}</th>
+                    <th  rowspan="2" colspan="5" width="5%">{{{__ "Отозвано подтверждение абитуриентами"}}}</th>
+                  </tr>  
+                  <tr>
+                  	<th  rowspan="2">{{{__ "Бюджет"}}}</th>
+                    <th  rowspan="2">{{{__ "Контракт"}}}</th>
+                    <th  rowspan="2">{{{__ "Всего"}}}</th>
+                    <th  colspan="5">{{{__ "бюджет"}}}</th>
+                    <th  colspan="5">{{{__ "контракт"}}}</th>
+                    <th  rowspan="2">{{{__ "Всего"}}}</th>
+                    <th  colspan="5">{{{__ "бюджет"}}}</th>
+                    <th  colspan="5">{{{__ "контракт"}}}</th>
+                    <th  rowspan="2">{{{__ "Всего"}}}</th>
+                    <th  colspan="5">{{{__ "бюджет"}}}</th>
+                    <th  colspan="5">{{{__ "контракт"}}}</th>
+                    <th  rowspan="2">{{{__ "Всего"}}}</th>
+                    <th  colspan="5">{{{__ "бюджет"}}}</th>
+                    <th  colspan="5">{{{__ "контракт"}}}</th>
+                  </tr> 
+                  <tr>
+                  	<th  >{{{__ "1 тур"}}}</th>
+                  	<th  >{{{__ "2 тур"}}}</th>
+                  	<th  >{{{__ "3 тур"}}}</th>
+                  	<th  >{{{__ "4 тур"}}}</th>
+                  	<th  >{{{__ "5 тур"}}}</th>
+                  	<th  >{{{__ "1 тур"}}}</th>
+                  	<th  >{{{__ "2 тур"}}}</th>
+                  	<th  >{{{__ "3 тур"}}}</th>
+                  	<th  >{{{__ "4 тур"}}}</th>
+                  	<th  >{{{__ "5 тур"}}}</th>
+                  	<th  >{{{__ "1 тур"}}}</th>
+                  	<th  >{{{__ "2 тур"}}}</th>
+                  	<th  >{{{__ "3 тур"}}}</th>
+                    <th  >{{{__ "4 тур"}}}</th>
+                    <th  >{{{__ "5 тур"}}}</th>
+                  	<th  >{{{__ "1 тур"}}}</th>
+                  	<th  >{{{__ "2 тур"}}}</th>
+                  	<th  >{{{__ "3 тур"}}}</th>
+                  	<th  >{{{__ "4 тур"}}}</th>
+                  	<th  >{{{__ "5 тур"}}}</th>
+                  	<th  >{{{__ "1 тур"}}}</th>
+                  	<th  >{{{__ "2 тур"}}}</th>
+                  	<th  >{{{__ "3 тур"}}}</th>
+                  	<th  >{{{__ "4 тур"}}}</th>
+                  	<th  >{{{__ "5 тур"}}}</th>
+                  	<th  >{{{__ "1 тур"}}}</th>
+                  	<th  >{{{__ "2 тур"}}}</th>
+                  	<th  >{{{__ "3 тур"}}}</th>
+                  	<th  >{{{__ "4 тур"}}}</th>
+                  	<th  >{{{__ "5 тур"}}}</th>
+                  	<th  >{{{__ "1 тур"}}}</th>
+                  	<th  >{{{__ "2 тур"}}}</th>
+                  	<th  >{{{__ "3 тур"}}}</th>
+                  	<th  >{{{__ "4 тур"}}}</th>
+                  	<th  >{{{__ "5 тур"}}}</th>
+                  	<th  >{{{__ "1 тур"}}}</th>
+                  	<th  >{{{__ "2 тур"}}}</th>
+                  	<th  >{{{__ "3 тур"}}}</th>
+                  	<th  >{{{__ "4 тур"}}}</th>
+                  	<th  >{{{__ "5 тур"}}}</th>
+                  	<th  >{{{__ "1 тур"}}}</th>
+                  	<th  >{{{__ "2 тур"}}}</th>
+                  	<th  >{{{__ "3 тур"}}}</th>
+                  	<th  >{{{__ "4 тур"}}}</th>
+                  	<th  >{{{__ "5 тур"}}}</th>
+                  </tr> 
+          
+               	  <tr>
+                    <td colspan="2" style="  text-align:center; color:#234182;"><b>{{{__ "Всего:"}}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_plan_budjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_plan_contract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg1tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg2tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg3tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg4tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg5tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg1tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg2tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg3tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg4tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg5tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom1tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom2tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom3tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom4tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom5tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom1tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom2tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom3tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom4tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom5tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confenrol'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confenrol1tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confenrol2tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confenrol3tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confenrol4tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confenrol5tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_conf1tourenrolcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_conf2tourenrolcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_conf3tourenrolcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_conf4tourenrolcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_conf5tourenrolcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv1tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv2tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv3tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv4tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv5tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv1tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv2tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv3tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv4tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv5tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_takebackdocs1'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_takebackdocs2'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_takebackdocs3'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_takebackdocs4'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_takebackdocs5'}}</b></td>
+                  </tr>
+                {{#each obj}}
+                  <tr>
+                    <td style="  text-align:center; color:#234182;">{{incremented @index}}</td>
+                    <td style="  text-align:left; color:#234182;">{{s_university}}</a></td>
+                    <td style="  text-align:center;">{{kol_plan_budjet}}</td>
+                    <td style="  text-align:center;">{{kol_plan_contract}}</td>
+                    <td style="  text-align:center;">{{kol_reg}}</td>
+                    <td style="  text-align:center;">{{kol_reg1tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_reg2tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_reg3tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_reg4tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_reg5tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_reg1tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_reg2tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_reg3tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_reg4tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_reg5tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_recom}}</td>
+                    <td style="  text-align:center;">{{kol_recom1tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_recom2tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_recom3tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_recom4tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_recom5tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_recom1tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_recom2tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_recom3tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_recom4tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_recom5tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_confenrol}}</td>
+                    <td style="  text-align:center;">{{kol_confenrol1tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_confenrol2tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_confenrol3tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_confenrol4tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_confenrol5tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_conf1tourenrolcontract}}</td>
+                    <td style="  text-align:center;">{{kol_conf2tourenrolcontract}}</td>
+                    <td style="  text-align:center;">{{kol_conf3tourenrolcontract}}</td>
+                    <td style="  text-align:center;">{{kol_conf4tourenrolcontract}}</td>
+                    <td style="  text-align:center;">{{kol_conf5tourenrolcontract}}</td>
+                    <td style="  text-align:center;">{{kol_confuniv}}</td>
+                    <td style="  text-align:center;">{{kol_confuniv1tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_confuniv2tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_confuniv3tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_confuniv4tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_confuniv5tourbudjet}}</td>
+                    <td style="  text-align:center;">{{kol_confuniv1tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_confuniv2tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_confuniv3tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_confuniv4tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_confuniv5tourcontract}}</td>
+                    <td style="  text-align:center;">{{kol_takebackdocs1}}</td>
+                    <td style="  text-align:center;">{{kol_takebackdocs2}}</td>
+                    <td style="  text-align:center;">{{kol_takebackdocs3}}</td>
+                    <td style="  text-align:center;">{{kol_takebackdocs4}}</td>
+                    <td style="  text-align:center;">{{kol_takebackdocs5}}</td>
+                  </tr>
+             {{/each}}
+                  <tr>
+                    <td colspan="2" style="  text-align:center; color:#234182;"><b>{{{__ "Всего:"}}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_plan_budjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_plan_contract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg1tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg2tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg3tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg4tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg5tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg1tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg2tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg3tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg4tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_reg5tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom1tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom2tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom3tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom4tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom5tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom1tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom2tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom3tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom4tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_recom5tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confenrol'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confenrol1tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confenrol2tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confenrol3tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confenrol4tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confenrol5tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_conf1tourenrolcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_conf2tourenrolcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_conf3tourenrolcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_conf4tourenrolcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_conf5tourenrolcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv1tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv2tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv3tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv4tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv5tourbudjet'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv1tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv2tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv3tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv4tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_confuniv5tourcontract'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_takebackdocs1'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_takebackdocs2'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_takebackdocs3'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_takebackdocs4'}}</b></td>
+                    <td style="  text-align:center; color:#234182;"><b>{{totalSum obj 'kol_takebackdocs5'}}</b></td>
+                  </tr>
+        </table>
+    </center>  
+</div>
+</div>
+<script type="text/javascript">
+     window.export.onclick = function() {
+ 
+   if (!window.Blob) {
+      alert('Your legacy browser does not support this action.');
+      return;
+   }
+
+   var html, link, blob, url, css;
+   
+   // EU A4 use: size: 841.95pt 595.35pt;
+   // US Letter use: size:11.0in 8.5in;
+   
+   css = (
+     '<style>' +
+     '@page WordSection1{size: 841.95pt 595.35pt;mso-page-orientation: landscape;}' +
+     'div.WordSection1 {page: WordSection1;}' +
+     'table{border-collapse:collapse;}td,th{border:1px gray solid;width:5em;padding:2px;}'+
+     '</style>'
+   );
+   
+   html = window.docx.innerHTML;
+   blob = new Blob(['\ufeff', css + html], {
+     type: 'application/msword'
+   });
+   url = URL.createObjectURL(blob);
+   link = document.createElement('A');
+   link.href = url;
+   // Set default file name. 
+   // Word will append file extension - do not add an extension here.
+   link.download = 'Enrolle2020';   
+   document.body.appendChild(link);
+   if (navigator.msSaveOrOpenBlob ) navigator.msSaveOrOpenBlob( blob, 'Enrolle2020.doc'); // IE10-11
+        else link.click();  // other browsers
+   document.body.removeChild(link);
+ };
+</script>
+
+  <script src="/js_export/jquery-3.5.1.js"></script>
+
+  <script src="/js_export/jquery.dataTables.min.js"></script>
+  <script src="/js_export/dataTables.buttons.min.js"></script>
+  <script src="/js_export/buttons.html5.min.js"></script>
+  <script src="/js_export/jszip.min.js"></script>
+  <script src="/js_export/pdfmake.min.js"></script>
+  <script src="/js_export/vfs_fonts.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#TableExport').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+</script>
+
+ 

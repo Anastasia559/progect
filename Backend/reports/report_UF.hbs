@@ -1,0 +1,83 @@
+<style type="text/css">
+	body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+table {
+	padding: 0px;
+	margin: 0px;
+	border-spacing:0; 
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	
+
+}
+
+.trHeader {
+	padding: 0px;
+	margin: 0px;
+	background-color: #e6f7ff;
+	font-weight: bold;
+	text-align: center;
+	color: #4d8fe1;
+}
+
+.tr1 {
+	padding: 0px;
+	margin: 0px;
+	font-weight: bold;
+	text-align: center;
+	color: #4d8fe1;
+}
+
+td {
+	border: 1px solid #33b5e5;
+	padding: 5px;
+	margin: 0px;
+	font-size: 12px;
+}
+
+
+
+</style>
+	<center>
+		<table width=650px>
+			<tr class="trHeader"><td>Шифр специальности</td>
+				<td>Направление/Специальность</td>
+				<td>Форма оплаты</td>
+				<td>План набора</td>
+				<td>Пороговый балл</td>
+			</tr>
+			{{#each this}}
+						<tr class="tr1"><td colspan=5>Вуз {{@key}}</td></tr>
+				{{#each this}}
+						<tr><td colspan=5>Факультет {{@key}}</td></tr>
+					{{#each this}}	
+						<tr>
+							<td>{{specialty_cipher}}</td>
+							<td>{{specialty}}</td>
+							<td>{{bk}}</td>
+							<td>{{kol_plan}}</td>
+							<td>Основной балл-{{BallOnRepsTest}}<br>
+								{{#if ORT_biology}}Биология-{{ORT_biology}}<br>{{/if}}
+								{{#if ORT_history}}История-{{ORT_history}}<br>{{/if}}
+								{{#if ORT_chemistry}}Химия-{{ORT_chemistry}}<br>{{/if}}
+								{{#if ORT_physics}}Физика-{{ORT_physics}}<br>{{/if}}
+								{{#if ORT_english}}Английский-{{ORT_english}}<br>{{/if}}
+								{{#if ORT_kyrgyz}}Кыргызский-{{ORT_kyrgyz}}<br>{{/if}}
+								{{#if ORT_russian}}Русский-{{ORT_russian}}<br>{{/if}}
+								{{#if necessarily_kol}}Количество объзательных предметов-{{necessarily_kol}}{{/if}}
+								
+							</td>
+						</tr>
+					{{/each}}	
+				{{/each}}
+			{{/each}}
+		</table>
+
+
+

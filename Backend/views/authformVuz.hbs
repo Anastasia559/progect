@@ -1,0 +1,77 @@
+
+{{!--------------------------------------------------- autoformVuz --}}
+
+<style>
+   body{
+    background: #fff!important;
+  }
+.form-group {
+    margin-bottom: 3rem!important;
+}
+
+.img_icon{
+  border-radius: 4px;
+}
+</style>
+
+
+	<form method="post" action="/spuz/authformvuz" class=" px-3 mx-auto" >
+<div class="text-center my-2 ">
+  <h2 class="color-blue font-weight-bold">{{{__ "СПУЗ"}}}</h2>
+</div>	
+
+<div class="text-center my-2">
+  <img class="img_icon" src="/spuz/img/spuz_new.png" height="100">
+{{!-- <svg class="img_icon" data-svg="home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="#1e0478" d="M506.556 208.066c5.933 4.337 7.21 12.665 2.874 18.585-2.607 3.565-6.652 5.454-10.736 5.454-2.727 0-5.481-.838-7.849-2.581l-35.294-25.835V470.9c0 7.343-5.96 13.303-13.303 13.303H309.213c-6.998 0-12.718-5.414-13.25-12.279-.027-.306-.053-.639-.053-1.024V342.005c0-22.004-17.906-39.91-39.91-39.91s-39.91 17.906-39.91 39.91v128.896c0 .386-.027.718-.053 1.038-.532 6.865-6.253 12.266-13.25 12.266H69.753c-7.343 0-13.303-5.96-13.303-13.303V203.689l-35.294 25.835c-5.92 4.35-14.248 3.06-18.585-2.874-4.337-5.92-3.06-14.248 2.874-18.585L248.138 30.36c4.683-3.419 11.042-3.419 15.725 0l242.693 177.706zm-77.612 249.532l.12-273.304L256 57.592 82.936 184.293l.12 273.304h106.427V342.005c0-36.677 29.839-66.517 66.517-66.517s66.517 29.839 66.517 66.517v115.593h106.427z"></path>
+            <path fill="#94e7ef" d="M429.063 184.293l-.12 273.304H322.517V342.005c0-36.677-29.839-66.517-66.517-66.517s-66.517 29.839-66.517 66.517v115.593H83.056l-.12-273.304L256 57.592l173.063 126.701z"></path>
+</svg> --}}
+</div>	
+
+  <div class="form-group1">
+    <input type="text" name="login" class="form-control_input" id="exampleInputEmail1"   placeholder="{{{__ "Введите логин"}}}">
+  </div>
+  <div class="form-group1">
+    <input type="password" name="password" class="form-control_input" id="exampleInputPassword1" placeholder="{{{__ "Введите пароль"}}}">
+    <span   onclick="toggle(this);" style="    float: right;
+    margin-right: 8px;
+    margin-top: -45px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;" id="toggle"><i class="fa fa-eye-slash"  aria-hidden="true"></i></span>
+  </div>
+    <button type="submit" class="btn btn-block btn-primary">{{{__ "Войти"}}}</button>
+      <div class="wrapper_error_messages">
+{{!-- {{title}} --}}
+
+
+</div>
+	</form>
+
+
+
+
+
+
+<script> 
+function toggle(i) {
+    var password = document.getElementById("exampleInputPassword1");
+    if (password.type == "password") {
+ 
+            password.type = "text";
+            
+            $('#toggle').html('<i class="fa fa-eye"  aria-hidden="true"></i>');
+ 
+    }
+    else {
+ 
+            $('#toggle').html('<i class="fa fa-eye-slash"  aria-hidden="true"></i>');
+        password.type = "password";
+    }
+}
+</script>
+
+
+
+
+

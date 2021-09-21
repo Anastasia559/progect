@@ -1,0 +1,300 @@
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="/css/mdb.min.css" />
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+
+<style>
+.border-none {
+    border-color: #fff;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+html {    font-family: Roboto !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    background: linear-gradient(45deg, rgba(238, 207, 186, 0.3), rgba(197, 221, 232, 0.3));
+    }
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f8f9fa!important;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 12px 20px;  
+  text-decoration: none;
+  font-size: 16px;
+  color: #818181;
+  display: block;
+  border: 1px solid rgba(0,0,0,.125);
+
+}
+.active {
+  background-color: #007bff4d !important;
+
+}
+.sidenav a:hover {
+  color: #000;
+  background-color: rgb(218, 224, 229)!important;
+
+}
+
+</style>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalError">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+<div class="p-2 m-2 md-text">
+<button  data-toggle="modal" data-target="#modalError"
+                                class="close float-right p-0 animated fadeIn">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="#234182"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 18.1818L18.1818 0L20 1.81818L1.81818 20L0 18.1818Z" fill="#234182" />
+                                    <path d="M0 1.81818L1.81818 0L20 18.1818L18.1818 20L0 1.81818Z" fill="#234182" />
+                                </svg>
+            </button>
+      </div>
+
+
+      <div class="modal-body">
+        <p  class="sm-text">{{{__ "Загружайте картинку в формате JPEG и PNG"}}}</p>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn blue btn-sm white-text" data-dismiss="modal">OK</button>
+       </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="sidenav">
+    <a class="active"  href="#">Cообщение в адрес МОиН КР</a>
+</div>                        
+
+    <div id="content" class="content" style="margin-left: 200px;">
+        <div class="row mx-md-3 mx-0">
+            <div class="col-md-6 mt-5">
+                <div class=" shadow p-4 bg-white border-r8">
+                    <p class="font-20 color-blue font-weight-bold">
+                        {{{__ "Сообщение в адрес МОиН КР"}}}
+                    </p>
+                    <p>
+                        {{{__ "При нарушении процедуры зачисления Вы можете отправить сообщение в адрес МОиН КР"}}}
+                    </p>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6 mt-5"> 
+                <div class="row  mb-5">
+                    <div class="col-11 m-auto" style="max-width:700px;">
+                        <div class="shadow pt-4 pb-3 bg-white border-r8">
+                            <div class=" px-3 mx-auto">
+                                <div class="form-group p-2 border  border-r8">
+                                    <label class="textarea display-5 sm-text color-blue font-weight-normal"
+                                        for="fio">{{{__ "ФИО"}}}</label>
+                                    <input type="text" style="max-width:700px;" value="{{fio}}"
+                                        class="usersert form-control text-center mx-auto border-none"
+                                        placeholder="{{{__ 'Введите Ваше ФИО'}}}" id="fio">
+                                </div>
+
+                                <div class="form-group p-2 border  border-r8">
+                                    <label class="textarea display-5 sm-text color-blue font-weight-normal"
+                                        for="sert">{{{__ "Номер сертификата"}}}</label>
+                                    <input type="number" style="max-width:700px;" value="{{sert}}"
+                                        class="usersert form-control text-center mx-auto border-none"
+                                        placeholder="{{{__ 'Введите номер сертификата'}}}" id="sert">
+                                </div>
+
+                                <div class="form-group p-2 border  border-r8">
+                                    <label class="textarea display-5 sm-text color-blue font-weight-normal"
+                                        for="region">{{{__ "Номер телефона"}}}</label>
+                                    <input type="phone" style="max-width:700px;"
+                                        class="usersert form-control text-center mx-auto  border-none"
+                                        placeholder="0__ ______" id="phone"  value="0{{tel}}"
+                                        oninput="if(value.length>10)value=value.slice(0,10)"  >
+                                </div>
+
+                                <div class="form-group p-2 border  border-r8">
+
+                                    <label class="textarea display-6 color-blue font-weight-normal">{{{__ "Cообщение"}}}:</label><br>
+                                    <textarea id="message" name="message" maxlength="2000"
+                                        class="mb-3 border-none w-100 m-0" placeholder="{{{__ 'Ваше сообщение'}}} (минимум 20 символов)"
+                                        oninput="auto_grow(this)"></textarea>
+                                </div>
+
+                              <div class="form-group p-2 border  border-r8">
+                              <center class="color-blue font-weight-normal">Загрузите файл (необязательно):
+                                <div class="col-md-11 my-1" id="divpas1">
+                                   <input class="custom-file-input mx-1" type="file" id="pas1" onchange="uploadFile('pas1','text1','response1','divpas1')" />
+                                   <label class="custom-file-label" data-browse=Выберите файл ></label>
+                                </div>
+                              <div id="response1"></div>
+                               <input type="text" id="text1" value='' hidden/>
+                               </center>
+                              </div>
+
+                                <div class="form-group">
+                                    <div id="emtydiv" style="display: none"></div>
+                                    <div id="answer" style="display: none"></div>
+                                    <button disabled type="submit"
+                                        class="checksertbutton  btn btn-primary bg-yellow btn-block" id="btn"
+                                        onclick="sendMessage()">{{{__ "Отправить"}}}</button>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+        </div>
+    </div>
+
+ 
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script>
+        document.getElementById('message').addEventListener("input", function () { if( document.getElementById('message').value.length > 20) {document.getElementById('btn').disabled = false;} });
+    
+ 
+function auto_grow(element) {
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight)+"px";
+}
+var fio = document.getElementById("fio");
+var emtydiv = document.getElementById("emtydiv");
+
+function sendMessage() {
+    var abfio = document.getElementById('fio').value;
+    var sert= document.getElementById('sert').value;
+    var abphone = document.getElementById('phone').value;
+    var message = document.getElementById('message').value;
+    var text1 = document.getElementById("text1");
+
+    if(abfio.length > 3 && abphone.length > 3 && message.length > 20){
+            var xmlhttp = new XMLHttpRequest();
+            var arrFromServer;
+            var body = 'abfio=' + abfio + '&abphone=' + abphone +'&file=' + text1.value +  '&message=' + '№ Сертификата:'+{{sert}}+'  '+message;
+ 
+            xmlhttp.onreadystatechange=function(){
+                if(xmlhttp.readyState === XMLHttpRequest.DONE && xmlhttp.status === 200) {
+                arrFromServer = JSON.parse(xmlhttp.responseText);
+                console.log(arrFromServer.message_status);
+                    if (arrFromServer.message_status == 1) {
+                        emtydiv.innerHTML = "Ваше сообщение в адрес МОиН КР успешно отправлено!!!"
+                        emtydiv.style.color = "green";
+                        emtydiv.style.fontSize = "18px";
+                        document.getElementById('fio').value = "{{fio}}";
+                        document.getElementById('sert').value = "{{sert}}";
+                        document.getElementById('phone').value = "{{tel}}";
+                        document.getElementById('message').value = "";
+                    }
+                };
+            }; 
+            xmlhttp.open('post', '/messagetomoin', true);
+            xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded', 'charset=utf-8');
+            xmlhttp.send(body);
+    } else {
+        emtydiv.innerHTML = "Заполните все поля, не спеша!!!"
+        emtydiv.style.color = "red";
+        emtydiv.style.fontSize = "18px";
+    }
+}
+</script>
+
+
+<script type="text/javascript" src='compress/com.js'></script>
+
+<script>
+   const compressor = new Compress();
+  
+  
+  
+  function uploadFile(fileelem, textelem, responseelem, divelem){
+        let image = document.getElementById(fileelem)
+        let response = document.getElementById(responseelem)
+        let text = document.getElementById(textelem)
+        let div = document.getElementById(divelem)
+        
+        response.innerHTML = 'Файл загружается...';
+        var formData=new FormData();
+     
+      var src=image.files[0].name;
+ 
+      formart=image.files[0].type.substring(6,12); 
+      if(formart=="jpg"||formart=="png"||formart=="jpeg"){
+
+      const files = [image.files[0]];
+            compressor.compress(files, {
+                size: 3,
+                quality: .25,
+                maxWidth: 1920, 
+                maxHeight: 1920,
+                resize: true, 
+
+            }).then((results) => {
+                console.log(results);
+                const output = results[0];
+                const file = Compress.convertBase64ToFile(output.data, output.ext);
+
+                    formData.append('file',file);
+                    
+                                  $.ajax({
+                                          url: '/uploadmonmessage',
+                                          type: 'POST', 
+                                          data: formData, 
+                                          cache: false,
+                                          contentType: false, 
+                                          processData: false,
+                                          success: function(data){
+                                              if(data.code>0){
+                                                  text.value=data.filename;
+                                                  div.style.display = "none"
+                                                  response.innerHTML = "{{{__ "Файл загружен"}}}";
+                                                  response.style.color="green"
+                                                  response.style.fontSize = "18px"
+                                              } else{
+                                                  console.log('NOT Success!!!!');
+                                                  
+                                              }
+                                          }
+                                 }); formdata = new FormData(); 
+
+             });
+          } else {
+            response.innerHTML = ""; 
+            // document.getElementById("modalError").showModal();
+        $('#modalError').modal('show');
+
+          //  response.style.color="red";
+           // response.style.fontSize = "xx-large";
+
+          }
+
+
+ 
+
+      };
+</script>

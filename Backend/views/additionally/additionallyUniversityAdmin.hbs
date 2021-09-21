@@ -1,0 +1,173 @@
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="https://2020.edu.gov.kg/personalcabinet/lib/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://2020.edu.gov.kg/personalcabinet/css/site.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"> 
+  
+</head>
+
+<body>
+    
+    <style>
+    .sert{
+        position: relative;
+        left: 160px;
+        
+    } 
+        .search{
+            position: relative;
+        left: 165px;
+        }
+    
+body {
+      filter: expression(document.execCommand("BackgroundImageCache", false, true));
+  }
+    
+</style>
+	<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+	
+	<div id="root">
+		<div>
+			<div>
+				<div class="d-flex" id="wrapper">
+					<div class="bg-light border-right" id="sidebar-wrapper">
+						<div class="sidebar-heading text-center">&nbsp;&nbsp;&nbsp;</div>
+						<div class="text-primary text-center">&nbsp;&nbsp;&nbsp;</div>
+						<div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action  selectedSidebarItem">{{{__ "Поиск по номеру сертификата"}}}</a>
+                            <a href="/vuzpasswordchange" class="list-group-item list-group-item-action bg-light">{{{__ "Изменить пароль"}}}</a>
+                            <a href="/vuzprofession" class="list-group-item list-group-item-action bg-light">{{{__ "Профессии"}}}</a>
+                            <a href="/vuzenrollee_telefon" class="list-group-item list-group-item-action bg-light">{{{__ "Список подтвержденных абитуриентов"}}}</a>
+                            <a href="/vuzenrollee_zoomo?bk=1" class="list-group-item list-group-item-action bg-light">{{{__ "Отчет ЦООМО (бюджет)"}}}</a>
+                            <a href="/vuzenrollee_zoomo?bk=2" class="list-group-item list-group-item-action bg-light">{{{__ "Отчет ЦООМО (контракт)"}}}</a>
+                        
+            </div>
+					</div>
+					<div id="page-content-wrapper">
+						<nav class="navbar navbar-expand-md navbar-light border-bottom header">
+							<a class="navbar-brand p-0" href="#vuz"><img src="img/logo2.png" height="40" alt=""></a>
+							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								
+							</div>
+						</nav>
+						<div class="container-md">
+
+						<div class="contet">
+              <center> 
+                <h4 style="color:#234182;">Поиск рекомендованных абитуриентов и абитуриентов льготников</h4>
+              </center>
+              <input type="number" oninput="if(value.length>7)value=value.slice(0,7)" id="sert" class="sert" style="width: 230px; height: 25px">
+              <button onclick="find()" style="font-size: 11pt; border:1px solid #C8C8C8" class="search" >{{{__ "Поиск"}}}</button>
+              <br><br><br>
+              {{#each obj}}
+              {{#ifCond @index '==' 0}}
+              <table >
+                                <tr>
+                                  <th>№</th>
+                                  <th>{{{__ "Тур"}}}</th>
+                                  <th>{{{__ "Сертификат"}}}</th>
+                                  <th>{{{__ "ФИО"}}}</th>
+                                  <th>{{{__ "Телефон"}}}</th>
+                                  <th>Факультет</th>
+                                  <th>Шифр - Направление</th>
+                                  <th>Рекомендован</th>
+                                  <th>Абитуриент</th>
+                                  <th>Вуз</th>
+
+                                </tr>  
+              {{/ifCond}}
+                              <tr>
+                                  <td style="  text-align:center;">{{incremented @index}}</td>
+                                  <td style="  text-align:left;">{{tour}}</td>
+                                  <td style="  text-align:left;">{{NumberSert}}</td>
+                                  <td style="  text-align:left;">{{fio}}</td>
+                                  <td style="  text-align:center;">{{phone}}</td>
+                                  <td style="  text-align:center;">{{s_faculty}}</td>
+                                  <td style="  text-align:center;">{{direction_cipher}}-{{direction}}</td>
+                                  <td style="  text-align:center;">{{recom}}</td>
+                                  <td style="  text-align:center;">{{confabit}}</td>
+                                  <td style="  text-align:center;">{{confvuz}}</td>
+                              </tr>
+              {{/each}}
+
+              </table>
+            </div> {{!--contet --}}
+</div>
+ 
+                            </div>
+                            
+                            
+                            
+                            
+						</div>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+	</div>
+	
+	
+</body>
+
+</html>
+<script>
+
+function add_script(txt) {
+  var newScript = document.createElement("script");
+  newScript.type = "text/javascript";
+  newScript.text = txt;
+  document.getElementsByTagName('head')[0].appendChild(newScript);
+}
+
+function Ch_Pass(){ //"javascript:Ch_Pass();" "/vuzpasswordchange"
+  var content = document.getElementsByClassName("contet")[0];
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+           if (xmlhttp.status == 200) {
+               content.innerHTML = xmlhttp.responseText;
+           }
+           else if (xmlhttp.status == 400) {alert('There was an error 400');}
+           else {
+             alert('something else other than 200 was returned ' + xmlhttp.status);
+             content.innerHTML = xmlhttp.response;
+           }
+        }
+  };
+  xmlhttp.open("GET", "/Ch_Pass", true);
+  xmlhttp.send();
+
+  var xmlhttp1 = new XMLHttpRequest();
+  xmlhttp1.onreadystatechange = function() {
+        if (xmlhttp1.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+           if (xmlhttp1.status == 200) {
+               
+               add_script(xmlhttp1.responseText);
+           }
+           else if (xmlhttp1.status == 400) {alert('There was an error 400 (Get Script)');}
+           else {
+             alert('Get_Script... Something else other than 200 was returned ' + xmlhttp1.status);
+           }
+        }
+  };
+  xmlhttp1.open("GET", "/Get_Script_for_Ch_Pass", true);
+  xmlhttp1.send();
+}
+
+document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener("keydown", function(e) {
+  if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+    e.preventDefault();
+  }
+}, false);
+
+function find(){
+  window.location = '/vuzsearchsert?sert='+document.getElementById('sert').value;
+}
+</script>

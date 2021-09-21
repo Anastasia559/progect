@@ -1,0 +1,84 @@
+<script>    
+   var onloadCallback = function() {
+    }
+  function sendMessage() {
+      console.log(121212);
+     // Капча старт
+     //   grecaptcha.execute('6LfTPq8ZAAAAAC6pmmVMNC6oSgSbR3Pdya_faHaE', {action: 'authsoomo'}).then(function(token) {
+
+    var region = document.getElementById('region').value;
+    var district = document.getElementById('district').value;
+    var school = document.getElementById('school').value;
+    var numberSert = document.getElementById('usersert').value;
+    var abitfio = document.getElementById('abitfio').value;
+    var abitphone = document.getElementById('abitphone').value;
+    var textpas1 = document.getElementById("textpas1").value;
+    var textatestat = document.getElementById("textatestat").value;
+    var textsert = document.getElementById("textsert").value;
+    var message = document.getElementById('message').value;
+    if(abitfio.length > 3 && abitphone.length == 10 && numberSert.length == 7 && message.length > 10 && textpas1.length > 5 && textatestat.length > 5 && textsert.length > 5){
+            var xmlhttp = new XMLHttpRequest();
+            var arrFromServer;
+            var body = 
+            'region=' + region  +
+            '&district=' + district  +
+            '&school=' + school  + 
+            '&numberSert=' + numberSert  + 
+            '&abitfio=' + abitfio  + 
+            '&abitphone=' + abitphone + 
+            '&message=' + message+ 
+            //'&grecaptcharesponse=' + token +
+            '&textpas1=' + textpas1 +
+            '&textpas2=' + '' +
+            '&textatestat=' + textatestat +
+            '&textsert=' + textsert +
+            '&textbilet=' + ''; 
+
+            xmlhttp.onreadystatechange=function(){
+                if(xmlhttp.readyState === XMLHttpRequest.DONE && xmlhttp.status === 200) {
+                arrFromServer = JSON.parse(xmlhttp.responseText);
+                console.log(arrFromServer);
+                    if (arrFromServer.responseCode == 0) {
+                      //  grecaptcha.reset(widget);
+                        emtydiv.style.display = 'block';
+                        emtydiv.innerHTML = "{{{__ "Ваше сообщение в адрес ЦООМО успешно отправлено!!!"}}}"
+                        emtydiv.style.color = "green";
+                        emtydiv.style.fontSize = "18px";
+                        $('#modalOk').modal('show');
+                        numberSert.value = "";
+                        abitfio.value = "";
+                        abitphone.value = "";
+                        message.value = "";
+
+                    }
+                };
+            }; 
+            xmlhttp.open('post', '/sendmessagetosoomo', true);
+            xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded', 'charset=utf-8');
+            xmlhttp.send(body);
+    } else {
+        emtydiv.innerHTML = "{{{__ "Заполните все поля и укажите причину!!!"}}}"
+        $('#modalError').modal('show');
+        emtydiv.style.color = "red";
+        emtydiv.style.fontSize = "18px";
+    }
+ //   });  Капча конец
+ }
+
+
+function auto_grow(element) {
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight)+"px";
+}
+
+document.getElementById('region').addEventListener("input", function(){document.getElementById('district').disabled = false;});
+document.getElementById('district').addEventListener("input", function(){document.getElementById('school').disabled = false;});
+document.getElementById('school').addEventListener("input", function(){document.getElementById('usersert').disabled = false;}); 
+document.getElementById('usersert').addEventListener("input", function(){document.getElementById('abitfio').disabled = false;});
+document.getElementById('abitfio').addEventListener("input", function(){document.getElementById('abitphone').disabled = false;});
+document.getElementById('abitphone').addEventListener("input",function(){document.getElementById('pas1').disabled = false;});
+document.getElementById('pas1').addEventListener("change",function(){document.getElementById('atestat').disabled = false;});
+document.getElementById('atestat').addEventListener("change",function(){document.getElementById('sert').disabled = false;});
+document.getElementById('sert').addEventListener("change",function(){document.getElementById('message').disabled = false;});
+document.getElementById('message').addEventListener("input", function(){document.getElementById('checksertbutton').disabled = false;});
+</script>

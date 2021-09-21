@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" lang="ru" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <link rel="icon" href="/spuz/img/icon2.png" type="image/x-icon" />
+    <meta name="keywords" content="Абитуриент Онлайн, поступление в СПУЗы Кыргызстана, Туры,Выбор СПУЗа,ОРТ,ЖРТ">
+    <meta name="description" content="{{title}}">
+    <title>СПУЗ Абитуриент Онлайн | {{title}}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <!-- Bootstrap core CSS -->
+                                  <link rel="stylesheet" href="/spuz/css/bootstrap.min.css" />
+    <!-- Material Design Bootstrap -->
+                                 <link rel="stylesheet" href="/spuz/css/mdb.min.css" />
+
+    <!-- SPUZ NEW STYLE EXAMPLE -->
+<link rel="stylesheet" href="/spuz/stylesheets/styleNew.css" />
+<link rel="stylesheet" href="/spuz/stylesheets/forheader.css" />
+ {{!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172178108-1"></script>
+ 
+ <script>
+      //  window.dataLayer = window.dataLayer || [];
+       // function gtag() { dataLayer.push(arguments); }
+        //gtag('js', new Date());
+
+       // gtag('config', 'UA-172178108-1');
+    </script> --}}
+</head>
+
+
+<body>
+<center> 
+<div class="grid-container">
+
+<div class="header"> 
+   <header class="header__left__column menu">
+        <div class="nav-wrapper">
+            <div class="logo-container">
+                <img class="logo_mobile" src="/spuz/img/abit.png" alt="Logo">
+                {{#if langiskg}}
+<a class="activ" onclick="language('ru')" href="/spuz/ru">RU</a>
+{{else}}
+<a class="activ" onclick="language('kg')" href="/spuz/kg">KG</a>
+{{/if}}  
+            </div>
+            <nav>
+                <input class="hidden" type="checkbox" id="menuToggle">
+                <label class="menu-btn" for="menuToggle">
+                    <i class="fa fa-bars"></i>
+                </label>
+                <div class="nav-container">
+                    <ul class="nav-tabs">
+                        <li class="nav-tab"><a class="list_menu" href="/spuz">{{{__ "Главная"}}}</a></li>
+                        <li class="nav-tab"><a class="list_menu" href="/spuz/universities">{{{__ "СПУЗы"}}}</a></li>
+                        <li class="nav-tab"><a class="list_menu" href="/spuz/statistics">{{{__ "Открытые данные"}}}</a> </li>
+                        <li class="nav-tab"><a class="list_menu" href="/spuz/faqs">{{{__ "Вопросы/ответы"}}}</a></li>
+                        <li class="nav-tab"><a class="list_menu" href="/spuz/auth">{{{__ "Регистрация"}}}</a></li>
+                          <li class="nav-tab"> <a class="list_menu" href="/spuz/authformabit"> {{{__ " Вход"}}} </a></li> 
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <span class="header_spuzMobile">Добро пожаловать - абитуриент 2021!</span>  
+        <div class="grid_button_spuzMobile">
+           <a style="color: #12212f; align-self: center;" href="/spuz/authformabit"> <span class="authformabit"> {{{__ " Вход"}}}</span></a>
+            <span class="auth"><a style="color: #d5caca!important;" href="/spuz/auth">{{{__ "Регистрация"}}}</a></span>
+            <span class="universities"><a style="color: #d5caca!important;" href="/spuz/universities">{{{__ "СПУЗы"}}}</a></span>
+        </div>
+    </header>
+</div>
+
+{{!------------------------------------------------ menu for mobile ------------------------------------------------------------------}}
+ 
+<div class="main_header">
+    <a href="#" id="topbar-menu-icon" class="menu-icon ion-navicon-round"></a>
+    <img class="logo" id="logo" src="/spuz/img/abit.png" height="45px" alt="lorem">
+<div class="main_header__text">
+    <p class="welcome__abit">{{{__ "Добро пожаловать!!!"}}}</p>
+    <div class="main_header_menu">
+      <a class="main_header_menu_href" href="/spuz/authformabit">  <span class="entry"> {{{__ "Вход"}}} </span> </a> 
+       <span class="btn_layout"> <a class="main_header_menu_href_white" href="/spuz/auth"> {{{__ "Регистрация"}}}</a> </span>
+       <span class="btn_layout"><a class="main_header_menu_href_white" href="/spuz/universities"> {{{__ "СПУЗы"}}}</a> </span>
+    </div>
+</div>
+</div>
+    <!--/.Navbar -->
+        <!--/Тело программы --> 
+        {{{body}}} 
+    <button onclick="topFunction()" id="myBtn" title="Вверх в меню"> {{{__ "Вверх"}}}</button>
+<div class="footer">
+    <div class="col_lg_1">
+   <div class="monKR_grid"><img class="logo" src="/spuz/img/mon.png"> <span class="monKR">
+       <p class="footer_1">Министерство образования и науки</p>
+       <p class="footer_2">Кыргызской Республики</p></span>
+       </div> 
+
+    
+    <div class="footer__list">
+        <a class="white-text1" href="/spuz/authformmon">{{{__ "МОН"}}}</a>
+        <a class="white-text1 mx-2" href="https://2020.edu.gov.kg/vuz">{{{__ "Вуз"}}}</a>
+                   <a class="white-text1 mx-2" href="/spuz/authformvuz">{{{__ "СПУЗ"}}}</a>
+                        <a class="white-text1 mx-2" href="/spuz/authformschool">{{{__ "Школа"}}}</a>
+    </div>   
+    </div>
+    <div class="col_lg_2"><span class="bottom__border">Техническая поддержка</span>
+        <div class="mail">
+            <span><i class="fa fa-envelope"></i>abiturientonline2021@gmail.com</span>
+        </div>
+    </div>
+    <div class="col_lg_3"><span class="bottom__border">Телефон</span>
+        <div class="telephone">
+            <span><i class="fa fa-phone"></i>1818</span>
+        </div>
+    </div>
+    
+    <div class="col_lg_4"><span class="bottom__border">Режим Работы</span>
+        <div class="work_mode">
+            <span><i class="fa fa-calendar"></i> Понедельник - Пятница</span>
+            <span> 08:30 - 17:30</span>
+        </div>
+    </div>
+<p class="text-white tn-text text-center p-0 m-0" style="letter-spacing: 0.01em;color: #ACACAC;">© Все права защищены «МОН КР»
+        </p>
+    </div>
+</div>
+ </center>
+    <script type="text/javascript" src="/spuz/js/popper.min.js"></script>
+    <script type="text/javascript" src="/spuz/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/spuz/js/mdb.min.js"></script>
+    <script type="text/javascript" src="/spuz/fontawesome/js/all.min.js"></script>
+    <script type="text/javascript" defer src="/spuz/javascripts/ready.js"></script>
+</body>
+
+</html>

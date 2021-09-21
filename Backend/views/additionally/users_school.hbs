@@ -1,0 +1,48 @@
+<link rel=" stylesheet" href="/stylesheets/styledop.css" />
+<center>
+
+    <h3>Список директоров школ</h3>
+
+    <table id="customers">
+
+
+            <tbody>
+                {{#each obj}}
+                <tr>
+                    <th colspan=6>{{this.0.region}}</th>
+                </tr>
+                <tr>
+                    <th colspan=6>{{@key}}</th>
+                </tr>
+           
+                <tr>
+                    <th style="width: 5%; text-align:center;">п/п</th>
+                    <th style="width: 20%; text-align:center;">Город/село</th>
+                    <th>Школа</th>
+                    <th style="width: 25%">Директор школы</th>
+                    <th style="width: 25%">Телефон</th>
+                    <th style="width: 10%">Логин</th>
+                </tr>
+           
+                {{#each this}}
+
+                <tr><td>{{incremented @index}}</td>
+                    <td>{{village}}</td>
+                    <td>{{school_name}}</td>
+                    <td>{{fio_director}}</td>
+                    <td>{{school_phone}}</td>
+                    <td>{{login_school}}</td>
+                </tr>
+
+                {{/each}}
+                {{/each}}
+               
+
+            </tbody>
+            <!--Table body-->
+        </table>
+        <!--Table-->
+    </div>
+
+</div>
+</center>

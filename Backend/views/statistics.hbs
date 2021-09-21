@@ -1,0 +1,334 @@
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<style>
+
+svg.svg_forUniversity {
+    position: fixed;
+    left: 0%;
+    top: 2%;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+.box > .icon {
+  text-align: center;
+  position: relative;
+}
+.box > .icon > .image {
+  position: relative;
+  z-index: 2;
+  margin: auto;
+
+  width: 88px;
+  height: 88px;
+  border: 8px solid #F9FBFF;
+  line-height: 88px;
+  border-radius: 50%;
+  background: #0361BA;
+  vertical-align:text-bottom;
+  display: none;
+
+}
+.box > .icon:hover > .image {
+  background:  #EE7F1A;
+   transform: rotateY(360deg);
+}
+.box > .icon > .image > i {
+  font-size: 36px !important;
+  color: #fff !important;
+}
+.box > .icon:hover > .image > i {
+  color: white !important;
+}
+.box > .icon > .info {
+  margin-top: -24px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid #e0e0e0;
+  padding: 15px 0 10px 0;
+  height: 180px;
+display: grid;
+align-content: center;
+border-radius: 4px;
+}
+.box > .icon:hover > .info {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: #e0e0e0;
+  color: white;
+}
+.box > .icon > .info > h3.title {
+  font-family: "Roboto", sans-serif !important;
+  font-size: 16px;
+  color: #234182;
+  font-weight: 500;
+}
+.box > .icon > .info > p {
+  font-family: "Roboto", sans-serif !important;
+  font-size: 13px;
+  color: #000;
+  line-height: 1.5em;
+  margin: 20px;
+}
+.box > .icon:hover > .info > h3.title,
+.box > .icon:hover > .info > p,
+.box > .icon:hover > .info > .more > a {
+  color: #234182;
+}
+.box > .icon > .info > .more a {
+    color: #204766;
+    text-transform: uppercase;
+    text-transform: capitalize;
+    transition: 1s;
+    background: #fcfcfc;
+    padding: 5px;
+    border-radius: 8px;
+}
+.box > .icon:hover > .info > .more > a {
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background-color: #12212F;
+}
+
+div#box1 {
+    box-shadow: inset 1px -1px 7px #e3cdcd;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08), 0px 2px 24px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+div#box2 {
+
+     margin-bottom: px;
+       box-shadow: inset 1px -1px 7px #e3cdcd;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08), 0px 2px 24px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+div#box3 {
+  margin-bottom: 80px;
+        box-shadow: inset 1px -1px 7px #e3cdcd;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08), 0px 2px 24px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+div#box4 {
+       box-shadow: inset 1px -1px 7px #e3cdcd;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08), 0px 2px 24px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+div#box5 {
+    box-shadow: inset 1px -1px 7px #e3cdcd;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08), 0px 2px 24px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+div#box6 {
+    box-shadow: inset 1px -1px 7px #e3cdcd;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08), 0px 2px 24px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+
+@media screen and (max-width: 975px) {
+div#box1, div#box2, div#box3, div#box4, div#box5{
+  margin-bottom: 40px;
+}
+
+}
+
+</style>
+
+   <div class="main" style="margin-top: -90px;">
+     <div class="svg svg-index">
+<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" class="svg position-absolute d-none d-lg-block" style="height: 690px; width: 100%; z-index: -10; left: 0%; top: 0%">
+  <defs>
+    <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
+      <stop stop-color="hsl(216, 55%, 95.1%)" offset="0%"></stop>
+      <stop stop-color="hsl(216, 55%, 85.1%)" offset="100%"></stop>
+    </linearGradient>
+  </defs>
+  <path fill="url(#sw-gradient-0)" d="M 0.351 264.418 C 0.351 264.418 33.396 268.165 47.112 270.128 C 265.033 301.319 477.487 325.608 614.827 237.124 C 713.575 173.504 692.613 144.116 805.776 87.876 C 942.649 19.853 1317.845 20.149 1440.003 23.965 C 1466.069 24.779 1440.135 24.024 1440.135 24.024 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L 0.351 264.418 Z"></path>
+</svg>
+  </div>
+
+</div>
+
+<div id="content_statistics" class="content_statistics">
+ {{!--
+        <div class="text-center py-3 mt-4">
+          <h4 class="color-blue font-weight-normal"> {{title}}</h4>
+         </div>   
+
+    <div class="media animated fadeIn position-relative mx-5 mt-3 link_border p-2">
+        <img class="mr-2" style="height: 50px;" src="/img/docs.png" alt="image">
+        <div class="media-body">
+            <a href="/statistics/report_UF" class="stretched-link">{{{__ "Отчет спузы и факультеты"}}}</a>
+        </div>
+    </div>
+
+  <div class="media animated fadeIn position-relative mx-5 mt-3 link_border p-2">
+        <img class="mr-2" style="height: 50px;" src="/img/docs.png" alt="image">
+        <div class="media-body">
+            <a href="/spuz/statistics/directions/" class="stretched-link">{{{__ "Справочник направлений"}}}</a>
+        </div>
+    </div>
+
+
+    {{!-- {{#each universities}}
+    <div class="media animated fadeIn position-relative mx-5 mt-3 link_border p-2">
+        <img class="mr-2" style="height: 50px;" src="/img/docs.png" alt="image">
+        <div class="media-body">
+            <a href="/spuz/statistics/{{id_university}}" class="stretched-link">{{university_name}}</a>
+        </div>
+    </div>
+
+    
+    {{/each}} --}}
+    
+
+
+
+    
+    
+
+
+
+       	
+       	<div class="container">
+  <div class="row">
+    <!-- Boxes de Acoes -->
+
+
+    <div class="col-xs-12 col-sm-6 col-lg-4" >
+      <div class="box" >
+        <div class="icon">
+          <div class="image">
+            <i class="fa fa-edit fa-2x" style="color:#fff;"></i> </i></div>
+          <div class="info" id="box1">
+           
+            <p>
+             {{{__ "Статистика подключения абитуриентов к “Абитуриент Online” 2021"}}}
+            </p>
+            <div class="more">
+              <a href="/spuz/enrolconnectreport" id="button1_box">
+               <b>  {{{__ "Открыть"}}}</b><i class="fa fa-angle-double-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="space"></div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-4">
+      <div class="box">
+        <div class="icon">
+          <div class="image"><i class="fa fa-copy fa-2x" style="color:#fff;"></i></div>
+          <div class="info" id="box2">
+            <p>
+              {{{__ "Регистрация талонов и зачисление в спузы по системе “Абитуриент Online 2021”"}}}
+            </p>
+            <div class="more">
+              <a href="/spuz/regcount" id="button2_box">
+                 <b> {{{__ "Открыть"}}}</b> <i class="fa fa-angle-double-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="space"></div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-4">
+      <div class="box">
+        <div class="icon">
+          <div class="image"><i class="fa fa-list-ul fa-2x" style="color:#fff;"></i></div>
+          <div class="info" id="box3">
+            
+            <p>
+             {{{__ "Информация о количестве зачисленных в спузы КР (по сферам деятельности)"}}}
+            </p>
+            <div class="more">
+              <a href="/spuz/enrolprofchues" id="button3_box">
+                <b>  {{{__ "Открыть"}}}</b> <i class="fa fa-angle-double-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="space"></div>
+      </div>
+    </div>
+    <!-- /Boxes de Acoes -->
+       <div class="col-xs-12 col-sm-6 col-lg-4">
+      <div class="box">
+        <div class="icon">
+          <div class="image"><i class="fa fa-edit fa-2x" style="color:#fff;"></i></div>
+          <div class="info" id="box4">
+            
+            <p>
+              {{{__ "Отчет спузы и факультеты"}}}
+            </p>
+            <div class="more">
+              <a href="/spuz/statistics/report_UF" id="button4_box">
+                <b> {{{__ "Открыть"}}}</b><i class="fa fa-angle-double-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="space"></div>
+      </div>
+    </div>
+
+   <div class="col-xs-12 col-sm-6 col-lg-4">
+      <div class="box">
+        <div class="icon">
+          <div class="image"><i class="fa fa-list-ul fa-2x" style="color:#fff;"></i></div>
+          <div class="info" id="box5">
+            
+            <p>
+             {{{__ "Зачисленные абитуриенты в спузы КР"}}} 
+             
+            </p>
+            
+            <div class="more">
+              <a href="/spuz/profession_nameplase" id="button5_box">
+                <b>  {{{__ "Открыть"}}}</b> <i class="fa fa-angle-double-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="space"></div>
+      </div>
+    </div>
+   <div class="col-xs-12 col-sm-6 col-lg-4" >
+      <div class="box">
+        <div class="icon">
+          <div class="image"><i class="fa fa-star fa-2x" style="color:#fff;"></i></div>
+          <div class="info" id="box6">
+
+            <p>
+             {{{__ "Рейтинг ВУЗов КР, составленный по результатам конкурса на зачисление на грантовые места"}}}
+            </p>
+            <div class="more">
+              <a href="/spuz/rating?id_bk=1" id="button6_box">
+                <b> {{{__ "Открыть"}}}</b> <i class="fa fa-angle-double-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="space"></div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+</div>
+
+
+
+

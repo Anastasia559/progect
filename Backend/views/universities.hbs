@@ -1,0 +1,275 @@
+<head>
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+</head>
+
+<style>
+  svg#support_illustration {
+    position: absolute;
+    top: 25%;
+    left: 1%;
+  }
+*:focus {
+    outline: none;
+}
+  .row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .header {
+    grid-area: header;
+    max-width: 1400px;
+    border-radius: 4px;
+    padding-bottom: 16px;
+  }
+
+  g#box2 {
+    display: none;
+  }
+
+  g#computer {
+    display: none;
+  }
+
+  g#background_copmuter,
+  g#men1 {
+    display: none;
+  }
+
+
+
+  svg.svg_forUniversity {
+    position: fixed;
+    left: 0%;
+    top: 2%;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .content {
+      {
+        {
+         !-- grid-area: goals;
+        color: #fff;
+        max-width: 1400px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 16px;
+        --
+      }
+    }
+  }
+
+
+  ul.universities-flex.iso {
+    display: flex !important;
+    flex-flow: row wrap !important;
+    justify-content: space-between !important;
+    padding: 0px !important;
+    list-style: none !important;
+    background: rgba(255, 255, 255, 0) !important;
+    max-width: 1400px !important;
+    /* width: 90%!important; */
+    margin: 0px auto !important;
+    min-height: 80vh !important;
+  }
+  a#filter {
+    padding: 0px!important;
+    padding-top: 12px!important;
+}
+.white.my-3.rounded.col-11.col-sm-3.col-md-3.mx-1.mr-4 {
+    border: 2px solid #20476669;
+}
+input#search_input {
+    background: #fff0;
+}
+  input#search_input {
+    font-size: 22px;
+  }
+
+  li.universities-item {
+
+    width: 30% !important;
+    margin: 15px !important;
+    min-height: 250px !important;
+    background: #fffffff2 !important;
+    border: 2px solid #20476669;
+    border-radius: 4px;
+    box-shadow: 15px 5px 8px 1px rgb(1 2 2 / 13%);
+}
+  }
+
+  @media only screen and (max-width: 600px) {
+    li.universities-item {
+      width: 80% !important;
+    }
+  }
+
+  @media only screen and (max-width: 900px) and (min-width: 601px) {
+    li.universities-item {
+      width: 45% !important;
+    }
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
+    gap: 5px 0px !important;
+    max-width: 1400px;
+    grid-template-areas:
+      "header header header header header header header header header header header header header header header header header header header header header header header header header header header header header header"
+      "MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader MainHeader"
+      ". . frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo frameVideo . ."
+      "goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals goals"
+      "carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts carts"
+      "frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame frame"
+      "frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3 frame3"
+      "frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1 frame1";
+  }
+</style>
+
+<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none"
+  class="svg position-absolute d-lg-block" style="height: 690px; width: 100%; z-index: -10; left: 0%">
+  <defs>
+    <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
+      <stop stop-color="hsl(216, 55%, 95.1%)" offset="0%"></stop>
+      <stop stop-color="hsl(216, 55%, 85.1%)" offset="100%"></stop>
+    </linearGradient>
+  </defs>
+  <path fill="url(#sw-gradient-0)"
+    d="M 0.351 264.418 C 0.351 264.418 33.396 268.165 47.112 270.128 C 265.033 301.319 477.487 325.608 614.827 237.124 C 713.575 173.504 692.613 144.116 805.776 87.876 C 942.649 19.853 1317.845 20.149 1440.003 23.965 C 1466.069 24.779 1440.135 24.024 1440.135 24.024 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L 0.351 264.418 Z">
+  </path>
+</svg>
+
+<se <div>
+  </div>
+  <center>
+    <div class="row">
+
+      <div class="btn-group col-11 col-sm-3 col-md-2 white my-3 rounded mx-1 p-0" style="height: 60px;">
+        <a class="btn  m-0 dropdown-toggle font-weight-bold opacity-5 px-1" id="filter" data-toggle="dropdown"
+          href="#">{{{__ "Фильтр"}}} <span class="caret"></span></a>
+        <ul class="dropdown-menu filter-region">
+          <li class="pt-1 px-3" data-filter="*"><a class="filter-link">{{{__ "Все регионы"}}}</a></li>
+          <li class="pt-1 px-3" data-filter=".1"><a class="filter-link">Бишкек</a></li>
+          <li class="pt-1 px-3" data-filter=".2"><a class="filter-link">{{{__ "Баткенская область"}}}</a></li>
+          <li class="pt-1 px-3" data-filter=".3"><a class="filter-link">{{{__ "Жалалабадская область"}}}</a></li>
+          <li class="pt-1 px-3" data-filter=".4"><a class="filter-link">{{{__ "Иссыккульская область"}}}</a></li>
+          <li class="pt-1 px-3" data-filter=".5"><a class="filter-link">{{{__ "Нарынская область"}}}</a></li>
+          <li class="pt-1 px-3" data-filter=".6"><a class="filter-link">{{{__ "Ошская область"}}}</a></li>
+          <li class="pt-1 px-3" data-filter=".7"><a class="filter-link">{{{__ "Таласская область"}}}</a></li>
+          <li class="pt-1 px-3" data-filter=".8"><a class="filter-link">{{{__ "Чуйская область"}}}</a></li>
+        </ul>
+      </div>
+      <div class="  white my-3 rounded  col-11  col-sm-3  col-md-3 mx-1 mr-4" style="height: 60px;">
+
+        <input type="text" style="height: 60px;font-size: 12px;" id="search_input" class="quicksearch px-0 rounded"
+          placeholder="{{{__ 'Поиск ВУЗов'}}}" />
+
+      </div>
+      <button style="height: 60px;width:100px !important; paddind: 0% !important;"
+        class="yellow-color btn sm-text font-weight-bold white-text float-right isotope-reset m-3 px-1">{{{__
+        "Сброс"}}}</button>
+    </div>
+  </center>
+
+
+
+
+  <script type="text/javascript" src="/js/isotope.min.js"></script>
+
+
+
+
+  <ul class="universities-flex mt-3 iso">
+    {{#each universities}}
+
+    <li class="universities-item iso-item {{id_region}}">
+      <p><a href="/spuz/reports?id_university={{id_university}}" class="university-name name">{{incremented @index}}.
+          {{university_name}}</a></p>
+      <div class="tn-text opacity-5">{{{../__ "Адрес"}}}:</div>
+      <p class="sm-text">{{university_address}}</p>
+      <div class="tn-text opacity-5">{{{../__ "Директор"}}}:</div>
+      <p class="sm-text">{{university_supervisor}}</p>
+      <div class="tn-text opacity-5">Сайт:</div>
+      <a href="{{university_url}}" target="blank" class="sm-text"
+        style="color:#007bff !important">{{university_url}}</a>
+
+    </li>
+    {{/each}}
+  </ul>
+
+  <script>
+    var qsRegex;
+    var buttonFilter;
+    // init Isotope
+    var $grid=$('.iso').isotope({
+      itemSelector: '.iso-item',
+      layoutMode: 'fitRows',
+      filter: function() {
+        var $this=$(this);
+        var searchResult=qsRegex? $this.text().match(qsRegex):true;
+        var buttonResult=buttonFilter? $this.is(buttonFilter):true;
+        return searchResult&&buttonResult;
+      },
+
+
+    });
+
+
+
+    $('.filter-region').on('click','li',function() {
+      buttonFilter=$(this).attr('data-filter');
+      $grid.isotope();
+    });
+
+
+
+    // use value of search field to filter
+    var $quicksearch=$('.quicksearch').keyup(debounce(function() {
+      qsRegex=new RegExp($quicksearch.val(),'gi');
+      $grid.isotope();
+    },200));
+
+    // debounce so filtering doesn't happen every millisecond
+    function debounce(fn,threshold) {
+      var timeout;
+      threshold=threshold||100;
+      return function debounced() {
+        clearTimeout(timeout);
+        var args=arguments;
+        var _this=this;
+        function delayed() {
+          fn.apply(_this,args);
+        }
+        timeout=setTimeout(delayed,threshold);
+      };
+    }
+
+    $(".dropdown-menu li a").click(function() {
+      var selText=$(this).text();
+      $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+    });
+
+
+    $(".isotope-reset").click(function() {
+      $("#search_input").val("");
+      $("#filter").html('Фильтр <span class="caret"></span>');
+      buttonFilter="*";
+      qsRegex="";
+      $grid.isotope();
+
+    });
+  </script>
+  {{!--
+  {{> ajaxfind }}
+
+  --}}

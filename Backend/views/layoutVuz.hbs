@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" lang="ru" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <link rel="icon" href="/img/icon2.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/icon-192x192.png">
+    <meta name="keywords" content="Абитуриент Онлайн, поступление в ВУЗы Кыргызстана, Туры,Выбор ВУЗа,ОРТ,ЖРТ">
+    <meta name="description" content="{{title}}">
+    <meta name="theme-color" content="#234182" />
+    <link rel="manifest" href="/manifest.webmanifest">
+    <title>Абитуриент Онлайн | {{title}}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="/css/mdb.min.css" />
+    {{!--
+    <link rel="stylesheet" href="/stylesheets/styleprimer.css" /> --}}
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    {{!--
+    <link href="/css/addons/datatables.min.css" rel="stylesheet"> --}}
+
+    <link rel=" stylesheet" href="/fontawesome/css/all.min.css" />
+    {{!--
+    <link rel='stylesheet' href='/stylesheets/style.css' /> --}}
+    <!-- jQuery -->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172178108-1"></script>
+    <script>
+        window.dataLayer=window.dataLayer||[];
+        function gtag() {dataLayer.push(arguments);}
+        gtag('js',new Date());
+
+        gtag('config','UA-172178108-1');
+    </script>
+
+
+</head>
+
+
+
+
+
+
+
+
+<body>
+    <button hidden class="pwa">Установить приложение On-Line Абитуриент</button>
+    <div id="menu"></div>
+    <script>
+        if(navigator.serviceWorker) {
+            //console.log("sw Рабатает УРА!!!");
+            navigator.serviceWorker.register(`./sw.js`).then((response) => {
+                //console.log("response", response);
+            })
+        } else {
+            console.log("sw not worked!!!");
+        }
+        window.process={env: {NODE_ENV: 'production'}};
+
+        window.addEventListener('beforeinstallprompt',event => {
+            event.preventDefault();
+            var button=document.querySelector('button');
+            button.removeAttribute('hidden');
+            setTimeout(getMessage(),20000);
+            button.addEventListener('click',() => {
+                event.prompt();
+                button.setAttribute('disabled',true);
+                button.style.visibility="hidden"
+            });
+        });
+
+
+
+        function getMessage() {
+            Notification.requestPermission(function(result) {
+                if(result==='granted') {
+                    navigator.serviceWorker.ready.then(function(registration) {
+                        registration.showNotification('Установите On-Line Абитуриент',{
+                            body: 'Вы можете установить приложение на Вашем устройстве.',
+                            icon: '/icon-192x192.png',
+                            vibrate: [200,100,200,100,200,100,200],
+                            tag: 'AVN чат'
+                        });
+                    });
+                }
+            });
+        }
+    </script>
+
+
+
+
+    <style>
+        .nav-link {
+            color: black;
+            margin: 0 10px;
+            font: 700 14px/2.5 Gotham Pro, sans-serif;
+        }
+
+        .nav-link:hover {
+            color: black;
+            text-decoration: none;
+        }
+
+        .mainNew {
+            max-width: 1440px !important;
+            background: #2f3841 !important;
+            padding: 10px 0;
+            margin: 0 auto;
+            width: 100%;
+            box-shadow: 10px 5px 8px 1px rgb(1 2 2 / 20%);
+            border-radius: 4px;
+            background: #12212f;
+            background: linear-gradient(130deg, #12212f, #204766 41.07%, #12212f 76.05%);
+        }
+    </style>
+
+
+    {{!-- <div class="overlay" id="overlay"></div> --}}
+
+    <!-- main  -->
+    <div class="main" style="overflow: hidden;background:white">
+        <div class="content">
+            <!--Navbar -->
+            <nav class="navbar shadow-none navbar-expand-lg">
+                <!--img src="/img/gerb.png" alt="logo" class="img-fluid animated fadeIn logo_navbar" /-->
+                {{!-- <a class="nav-link sm-text p-0" href="/vuz">
+                    <div class="logowrap  animated fadeIn">
+                        <img class="logo" height="45" src="/img/logo2.png" alt="logo">
+                    </div>
+                </a> --}}
+                {{#if langiskg}}
+                <a class="nav-link sm-text  animated fadeIn" style="color: tomato !important;
+    font: 700 16px/2.5 Gotham Pro, sans-serif;
+    text-transform: uppercase;
+    " onclick="language('ru')" href="/ru">RU</a>
+                {{else}}
+                <a class="nav-link sm-text animated fadeIn" style="color: tomato !important;
+    font: 700 16px/2.5 Gotham Pro, sans-serif;
+    text-transform: uppercase;
+    " onclick="language('kg')" href="/kg">KG</a>
+                {{/if}}
+                <button onclick="openNav()" class="navbar-toggler" style="margin-left: auto;" type="button"
+                    data-toggle="collapse" data-target="#navbarSupportedContent-4"
+                    aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="20" height="5" fill="black" />
+                        <rect y="8" width="20" height="3" fill="#ef7f1a" />
+                        <rect y="16" width="20" height="5" fill="black" />
+                    </svg>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="d-inline d-lg-none">
+                            <a class="nav-link sm-text animated fadeIn" href="/vuz">
+                                <div class="logowrap animated fadeIn">
+                                    <img class="logo" height="40" src="/img/logo2.png" alt="logo">
+                                </div>
+                            </a>
+                            <button onclick="closeNav()" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+                                class="close float-right  animated fadeIn">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="#234182"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 18.1818L18.1818 0L20 1.81818L1.81818 20L0 18.1818Z" fill="#234182" />
+                                    <path d="M0 1.81818L1.81818 0L20 18.1818L18.1818 20L0 1.81818Z" fill="#234182" />
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="nav-item  animated fadeIn">
+
+                            <a class="nav-link sm-text" href="/spuz">
+                                {{{__ "Главная"}}}
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  animated fadeIn">
+                            <a class="nav-link sm-text" href="/spuz/universities">{{{__ "СПУЗы"}}}</a>
+                        </li>
+                        <li class="nav-item  animated fadeIn">
+                            <a class="nav-link sm-text" href="/spuz/statistics"> {{{__ "Открытые данные"}}}</a>
+                        </li>
+                        <li class="nav-item  animated fadeIn">
+                            <a class="nav-link sm-text" href="/spuz/faqs"> {{{__ "Вопросы/ответы"}}}</a>
+                        </li>
+                        <li class="nav-item  animated fadeIn">
+                            <a class="nav-link sm-text" href="/spuz/auth"> {{{__ "Регистрация"}}}</a>
+                        </li>
+                        <li class="nav-item  animated fadeIn">
+                            <a class="nav-link sm-text" href="/spuz/authformabit"> {{{__ "Вход"}}}</a>
+                        </li>
+                        {{#if logged }}
+                        <li class="nav-item  animated fadeIn">
+                            <form id="out_form" action="/logout" method="post" class="ml-3">
+                                <input type="hidden" name="login" value="logout">
+                                <button name="EXIT" title="{{{__ 'Выйти'}}}" id="out"
+                                    class="nav-item white-text border-0 mx-md-2 sm-text underline"
+                                    style="padding:.5rem 1rem;" type="submit">
+                                    <i class="fa fa-sign-out-alt"></i>&nbsp;{{{__ "Выйти"}}}
+                                </button>
+                            </form>
+                        </li>
+                        {{/if}}
+                    </ul>
+                </div>
+            </nav>
+
+            <!--/.Navbar -->
+
+        </div>
+
+
+
+    </div>
+
+    <!-- end main -->
+
+
+
+
+
+
+
+
+
+
+    <!--/.Navbar -->
+    {{{body}}}
+    <button onclick="topFunction()" id="myBtn" style="background-color: #fdd743 !important; color:black" title="Вверх в меню"> {{{__ "Вверх"}}}</button>
+
+    <footer style="max-width: 1440px;margin: 0 auto;background: #12212f;" class="mt-3">
+        <div class="content  animated fadeIn">
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-3 nowrap">
+                    <a class="mon" href="https://edu.gov.kg">
+                        <div>
+                            <img height="50" src="/img/mon.png" alt="">
+                        </div>
+                        <div class="p-1" style="font-size:15px;max-width:300px; ">{{{__ "МИНИСТЕРСТВО ОБРАЗОВАНИЯ И
+                            НАУКИ КЫРГЫЗСКОЙ РЕСПУБЛИКИ"}}}
+                        </div>
+                    </a>
+                    <div class="my-2">
+                        <a class="mx-2" style="color: #fdd743 !important;" href="/spuz/authformmon">{{{__ "МОН"}}}</a>
+                        <a class="mx-2" style="color: #fdd743 !important;" href="https://2020.edu.gov.kg/vuz">{{{__
+                            "ВУЗ"}}}</a>
+                        <a class="mx-2" style="color: #fdd743 !important;" href="/spuz/authformvuz">{{{__ "СПУЗ"}}}</a>
+                        <a class="mx-2" style="color: #fdd743 !important;" href="/spuz/authformschool">{{{__
+                            "Школа"}}}</a>
+                    </div>
+
+                </div>
+                <div class="col-lg-8 col-m-12 mb-3">
+                    <h5 class="text-uppercase sm-text text-white">{{{__ "ТЕХНИЧЕСКАЯ ПОДДЕРЖКА"}}}</h5>
+
+                    <div class="row">
+
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class=" col-md-4 mb-4">
+
+                            <p>e-mail</p>
+
+                            <p style="font-size:15px;"><i style="color: #fdd743 !important;"
+                                    class="fa fa-envelope fa-1x mr-2 "></i> abiturientonline2021@gmail.com</p>
+
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class=" col-md-4 mb-4">
+                            <p>Телефон</p>
+
+                            <p><i style="color: #fdd743 !important;" class="fa fa-phone fa-1x mr-2 "></i> 1818 </p>
+                            <!--   <p><i class="fa fa-phone fa-1x mr-2 "></i> +996 (000) 000 000 </p>  -->
+                        </div>
+
+
+                        <div class="col-md-4 mb-4">
+                            <p>{{{__ "Режим работы"}}}</p>
+                            <p>{{{__ "Понедельник - Пятница"}}} &nbsp;</p>
+                            <p><i style="color: #fdd743 !important;" class="fa fa-clock fa-1x mr-2 "></i>08:30 - 17:30
+                            </p>
+
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+                </div>
+
+
+            </div>
+            <p class="text-white tn-text text-center p-0 m-0" style="letter-spacing: 0.01em;color: #ACACAC;">© {{{__
+                "Все права защищены «МОН
+                КР»"}}}
+            </p>
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/js/mdb.min.js"></script>
+    <!-- Your custom scripts (optional) -->
+
+    {{!--
+    <script type="text/javascript"
+        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+    --}}
+    <script type="text/javascript" src="/fontawesome/js/all.min.js"></script>
+    {{!--
+    <script type="text/javascript" src="/js/addons/datatables.min.js"></script> --}}
+    {{!--
+    <script type="text/javascript" src="/javascripts/search.js"></script> --}}
+    <script type="text/javascript" defer src="/javascripts/ready.js"></script>
+    {{!--
+    <script type="text/javascript" defer src="/javascripts/ajax.js"></script> --}}
+</body>
+
+</html>

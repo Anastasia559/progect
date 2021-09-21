@@ -1,0 +1,40 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+table {
+	padding: 0px;
+	margin: 0px;
+	border-spacing:0; 
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	
+
+}
+
+.trHeader {
+	padding: 0px;
+	margin: 0px;
+	background-color: #e6f7ff;
+	font-weight: bold;
+	text-align: center;
+	color: #4d8fe1;
+}
+
+.tr1 {
+	padding: 0px;
+	margin: 0px;
+	font-weight: bold;
+	text-align: center;
+	color: #4d8fe1;
+}
+
+td {
+	border: 1px solid #33b5e5;
+	padding: 5px;
+	margin: 0px;
+}

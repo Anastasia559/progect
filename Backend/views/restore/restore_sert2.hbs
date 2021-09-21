@@ -1,0 +1,500 @@
+<div class="main" style="margin-top: -40px;">
+    <div class="content">
+        <div class="title mt-5">
+            <p class="secondary-text tn-text "> <a href="/" class="yellow_text underline">{{{__ "Главная"}}}</a>
+                &nbsp;/&nbsp; <a href="/soomo" class="yellow_text underline">{{{__ "ЦООМО"}}}</a>
+                &nbsp;/&nbsp; <span class="secondary-text">{{title}} </span>
+            </p>
+            <h2 class="white-text  title_text mt-5">{{title}}</h2>
+        </div>
+    </div>
+</div>
+
+
+<div id="content" class="mt-2 content">
+    <style>
+        @media only screen and (min-width: 992px) {
+            #forms {
+                max-width: 400px;
+            }
+        }
+
+        .form-control {
+            height: 30px
+        }
+    </style>
+
+    <div id="message" style="display:none;" class="alert animated fadeIn text-center">
+        {{!-- <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> --}}
+        <h6 id="message_content"> </h6>
+    </div>
+
+    <div class="container my-4 bg-white shadow py-3 px-4 border-r8 mx-auto" id="forms">
+        <div class="form-group animated fadeIn" id="search_form">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+
+                    <label for="numberSert">{{{__ "Номер  сертификата"}}}</label>
+                    <input type="text" size="3" value="" id="numberSert" name="numberSert" maxlength="9"
+                        class="form-control" placeholder={{{__ "Номер сертификата"}}}>
+                    <small   class="form-text text-muted">{{{__ "Введите номер сертификата"}}}</small>
+                </div>
+
+            </div>
+
+
+
+        </div>  
+        <button   type="submit" id="checksertbutton" class="checksertbutton animated fadeIn btn bg-yellow white-text btn-block">{{{__ "Поиск"}}}</button>
+    </div>
+    <div class="d-flex flex-nowrap  justify-content-start mt-1" >
+        <div class=" scrolling-wrapper  mt-0"  id="update_form">
+
+            <div class="mx-0 d-flex flex-wrap  justify-content-start mt-3" >
+          <div class="mx-1 row" style="width: 1220px;">
+                    <div class="bg-white shadow border-r8 d-flex  p-1 mt-2" style="width: 900px;">
+                        <p class="color-blue md-text">{{{__ "Номер  сертификата"}}} &nbsp;</p>
+                        <label id="dbSert" for="dbSert" class="color-blue md-text font-weight-bold"> </label>
+                    </div>
+          </div>
+
+                <div class="mx-1" style="width: 200px;">
+                    <div class="bg-white shadow border-r8 p-3  mt-2  mx-auto  ">
+                        <p class="font-20 color-blue font-weight-bold">{{{__ "Данные по базе"}}} </p>
+
+                        <div class="form-group animated fadeIn">
+                            <div class="form-row">
+                                <div class="form-group m-0">
+                                    <label>{{{__ "Номер телефона"}}}</label>
+                                    <label class="font-weight-bold" id="phonetHelp" for="phonetHelp"></label> <br> 
+                                    <label>{{{__ "Область"}}}</label>
+                                    <span class="font-weight-bold" id="db-region" for="db-region"></span ><br> 
+                                    <label>{{{__ "Район"}}}</label>
+                                    <span class="font-weight-bold" id="db-district" for="db-district"></span > <br> 
+                                    <label>{{{__ "Учебное заведение"}}}</label>
+                                    <span class="font-weight-bold" id="db-school" for="db-school"></span > <br> <br> 
+
+                                    <label>{{{__ "Основной балл"}}}:</label>
+                                    <label class="font-weight-bold" id="bal" for="bal"> </label> <br>
+                                    <label>{{{__ "Биология"}}}:</label>
+                                    <label class="font-weight-bold" id="bio" for="bio"></label> <br>
+                                    <label>{{{__ "История"}}}:</label>
+                                    <label class="font-weight-bold" id="his" for="his"></label> <br>
+                                    <label>{{{__ "Химия"}}}:</label>
+                                    <label class="font-weight-bold" id="che" for="che"></label> <br>
+                                    <label>{{{__ "Физика"}}}:</label>
+                                    <label class="font-weight-bold" id="phy" for="phy"></label> <br>
+                                    <label>{{{__ "Английский язык"}}}:</label>
+                                    <label class="font-weight-bold" id="eng" for="eng"></label> <br>
+                                    <label>{{{__ "Математика"}}}:</label>
+                                    <label class="font-weight-bold" id="mat" for="mat"></label> <br>
+                                    <label>{{{__ "Кыргызский язык"}}}:</label>
+                                    <label class="font-weight-bold" id="kgz" for="kgz"></label> <br>
+                                    <label>{{{__ "Русский язык"}}}:</label>
+                                    <label class="font-weight-bold" id="rus" for="rus"></label> <br>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mx-1" style="width: 700px;">
+                    <div class="d-flex ">
+                        <div style="width: 350px;" class="bg-white shadow border-r8 p-3 mt-2 pb-0 mb-0 mx-auto">
+                            <p class="font-20 color-blue font-weight-bold">Корректировка учебного заведения в базе</p>
+                            <div class="  ">
+                                <div class="form-group p-1 border my-1 border-r8">
+                                    <select class="usersert form-control p-0  m-0  text-center mx-auto border-none"
+                                        id="region" onchange=getRegions('region','district')>
+                                        <option value="0" disabled selected>{{{__ "Выберите область"}}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group  p-1 my-1 border  border-r8">
+                                    <select class="usersert border-none p-0 m-0 form-control  text-center mx-auto"
+                                        id="district" onchange=getRegions('district','school')>
+                                        <option value="" disabled selected>{{{__ "Выберите район"}}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group p-1 my-1 border  border-r8">
+                                    <select class="usersert form-control p-0 m-0 border-none text-center mx-auto"
+                                        id="school">
+                                        <option value="" disabled selected>{{{__ "Выберите учебное заведение"}}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group p-1 mt-1 mb-0 pb-0">
+                                    <button type="submit"
+                                        class="checksertbutton bg-yellow btn btn-sm  btn-primary btn-block"
+                                        id="changeschoolbutton" onclick="updateenrole('school');"
+                                        disabled>{{{__ "Изменить"}}}</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 330px;" class=" bg-white shadow border-r8 p-3 mx-auto mt-2">
+                            <div class=" ">
+                                <p class="font-20 color-blue font-weight-bold">{{{__ "Корректировка номера телефона в базе"}}}</p>
+                                <div class="  ">
+
+                                    <div class="form-group p-0 m-0 border  border-r8">
+                                        <input class="usersert form-control border-none text-center mx-auto" id="phone"
+                                            value="" oninput="if(value.length>10)value=value.slice(0,10)"
+                                            placeholder="Введите номер телефона">
+                                    </div>
+                                    <div class="form-group p-0 m-0 mt-2">
+                                        <button type="submit"
+                                            class="checksertbutton bg-yellow btn btn-sm btn-primary btn-block"
+                                            id="changephonebutton" onclick="updateenrole('phone');"
+                                            disabled>{{{__ "Изменить"}}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex ">
+
+                        <div style="width: 680px;background-color:#c1c2c2f0;" class="shadow border-r8 px-3  pt-3 pb-0 mb-0 mx-auto mt-2">
+                            <p class="font-20 color-blue font-weight-bold">{{{__ "Корректировка баллов сертификата в базе"}}}</p>
+
+                            <div class="form-group animated fadeIn">
+
+                                <div class="form-row">
+                                    <div class="form-group col-3" style="">
+
+                                        <label for="balln">{{{__ "Основной балл"}}}</label>
+                                        <input type="number" size="2" value="0" id="balln" name="balln" min="0"
+                                            max="246" class="form-control" placeholder={{{__ "Основной балл"}}}>
+                                    </div>
+                                    <div class="form-group col-3" style="">
+
+                                        <label for="ort_biologyn">{{{__ "Биология"}}}</label>
+                                        <input type="number" size="2" value="0" id="ort_biologyn" name="ort_biologyn"
+                                            min="0" max="150" class="form-control">
+
+                                    </div>
+                                    <div class="form-group col-3" style="">
+
+                                        <label for="ort_historyn"> {{{__ "История"}}}</label>
+                                        <input type="number" size="2" value="0" id="ort_historyn" name="ort_historyn"
+                                            min="0" max="150" class="form-control">
+                                    </div>
+                                    <div class="form-group col-3" style="">
+
+
+                                        <label for="ort_chemistryn">{{{__ "Химия"}}}</label>
+                                        <input type="number" size="2" value="0" id="ort_chemistryn"
+                                            name="ort_chemistryn" min="0" max="150" class="form-control">
+
+
+                                    </div>
+                                    <div class="form-group col-3" style="">
+                                        <label for="ort_physicsn"> {{{__ "Физика"}}}</label>
+                                        <input type="number" size="2" value="0" id="ort_physicsn" name="ort_physicsn"
+                                            min="0" max="150" class="form-control">
+                                    </div>
+                                    <div class="form-group col-3" style="">
+                                        <label for="ort_englishn"> {{{__ "Английский язык"}}}</label>
+                                        <input type="number" size="2" value="0" id="ort_englishn" name="ort_englishn"
+                                            min="0" max="150" class="form-control">
+
+                                    </div>
+                                    <div class="form-group col-3" style="">
+
+                                        <label for="ort_mathn"> {{{__ "Математика"}}}</label>
+                                        <input type="number" size="2" value="0" id="ort_mathn" name="ort_mathn" min="0"
+                                            max="150" class="form-control">
+
+                                    </div>
+                                    <div class="form-group col-3" style="">
+
+                                        <label for="ort_kyrgyzn"> {{{__ "Кыргызский язык"}}}</label>
+                                        <input type="number" size="2" value="0" id="ort_kyrgyzn" name="ort_kyrgyzn"
+                                            min="0" max="150" class="form-control">
+
+                                    </div>
+                                    <div class="form-group col-3" style="">
+                                        <label for="ort_russiann"> {{{__ "Русский язык"}}}</label>
+                                        <input type="number" size="2" value="0" id="ort_russiann" name="ort_russiann"
+                                            min="0" max="150" class="form-control">
+
+                                    </div>
+
+                                   <div class="form-group col-6" style="">
+                                        <label for="placen"> {{{__ "Категория местности"}}}</label>
+                                        <input type="number" size="2" value="0" id="placen" name="placen"
+                                            min="0" max="4" class="form-control">
+                                        <small id="placeHelp" class="" n="form-text text-muted">Введите 1 если г.Бишкек,  2-Малый город, 3-Село, 4-Высокогорье</small>
+
+                                    </div>
+
+
+                                    <div class="form-group col-3" style="">
+                                       <button disabled type="submit" id="updateSert" class=" checksertbutton white-text bg-yellow btn mt-3 mb-0 btn-block waves-effect waves-light">{{{__ "Изменить"}}}</button>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script>
+    function showAlert(text, cls) {
+        document.getElementById("message_content").innerHTML = text;
+        $('#message').addClass(cls);
+        $("#message").fadeTo(2000, 500).slideUp(500, function () {
+            $("#message").slideUp(500);
+        });
+    }
+    $(document).ready(function () {
+        $("#message").hide();
+    });
+    var labels = document.getElementsByTagName('LABEL');
+    for (var i = 0; i < labels.length; i++) {
+        if (labels[i].htmlFor != '') {
+            var elem = document.getElementById(labels[i].htmlFor);
+            if (elem)
+                elem.label = labels[i];
+        }
+    }
+
+
+
+    let search_form = document.getElementById("search_form");
+    let update_form = document.getElementById("update_form");
+    let phone_form = document.getElementById("phone_form");
+    $('#update_form').hide();
+    document.getElementById('balln').addEventListener("input", function(){document.getElementById('updateSert').disabled = false;},);
+    document.getElementById('ort_biologyn').addEventListener("input", function(){document.getElementById('updateSert').disabled = false;},);
+    document.getElementById('ort_historyn').addEventListener("input", function(){document.getElementById('updateSert').disabled = false;},);
+    document.getElementById('ort_chemistryn').addEventListener("input", function(){document.getElementById('updateSert').disabled = false;},);
+    document.getElementById('ort_physicsn').addEventListener("input", function(){document.getElementById('updateSert').disabled = false;},);
+    document.getElementById('ort_mathn').addEventListener("input", function(){document.getElementById('updateSert').disabled = false;},);
+    document.getElementById('ort_englishn').addEventListener("input", function(){document.getElementById('updateSert').disabled = false;},);
+    document.getElementById('ort_kyrgyzn').addEventListener("input", function(){document.getElementById('updateSert').disabled = false;},);
+    document.getElementById('ort_russiann').addEventListener("input", function(){document.getElementById('updateSert').disabled = false;},);
+    document.getElementById('placen').addEventListener("input", function(){document.getElementById('updateSert').disabled = false;},);
+
+    next = 0;
+    let checksertbutton = document.getElementById("checksertbutton");
+     checksertbutton.addEventListener('click', addListItem);
+     checksertbutton.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            checksertbutton.click();}});
+    let updateSert = document.getElementById("updateSert");
+    updateSert.addEventListener('click', addListItem);
+
+    function addListItem() {
+        let ns;
+        if (next==1) ns =  document.getElementById("dbSert").innerHTML;
+        else ns = $("#numberSert").val();
+;
+  console.log('ns')
+  console.log(ns)
+        let balln = $("#balln").val();
+        let obn = $("#ort_biologyn").val();
+        let ohn = $("#ort_historyn").val();
+        let ocn = $("#ort_chemistryn").val();
+        let opn = $("#ort_physicsn").val();
+        let omn = $("#ort_mathn").val();
+        let oen = $("#ort_englishn").val();
+        let okn = $("#ort_kyrgyzn").val();
+        let orn = $("#ort_russiann").val();
+        let pln = $("#placen").val();
+
+        url = '/restore_sert_search2?numberSert=' + ns +   '&next=' + next +
+            '&balln=' + balln + '&ort_biologyn=' + obn + '&ort_historyn=' + ohn +
+            '&ort_chemistryn=' + ocn + '&ort_physicsn=' + opn + '&ort_mathn=' + omn +
+            '&ort_englishn=' + oen + '&ort_kyrgyzn=' + okn + '&ort_russiann=' + orn+'&placen='+pln ;
+        let promise = fetch(url);
+        promise.then(
+            response => {
+                return response.text();
+            }
+        ).then(text => {
+            switch (text) {
+                case 'NEXT':
+                    next = 0;
+                    topFunction();
+                    console.log('next');
+                    $('#update_form').hide();
+                    $('#checksertbutton').hide();
+                    showAlert({{{__ "'Успешно обновлен!!!'"}}}, 'alert-success');
+                    setTimeout(function () { window.location.href = "/updatesert"; }, 2500);
+                     break;
+                case 'FALSE':
+                    showAlert("Сертификат не найден в базе!!!", 'alert-danger');
+                    topFunction();
+                    next = 0;
+                    break;
+                default:
+                    console.log('default');
+                    res = JSON.parse(text);
+                    console.log(res)
+                    console.log(res.phone)
+                    topFunction();
+                    $('#update_form').show();
+                    $('#forms').hide();
+                    next = 1;
+                    document.getElementById("phonetHelp").innerHTML = res.phone;
+                    document.getElementById('dbSert').label.innerHTML =  ns;
+
+                    document.getElementById('bal').label.innerHTML = '<strong> ' + res.BallOnRepsTest + '</strong>';
+                    document.getElementById('bio').label.innerHTML = '<strong> ' + res.ort_biology + '</strong>';
+                    document.getElementById('his').label.innerHTML = '<strong> ' + res.ort_history + '</strong>';
+                    document.getElementById('che').label.innerHTML = '<strong> ' + res.ort_chemistry + '</strong>';
+                    document.getElementById('phy').label.innerHTML = '<strong> ' + res.ort_physics + '</strong>';
+                    document.getElementById('mat').label.innerHTML = '<strong> ' + res.ort_math + '</strong>';
+                    document.getElementById('eng').label.innerHTML = '<strong> ' + res.ort_english + '</strong>';
+                    document.getElementById('kgz').label.innerHTML = '<strong> ' + res.ort_kyrgyz + '</strong>';
+                    document.getElementById('rus').label.innerHTML = '<strong> ' + res.ort_russian + '</strong>';
+ 
+
+
+
+                    $("#phone").val(res.phone);
+                    $("#numberSertn").val(ns);
+                    $("#balln").val(res.BallOnRepsTest);
+                    $("#ort_biologyn").val(res.ort_biology);
+                    $("#ort_historyn").val(res.ort_history);
+                    $("#ort_chemistryn").val(res.ort_chemistry);
+                    $("#ort_physicsn").val(res.ort_physics);
+                    $("#ort_mathn").val(res.ort_math);
+                    $("#ort_englishn").val(res.ort_english);
+                    $("#ort_kyrgyzn").val(res.ort_kyrgyz);
+                    $("#ort_russiann").val(res.ort_russian);  
+                     $("#placen").val(res.place);  
+
+                    document.getElementById('db-region').innerHTML = '<strong> ' + res.region + '</strong>';
+                    document.getElementById('db-district').innerHTML = '<strong> ' + res.district + '</strong>';
+                    document.getElementById('db-school').innerHTML = '<strong> ' + res.school + '</strong>';
+ 
+
+                    break;
+}});
+         }
+
+
+ 
+
+</script>
+<script>
+document.getElementById('school').addEventListener("change", function(){document.getElementById('changeschoolbutton').disabled = false;},);
+document.getElementById('phone').addEventListener("input", function(){document.getElementById('changephonebutton').disabled = false;},);
+
+
+function updateenrole(elem) {
+    var sert = document.getElementById('dbSert').innerHTML;
+    var dbphone = document.getElementById('phonetHelp').innerHTML;
+    var schoolid = document.getElementById('school').value;
+    var phone = document.getElementById('phone').value;
+    
+    var xmlhttp = new XMLHttpRequest();
+    var arrFromServer;
+    var body = 'elem=' + elem + '&sert=' + sert + '&schoolid=' + schoolid + '&phone=' + phone + '&dbphone=' + dbphone;
+    xmlhttp.onreadystatechange=function(){
+        if(xmlhttp.readyState === XMLHttpRequest.DONE && xmlhttp.status === 200) {
+        arrFromServer = JSON.parse(xmlhttp.responseText);
+        console.log(arrFromServer);
+        window.location.href = "/updatesert";
+        };
+    }; 
+    xmlhttp.open('post', '/updateenrole', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded', 'charset=utf-8');
+    xmlhttp.send(body);
+}
+
+
+ 
+
+    window.addEventListener("load", function (event) {
+        getRegions('fio', 'region');
+    });
+
+    function addOption(elem, arrFromServer) {
+        var select = document.getElementById(elem);
+        switch (elem) {
+            case 'region':
+                for (i = 0; i < arrFromServer.length; i = i + 1) {
+                    select.options[select.options.length] = new Option(arrFromServer[i].region, arrFromServer[i].id_region);
+                };
+                break;
+            case 'district':
+                for (i = 0; i < arrFromServer.length; i = i + 1) {
+                    select.options[select.options.length] = new Option(arrFromServer[i].district, arrFromServer[i].id_district);
+                };
+                district.disabled = false;
+                break;
+            case 'school':
+                for (i = 0; i < arrFromServer.length; i = i + 1) {
+                    select.options[select.options.length] = new Option(arrFromServer[i].school, arrFromServer[i].id_school);
+                };
+                school.disabled = false;
+                break;
+        }
+    }
+
+    function removeAllOptions(elem) {
+        var select = document.getElementById(elem);
+        console.log(select)
+        select.options.length = 1;
+    }
+
+    function getRegions(fromelem, toelem) {
+        var abfio = '';
+        var selid = '';
+        var nameschool = '';
+        var abphone = '';
+        var message = '';
+        var idregion = document.getElementById('region').value;
+        var iddistrict = document.getElementById('district').value;
+        switch (toelem) {
+            case 'region':
+                // removeAllOptions('region');
+                // removeAllOptions('district');
+                // removeAllOptions('school');
+                district.disabled = true;
+                school.disabled = true;
+
+                selid = 0;
+                break;
+            case 'district':
+                removeAllOptions('district');
+                removeAllOptions('school');
+                school.disabled = true;
+
+                selid = document.getElementById(fromelem).value;
+                break;
+            case 'school':
+                removeAllOptions('school');
+                school.disabled = true;
+
+                selid = document.getElementById(fromelem).value;
+                break;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        var arrFromServer;
+        var body = 'elem=' + toelem + '&selid=' + selid + '&idregion=' + idregion + '&iddistrict=' + iddistrict;
+        console.log(body);
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === XMLHttpRequest.DONE && xmlhttp.status === 200) {
+                arrFromServer = JSON.parse(xmlhttp.responseText);
+
+                addOption(toelem, arrFromServer);
+            };
+        };
+        xmlhttp.open('post', '/getelements', true);
+        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded', 'charset=utf-8');
+        xmlhttp.send(body);
+    }
+</script>

@@ -1,0 +1,34 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding:2px 2px 2px 5px;
+}
+th {
+font-size:20px;
+}
+</style>
+   <center>   
+<h1>{{{__ "Поиск"}}}</h1>  
+
+  <table>
+                    <tr >
+                    <th style="width:20px;" >{{{__ "Номер"}}}</th>
+                    <th  style="width:100px;">{{{__ "Номер сертификата"}}}</th>
+                    <th   style="width:500px;">{{{__ "Баллы"}}}</th>
+                   </tr>              
+                </tr>
+                {{#each obj}}
+                <tr>
+                    <td style="width:20px;  text-align:center;">{{incremented @index}}</td>
+                    <td style="width:100px;  text-align:left;">{{district}}</a></td>
+                    <td style="width:500px;  text-align:left;">  {{BallOnRepsTest}}
+"NumberSert"	"BallOnRepsTest"	"id_PlaseSertORT"	"ORT_biology"	"ORT_history"	"ORT_chemistry"	"ORT_physics"	"ORT_english"	"ORT_math"
+	"ORT_kyrgyz"	"ORT_russian"	
+
+
+</td>
+                </tr>
+             {{/each}}
+        </table>
+    </center>  

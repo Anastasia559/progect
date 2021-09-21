@@ -1,0 +1,18 @@
+{{#if inputFalse}}
+        FALSE
+ {{else}}
+  {{#if phoneCheck}}
+       TRUE
+   {{else}}
+   {{#if phoneNot}}
+      NOT
+   {{else}}
+  {{#if phoneChanged}}
+        NEXT
+    {{else}}
+     {{phone}}
+  {{/if}}
+  {{/if}}
+  {{/if}}
+{{/if}}
+

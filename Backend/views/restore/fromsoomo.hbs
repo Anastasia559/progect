@@ -1,0 +1,176 @@
+   <div class="main" style="margin-top: -40px;">
+        <div class="content">
+                <div class="title mt-5">
+                        <p class="secondary-text tn-text "> <a href="/spuz" class="yellow_text underline">{{{__ "Главная"}}}</a>
+                            &nbsp;/&nbsp; <a href="/spuz/school" class="yellow_text underline">{{{__ "Школа"}}}</a>
+                            &nbsp;/&nbsp;  <span class="secondary-text">{{title}} </span>
+                          </p>
+                        <h2 class="white-text  title_text mt-5">{{title}}</h2>
+        <p class="brown_text tn-text  pr-4  d-inline-block">{{{__ "Директор"}}}:&nbsp;{{messages.0.fio_director}} 
+        <p class="brown_text tn-text  pr-4  d-inline-block">{{{__ "Район"}}}:&nbsp;{{messages.0.district}} 
+        <p class="brown_text tn-text  pr-4  d-inline-block">{{{__ "Школа"}}}:&nbsp;{{messages.0.school_name}} 
+
+                  <div class="row" style="margin-left: -5px;">
+
+                    <div class="btn-group col-11 col-sm-3 col-md-2 white my-3 rounded mx-1 p-0" style="height: 60px;">
+                        <a class="btn  m-0 dropdown-toggle font-weight-bold opacity-5 px-1" id="filter"
+                            style="line-height: 40px;" data-toggle="dropdown" href="#">Фильтр <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu filter-status">
+                            <li class="pt-1 px-3" data-filter="*"><a class="filter-link">{{{__ "Все"}}}</a></li>
+                            <li class="pt-1 px-3" data-filter=".yes"><a class="filter-link">{{{__ "Подключен"}}}</a></li>
+                            <li class="pt-1 px-3" data-filter=".no"><a class="filter-link">{{{__ "Не подключен"}}}</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="  white my-3 rounded  col-11  col-sm-3  col-md-3 mx-1 mr-4" style="height: 60px;">
+
+                        <input type="text" style="height: 60px;" id="search_input" class="quicksearch px-0 rounded"
+                            placeholder="{{{__ 'Поиск'}}}" />
+
+                    </div>
+                    <button style="height: 60px;width:100px !important;"
+                        class="yellow-color btn sm-text font-weight-bold white-text float-right isotope-reset m-3 px-1">{{{__ "Сброс"}}}</button>
+
+
+
+                </div>
+
+
+                    </div>
+        </div>
+    </div>
+
+
+ 
+
+
+
+
+<div id="content" class="content">
+
+        <div class="container-fluid">
+            <div class="scrolling-wrapper row flex-row  mt-4 pb-4">
+
+               <div class="rows my-0 mx-1">
+                    <div class="d-lg-flex">
+                        <div class="d-flex">
+                            <div class="cell   sm-text opacity-5" style="width: 20px">№</div>
+                            <div class="cell   sm-text opacity-5" style="width: 140px">{{{__ "№ сертификата"}}}</div>
+                            <div class="cell   sm-text opacity-5" style="width: 150px">{{{__ "Номер телефона"}}}</div>
+                            <div class="cell   sm-text opacity-5" style="width: 140px">{{{__ "Статус"}}}</div>
+                            <div class="cell   sm-text opacity-5" style="width: 700px">{{{__ "Баллы"}}}</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="iso">
+        {{#each messages}}
+
+      <div data-id="{{id_message}}" class="rows my-0 mx-1 bg-white border-bottom iso-item {{#ifEquals connect 0}}no{{else}}yes{{/ifEquals}}">
+                        <div class="d-lg-flex">
+                            <div class="d-flex">
+                                <div class="cell sm-text" style="width: 20px">{{incremented @index}}</div>
+                                <div class="cell sm-text" style="width: 140px">{{NumberSert}}</div>
+                                <div class="cell sm-text" style="width: 150px"> {{telefon_ab}} </div>
+                                <div class="cell sm-text" style="width: 140px"> 
+                                 {{#ifEquals connect 0}} <span class="text-danger"> {{{../__ 'Не подключен'}}}</span>{{else}} 
+                                 <span class="text-success"> {{{../__ 'Подключен'}}}</span> {{/ifEquals}}
+                                 </div>
+                                <div class="cell sm-text" style="width: 700px"> 
+            {{#if BallOnRepsTest}}&nbsp;{{{../__ "Основной балл"}}}-{{BallOnRepsTest}}{{/if}}
+            {{#if ORT_biology}}&nbsp;Биология-{{ORT_biology}}{{/if}}
+            {{#if ORT_history}}&nbsp;{{{../__ "История"}}}-{{ORT_history}}{{/if}}
+            {{#if ORT_chemistry}}&nbsp;Химия-{{ORT_chemistry}}{{/if}}
+            {{#if ORT_physics}}&nbsp;Физика-{{ORT_physics}}{{/if}}
+            {{#if ORT_english}}&nbsp;{{{../__ "Английский"}}}-{{ORT_english}}{{/if}}
+            {{#if ORT_math}} &nbsp;Математика-{{ORT_math}}{{/if}}
+            {{#if ORT_kyrgyz}}&nbsp;{{{../__ "Кыргызский"}}}-{{ORT_kyrgyz}}{{/if}}
+            {{#if ORT_russian}}&nbsp;{{{../__ "Русский"}}}-{{ORT_russian}}{{/if}}
+                                </div>
+
+                            </div>
+                        </div>
+                 
+
+                    </div>
+
+
+
+
+
+
+        {{/each}}
+                </div>
+
+
+
+            </div>
+        </div>
+
+        </div>
+
+ <script type="text/javascript" src="/spuz/js/isotope.min.js"></script>
+
+    <script>
+        var qsRegex;
+        var buttonFilter;
+        // init Isotope
+        var $grid = $('.iso').isotope({
+            itemSelector: '.iso-item',
+            layoutMode: 'fitRows',
+            filter: function () {
+                var $this = $(this);
+                var searchResult = qsRegex ? $this.text().match(qsRegex) : true;
+                var buttonResult = buttonFilter ? $this.is(buttonFilter) : true;
+                return searchResult && buttonResult;
+            },
+
+
+        });
+
+
+
+        $('.filter-status').on('click', 'li', function () {
+            buttonFilter = $(this).attr('data-filter');
+            $grid.isotope();
+        });
+
+
+
+        // use value of search field to filter
+        var $quicksearch = $('.quicksearch').keyup(debounce(function () {
+            qsRegex = new RegExp($quicksearch.val(), 'gi');
+            $grid.isotope();
+        }, 200));
+
+        // debounce so filtering doesn't happen every millisecond
+        function debounce(fn, threshold) {
+            var timeout;
+            threshold = threshold || 100;
+            return function debounced() {
+                clearTimeout(timeout);
+                var args = arguments;
+                var _this = this;
+                function delayed() {
+                    fn.apply(_this, args);
+                }
+                timeout = setTimeout(delayed, threshold);
+            };
+        }
+
+        $(".dropdown-menu li a").click(function () {
+            var selText = $(this).text();
+            $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+        });
+
+
+        $(".isotope-reset").click(function () {
+            $("#search_input").val("");
+            $("#filter").html('Фильтр <span class="caret"></span>');
+            buttonFilter = "*";
+            qsRegex = "";
+            $grid.isotope();
+
+        });
+    </script>

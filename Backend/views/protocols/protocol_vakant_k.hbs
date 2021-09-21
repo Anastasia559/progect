@@ -1,0 +1,78 @@
+<link rel=" stylesheet" href="/stylesheets/protocol.css" /> 
+  <div id="control" class="do-not-print">
+<button title="О вакантных местах, оставшихся после {{obja.0.tur}} тура.doc" onclick="export2Word(window.inner, 'О вакантных местах, оставшихся после '+{{obja.0.tur}}+' тура')">Экспорт Word</button> 
+<button title="Печать" onclick="window.print()">Печать</button>
+
+</div> 
+<script type="text/javascript" src="/javascripts/export2word.js"></script>
+
+<div id="inner">
+
+{{#each obja}}
+{{#ifCond @index '==' 0}}
+<center>
+<h3>  
+ПРОТОКОЛ № <input type="text" size="4" value="_____">
+<br>
+«О вакантных местах, оставшихся после {{this.tur}} тура»
+<br>
+ {{this.faculty}}
+</h3>
+<div class="indent">
+Комиссия, рассмотрев результаты зачисления по итогам {{this.tur}}- тура контрактной формы обучения,
+ объявляет вакантные места по направлениям / специальностям:
+</div>
+</center>
+ 
+<br>
+ 
+
+<table class="tb1">
+     <tr>
+        <th class="td1" width =5%>№</th>    
+        <th class="td1" ><center>Шифр</center></th>
+        <th class="td1" ><center>Наименование</center></th>
+        <th class="td1" ><center>Кол-во мест</center></th>
+    </tr>
+
+ {{/ifCond}} 
+ 
+    <tr>
+        <td class="td1" width =5%><center>{{incremented @index}}</center></td>
+        <td class="td1" ><center>{{specialty_cipher}}</center></td>
+        <td class="td1" >{{specialty}}</td>
+        <td class="td1" ><center>{{kol}}</center></td>
+
+    </tr>
+ 
+{{/each}}
+</table>
+<br>
+<div class="indent">
+Принято решение объявить указанные места для проведения конкурса в следующем туре.
+</div>
+
+<br>
+<br>
+<table>
+        <tbody>
+    {{#each objb}}
+        <tr>
+        <td width =40%  height=25px; style="vertical-align:top;" rowspan={{maxindex this}}>
+        {{@key}}  
+        </td>
+        </tr>
+        {{#each this}}
+        <tr>
+ 
+            <td  height=25px; width =20%><center><input type="text" size="15" value="_________________"></center></td>
+            <td  height=25px;>  <input type="text" size="15" style="text-align:left;" value="{{grant_commission}}"></td>
+        </tr>
+        
+        {{/each}}
+    {{/each}}
+  </tbody>
+</table>
+<br>
+ </div>
+ </div>

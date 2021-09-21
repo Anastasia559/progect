@@ -1,0 +1,91 @@
+<link rel=" stylesheet" href="/stylesheets/protocol.css" /> 
+  <div id="control" class="do-not-print">
+<button title="{obja.0.tout}}-турдан өткөн абитуриенттерди кабыл алуу жөнүндө.doc" onclick="export2Word(window.inner, '{{obja.0.tout}}+'-турдан өткөн абитуриенттерди кабыл алуу жөнүндө')">Экспорт Word</button> 
+<button title="Печать" onclick="window.print()">Печать</button>
+
+</div> 
+<script type="text/javascript" src="/javascripts/export2word.js"></script>
+
+<div id="inner">
+
+{{#each obja}}
+{{#ifCond @index '==' 0}}
+<center>
+<h3  class="b">  
+{{this.university_name}}
+<br><br>
+№ <input type="text" size="4" value="_____"> ПРОТОКОЛ 
+<br>
+<input type="text" size="25" value="2020-жылдын 10-июлундагы">
+<br>
+Гранттык комиссиянын отуруму
+<br><br>
+{{this.tout}} ТУР
+<br>
+«{{this.tout}}-турдан өткөн абитуриенттерди кабыл алуу жөнүндө»
+</h3>
+<div class="indent">
+Гранттык комиссия <input type="text" size="25" value="2020-ж. ________________ №______"> 
+протоколу менен бекитилген орундардын санына ылайык өзүнчө категориялардын алкагында абитуриенттерди сынактык тандоонун негизинде {{this.tout}}-турдун жыйынтыгы боюнча 
+ <span style="font-weight: bolder;text-decoration:underline;  font-style: italic;">{{this.direction_cipher}} {{this.direction}} ({{this.learning}})</span> 
+даярдоо багыты / адистиги боюнча окууну каалоосун <strong>тастыктаган</strong> төмөндө көрсөтүлгөн абитуриенттерди 
+<span style="font-weight: bolder;text-decoration:underline;  font-style: italic;">гранттык негизде</span> окууга кабыл алууну чечти:
+</div>
+</center>
+ 
+
+<br> 
+
+<table class="tb1">
+     <tr>
+        <th class="td1" width =5%>№</th>    
+        <th class="td1" >Абитуриенттин аты-жөнү</>
+        <th class="td1" ><center>Сертификаттын номери</center></>
+        <th class="td1" ><center>Негизги тест боюнча баллдардын суммасы</center></>
+        <th class="td1" ><center>Предметтик тест боюнча баллдардын суммасы</center></>
+        <th class="td1" ><center>Негизги жана предметтик тест боюнча баллдардын суммасы</center></>
+        <th class="td1" ><center>Жердин категориясы</center></>
+
+    </tr>
+
+ {{/ifCond}} 
+ 
+    <tr>
+        <td class="td1" width =5%><center>{{incremented @index}}</center></td>
+        <td class="td1" >{{fio_abit}}</td>
+        <td class="td1" ><center>{{NumberSert}}</center></td>
+        <td class="td1" ><center>{{BallOnRepsTest}}</center></td>
+        <td class="td1" ><center>{{summ_dop}}</center></td>
+        <td class="td1" ><center>{{summ}}</center></td>
+        <td class="td1" ><center>{{nameplase}}</center></td>
+
+    </tr>
+ 
+{{/each}}
+</table>
+
+
+<br>
+<br>
+<table>
+        <tbody>
+    {{#each objb}}
+        <tr>
+        <td width =40%  height=25px; style="vertical-align:top;" rowspan={{maxindex this}}>
+        {{@key}}  
+        </td>
+        </tr>
+        {{#each this}}
+        <tr>
+ 
+            <td  height=25px; width =20%><center><input type="text" size="15" value="_________________"></center></td>
+            <td  height=25px;> <input type="text" size="15" style="text-align:left;" value="{{grant_commission}}"> </td>
+        </tr>
+        
+        {{/each}}
+    {{/each}}
+  </tbody>
+</table>
+<br>
+ </div>
+ </div>

@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /*personalcabinet
+Sitemap: https://2020.edu.gov.kg/sitemaps.xml

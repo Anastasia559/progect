@@ -1,0 +1,158 @@
+<script type="text/javascript" src="javascripts/mask.js"></script>
+
+<script>
+    function showAlert(text, cls) {
+        document.getElementById("message_content").innerHTML = text;
+        $('#message').addClass(cls);
+        $("#message").fadeTo(2000, 500).slideUp(500, function () {
+            $("#message").slideUp(500);
+        });
+    }
+    $(document).ready(function () {
+        $("#message").hide();
+    });
+
+
+    let search_form = document.getElementById("search_form");
+    let phone_form = document.getElementById("phone_form");
+    let file_form = document.getElementById("file_form");
+    let checksertbutton = document.getElementById("checksertbutton");
+    formData = new FormData();
+    phone_form.style.display = 'none';
+    search_form.style.display = 'none';
+    $('#checksertbutton').hide();
+    $("#passport2").hide();
+    $("#military").hide();
+    $("#atestat").hide();
+    $("#ort").hide();   
+    $("#phone").inputmask({ "mask": "9999999999" }); 
+
+
+    checksertbutton.addEventListener('click', addListItem);
+    //////////////////////////////// 
+    //////////////////////////////// 
+
+    function addListItem() {
+        let numberSert = document.getElementById("numberSert").value;
+        let phone = document.getElementById("phone").value;
+        let ball = document.getElementById("ball").value;
+        let place = document.getElementById("place").value;
+        let ort_biology = document.getElementById("ort_biology").value;
+        let ort_history = document.getElementById("ort_history").value;
+        let ort_chemistry = document.getElementById("ort_chemistry").value;
+        let ort_physics = document.getElementById("ort_physics").value;
+        let ort_math = document.getElementById("ort_math").value;
+        let ort_english = document.getElementById("ort_english").value;
+        let ort_kyrgyz = document.getElementById("ort_kyrgyz").value;
+        let ort_russian = document.getElementById("ort_russian").value;
+        formData.append('numberSert', numberSert);
+        formData.append('phone', phone);
+        formData.append('ball', ball);
+        formData.append('place', place);     
+        formData.append('ort_biology', ort_biology);
+        formData.append('ort_history', ort_history);
+        formData.append('ort_chemistry', ort_chemistry);
+        formData.append('ort_physics', ort_physics);
+        formData.append('ort_math', ort_math);
+        formData.append('ort_english', ort_english);
+        formData.append('ort_kyrgyz', ort_kyrgyz);
+        formData.append('ort_russian', ort_russian);
+        send();
+         }
+
+    function send() {
+        if (formData) {
+            $.ajax({
+                url: "/restorearmyupload",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    showAlert(res.message, 'alert-success');
+                    $('#phone_form').hide();
+                    $('#search_form').hide();
+                    $('#checksertbutton').hide();
+                    setTimeout(function() { window.location.href = "/school";}, 3000);
+                },
+                error: function (error) {
+                    showAlert(error.responseJSON.message, 'alert-danger');
+                    setTimeout(function() { window.location.href = "/school";}, 3000);
+                }
+
+
+            });
+        }
+    }
+
+    var intervalID = window.setInterval(chek, 3000)
+    function chek() {
+        if (document.getElementById('passportinput').files.length == 1) {
+            $('#passport2').show();
+            if (document.getElementById('passport2input').files.length == 1) {
+                $('#military').show();
+            if (document.getElementById('militaryinput').files.length == 1) {
+                $('#atestat').show();
+                if (document.getElementById('atestatinput').files.length == 1) {
+                    $('#ort').show();
+                    if (document.getElementById('ortinput').files.length == 1) {
+                        setTimeout(function() {$('#file_form').hide();}, 3000);
+                        $('#phone_form').show();
+                        $('#search_form').show();
+                        $('#checksertbutton').show();
+                    };
+                  };
+                };
+            };
+        };
+    }
+
+
+    function readURL(input) {
+        var div = input.name;
+        var name = input.name;
+        var inp = '#' + input.name + 'input';
+        var img = '#' + input.name + 'Image';
+        var btn = '#' + input.name + 'ShowImage';
+        var response = '#' + input.name + 'response';
+        var url = input.value;
+        var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+        if (input.files && input.files[0] && (ext == "gif" || ext == "pdf" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+            {{!-- {{ !--img link-- }} --}}
+            {{!--$(response).innerHTML = "Скан копия загружается . . ." --}}
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(img).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+            $(btn).removeClass('disabled');
+
+
+            if (formData) { formData.append(name, input.files[0]); };
+
+        } else {
+            var text = {{{__ "'Выберите фото в формате png, jpeg или jpg!!!'" }}};
+    topFunction();
+    showAlert(text, 'alert-danger');
+    $(inp).val(null);
+    $(btn).addClass('disabled');
+    $(img).attr('src', 'img/mon.png');
+    }
+}
+
+    $("#passportinput").change(function () {
+        readURL(this);
+    });
+    $("#passport2input").change(function () {
+        readURL(this);
+    });
+    $("#militaryinput").change(function () {
+        readURL(this);
+    });
+    $("#atestatinput").change(function () {
+        readURL(this);
+    });
+    $("#ortinput").change(function () {
+        readURL(this);
+    });
+</script>

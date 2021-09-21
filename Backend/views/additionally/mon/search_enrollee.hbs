@@ -1,0 +1,497 @@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+ <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.0/css/boxicons.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
+<!--Datatable-->
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
+	
+	<link rel="stylesheet" href="https://2020.edu.gov.kg/personalcabinet/lib/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://2020.edu.gov.kg/personalcabinet/css/site.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"> 
+<!--DataTable-->
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="https://2020.edu.gov.kg/personalcabinet/images/icon2.png" type="image/png">
+  <title>Абитуриент Онлайн</title>
+  <link rel="stylesheet" href="https://2020.edu.gov.kg/personalcabinet/lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://2020.edu.gov.kg/personalcabinet/css/site.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+ 
+  <!-- Material Design Bootstrap -->
+
+  <!-- Your custom styles (optional) -->
+
+</head>
+<style>
+
+
+.table {
+  border-spacing: 0 0.85rem !important;
+}
+
+.table .dropdown {
+  display: inline-block;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+  margin-bottom: 10px;
+  border: none;
+}
+
+.table thead tr,
+.table thead th {
+  border: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+}
+
+.table td {
+  background: #fff;
+}
+
+.table td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.table td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.avatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  line-height: 3rem;
+  border-radius: 50%;
+  display: inline-block;
+  background: transparent;
+  position: relative;
+  text-align: center;
+  color: #868e96;
+  font-weight: 700;
+  vertical-align: bottom;
+  font-size: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.avatar-sm {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 0.83333rem;
+  line-height: 1.5;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.avatar-blue {
+  background-color: #c8d9f1;
+  color: #467fcf;
+}
+
+table.dataTable.dtr-inline.collapsed
+  > tbody
+  > tr[role="row"]
+  > td:first-child:before,
+table.dataTable.dtr-inline.collapsed
+  > tbody
+  > tr[role="row"]
+  > th:first-child:before {
+  top: 28px;
+  left: 14px;
+  border: none;
+  box-shadow: none;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child,
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child {
+  padding-left: 48px;
+}
+
+table.dataTable > tbody > tr.child ul.dtr-details {
+  width: 100%;
+}
+
+table.dataTable > tbody > tr.child span.dtr-title {
+  min-width: 50%;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.child,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.child,
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dataTables_empty {
+  padding: 0.75rem 1rem 0.125rem;
+}
+
+div.dataTables_wrapper div.dataTables_length label,
+div.dataTables_wrapper div.dataTables_filter label {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+    margin-top: 1rem;
+  }
+}
+
+.btn-icon {
+  background: #fff;
+}
+.btn-icon .bx {
+  font-size: 20px;
+}
+
+.btn .bx {
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.dropdown-menu {
+  padding: 0.25rem 0;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+}
+
+.badge {
+  padding: 0.5em 0.75em;
+}
+
+.badge-success-alt {
+  background-color: #d7f2c2;
+  color: #7bd235;
+}
+
+.table a {
+  color: #212529;
+}
+
+.table a:hover,
+.table a:focus {
+  text-decoration: none;
+}
+
+table.dataTable {
+  margin-top: 12px !important;
+}
+
+
+
+.btn {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+}
+
+.avatar-blue {
+  background-color: #c8d9f1;
+  color: #467fcf;
+}
+
+.avatar-pink {
+  background-color: #fcd3e1;
+  color: #f66d9b;
+}
+    input 				{
+
+  
+  width:100px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+.label{
+  font-size: 22px;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+</style>
+<style>
+
+
+.search-container {
+  width: 490px;
+  display: block;
+  margin: 0 auto;
+}
+
+input#numSert {
+  margin: 0 auto;
+  width: 50%;
+  height: 38px;
+  padding: 0 20px;
+  font-size: 1rem;
+  border: 1px solid #d0cfce;
+  outline: none;
+  &:focus {
+    border: 1px solid #008abf;
+    transition: 0.35s ease;
+    color: #008abf;
+    &::-webkit-input-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+    &::-moz-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+    &:-ms-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+  }
+}
+
+.#search {
+  position: relative;
+  float: right;
+  width: 75px;
+  height: 75px;
+  top: -62px;
+  right: -25px;
+}
+
+</style>
+<body>
+  <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+  <script>
+    window.OrtBaseUrl = 'https://2020.edu.gov.kg/personalcabinet';
+    window.MainOrtPage = 'https://2020.edu.gov.kg/';
+  </script>
+  <div id="root">
+    <div>
+      <div>
+        <div class="d-flex" id="wrapper">
+          <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="list-group list-group-flush">
+                <a href="/add_mon" class="list-group-item list-group-item-action  selectedSidebarItem">Жалобы от абитуриентов</a>
+                <a href="#mon" class="list-group-item list-group-item-action bg-light">Поиск абитуриента</a>
+              </div>
+          </div>
+          <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-md navbar-light border-bottom header">
+             <!-- <a class="navbar-brand p-0" href="#mon"><img src="im/main_logo_ru.png" height="40" alt=""></a>-->
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                  <li class="nav-item"><a class="nav-link text-white" href="#mon">Выход</a></li>
+                  <li class="nav-item">
+                    <div class="nav-link ">
+                      <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default btn-sm py-0 text-white">Кырг</button>
+                        <button type="button" class="btn btn-default btn-sm disabled py-0 bg-white">Рус</button>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+            <div class="container">
+              <div class="contet">
+                <div>
+                    <center> <h5 style="color:#234182;">Поиск абитуриента</h5></center>
+         
+
+
+<select style="display: none;" name="cars" id="language">
+  <option value="1">Рус</option>
+  <option value="2">Кырг</option>
+</select>
+
+<input type="text" min="0" max="7"  oninput="if(value.length>7)value=value.slice(0,7)"  id="numSert" placeholder="Введите номер сертификата">
+<button onclick="find()" class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="example" id="search"><span>{{{__ "Поиск"}}}</span></button>
+
+<br>
+ 
+<div id="lbltipAddedComment" class="label" style="color: #EE7F1A;" >  Номер сертификата: {{numSert}}</div>
+
+<!--  
+      
+    <ul class="d-flex flex-nowrap  justify-content-start mt-3" style="list-style-type: none;">
+              {{#each obj}}     
+            <li class="universities-item">
+             
+                <p class="university-name color-blue"> {{{__ "Тур"}}}:{{tours}}[{{bk}}]<br> 
+                <span class="sm-text">{{{__ "Тур"}}}:{{tours}}[{{bk}}]</span> 
+                 </p>
+                <ol  style="list-style-type: none">
+                  <li> {{specialty}}</li>
+                   <li> {{status}}</li>  
+                 </ol> 
+            </li>
+             {{/each}}        
+</ul>
+  
+</center>-->
+
+<center>
+   <div class="container1">
+  <div class="row py-5">
+    <div class="col-12">
+      <table id="example" class="table table-hover responsive nowrap" style="width:95%">
+       <thead>
+           {{#each obj}} 
+          <tr style="background: #F8F7FB;">
+             <th style="display: none"></th>
+            <th class="nosort" colspan="2" style="text-align: center;">{{{__ "Тур"}}}:{{tours}}[{{bk}}]</th>
+          </tr>
+        </thead>
+        <tbody> 
+            
+          <tr>
+        
+            <td>{{specialty}}</td>
+            <td>{{status}}</td>
+           
+          </tr>
+   {{/each}}
+
+
+       </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</center>
+
+
+
+
+
+<script>
+$(document).ready(function() {
+    $('#example').DataTable( 
+          
+      {  
+         "bPaginate": false,
+        "bLengthChange": false,
+        "bInfo": false,
+        language: {       
+        "search": "Поиск:",
+        "emptyTable": "Ничего не найдено",
+        "emptyTable": "В таблице отсутствуют данные"},
+        "columns": [
+            {"orderable": false },
+            { "orderDataType": "dom-text-numeric" },
+            { "orderDataType": "dom-text", type: 'string' },
+             {"orderable": false },
+        ] 
+    } );
+} );
+</script>
+<script>
+document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener("keydown", function(e) {
+  if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+    e.preventDefault();
+  }
+}, false);
+
+function find(){
+document.getElementById('lbltipAddedComment').innerText =document.getElementById('numSert').value
+window.location = '/search_enrollee?numSert='+document.getElementById('numSert').value + '&languages='+document.getElementById('language').value;
+//document.write((document.getElementById('numSert').value));
+//HTMLElement.innerText = document.getElementById('numSert').value;
+//document.getElementById('lbltipAddedComment').innerText = document.getElementById('numSert').value;
+}
+
+function find1(){
+alert(document.getElementById('numSert').value); 
+document.getElementById('lbltipAddedComment').innerText =window.location;
+}
+</script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="mt-3 Footer">
+          <div class="content  animated fadeIn">
+            <div class="row">
+              <div class="col-lg-4 col-md-12 mb-0">
+                <a href="https://edu.gov.kg"> <img src="img/mon.png" height="40" alt=""></a>
+                <div class="my-2"><a class="white-text mx-2" href="https://2020.edu.gov.kg/personalcabinet/#mon">МОН</a><a class="white-text mx-2" href="https://2020.edu.gov.kg/authform">ЦООМО</a><a class="white-text mx-2" href="https://2020.edu.gov.kg/personalcabinet/#vuz">ВУЗ</a></div>
+              </div>
+              <div class="col-lg-8 col-m-12 mb-0">
+                <h5 class="text-uppercase sm-text text-white">ТЕХНИЧЕСКАЯ ПОДДЕРЖКА</h5>
+                <div class="row">
+                  <div class=" col-md-4 mb-0">
+                    <p>e-mail</p>
+                    <p>
+                      <svg class="svg-inline--fa fa-envelope fa-w-16 fa-1x mr-2" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+                      </svg> abiturient@edu.gov.kg</p>
+                  </div>
+                  <div class=" col-md-4 mb-0">
+                    <p>Телефон</p>
+                    <p>
+                      <svg class="svg-inline--fa fa-phone fa-w-16 fa-1x mr-2" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="phone" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path>
+                      </svg> 1919 </p>
+                  </div>
+                  <div class="col-md-4 mb-0">
+                    <p>Режим работы</p>
+                    <p>Понедельник - Пятница &nbsp;</p>
+                    <p>
+                      <svg class="svg-inline--fa fa-clock fa-w-16 fa-1x mr-2" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="clock" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8Zm92.49,313h0l-20,25a16,16,0,0,1-22.49,2.5h0l-67-49.72a40,40,0,0,1-15-31.23V112a16,16,0,0,1,16-16h32a16,16,0,0,1,16,16V256l58,42.5A16,16,0,0,1,348.49,321Z"></path>
+                      </svg>08:30 - 17:30</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="text-white tn-text text-center p-0 m-0">© Все права защищены «МОН КР» </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script src="https://2020.edu.gov.kg/personalcabinet/lib/jquery/dist/jquery.min.js"></script>
+  <script src="https://2020.edu.gov.kg/personalcabinet/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://2020.edu.gov.kg/personalcabinet/lib/react/react.production.min.js"></script>
+  <script src="https://2020.edu.gov.kg/personalcabinet/lib/react/react-dom.production.min.js"></script>
+
+  <script src="https://2020.edu.gov.kg/personalcabinet/lib/compress.js"></script>
+
+  <script src="https://2020.edu.gov.kg/personalcabinet/js/app.js?v=637339065117760388" asp-append-version="true"></script>
+
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-172178108-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-172178108-1');
+  </script>
+
+</body>
+
+</html>

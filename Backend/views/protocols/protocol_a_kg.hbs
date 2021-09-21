@@ -1,0 +1,108 @@
+<link rel=" stylesheet" href="/stylesheets/protocol.css" /> 
+<div id="control" class="do-not-print">
+<button title="Абитуриенттердин категориялары үчүн квоталарды эсептөө жөнүндө {{obja.0.Tour}}-Тур.doc" onclick="export2Word(window.inner, 'Абитуриенттердин категориялары үчүн квоталарды эсептөө жөнүндө '+{{obja.0.Tour}}+'-Тур')">Экспорт Word</button> 
+<button title="Печать" onclick="window.print()">Печать</button>
+
+</div> 
+
+<div id="inner">
+<center>
+<h3 class="b">
+{{obja.0.university_name}}
+<br><br>
+№  <input type="text" size="4" value="_____"> ПРОТОКОЛ
+<br>
+<input type="text" size="25" value="2020-жылдын 10-июлундагы">
+ <br>
+Гранттык комиссиянын отуруму
+<br>
+{{obja.0.Tour}}-ТУР
+<br>
+«Абитуриенттердин категориялары үчүн квоталарды эсептөө жөнүндө»
+</h3>
+</center>
+<p>
+<br>
+Даярдоо багыты: {{obja.0.direction_cipher}} {{obja.0.direction}} 
+<br>
+<span style="text-decoration:underline;font-weight: bolder;"> {{totalSum obja 'kol'}} </span> сертификат катталды, анын ичинен категориялар боюнча:
+</p>
+
+<table class="tb1">
+    {{#each obja}}
+    <tr>
+        <td class="td1" width =50%>
+{{#ifCond  id_PlaseSertORT '==' 1}}
+Бишкек ш. мектептердин бүтүрүүчүлөрү
+{{/ifCond}}
+{{#ifCond  id_PlaseSertORT '==' 2}}
+кичи шаарлардагы мектептердин бүтүрүүчүлөрү
+{{/ifCond}}
+{{#ifCond id_PlaseSertORT '==' 3}}
+айылдагы мектептердин бүтүрүүчүлөрү
+{{/ifCond}}
+{{#ifCond id_PlaseSertORT '==' 4}}
+бийик тоолуу райондордогу мектептердин бүтүрүүчүлөрү{{/ifCond}}
+{{#ifCond id_PlaseSertORT '==' 5}}
+алтын сертификат
+{{/ifCond}}
+         </td>
+        <td class="td1" ><center>{{kol}}</center></td>
+    </tr>
+    {{/each}}
+</table>
+
+ 
+<br>
+<div class="indent">
+Гранттын комиссия “Жалпы республикалык тестирлөөнүн жыйынтыктары боюнча тандоо жана кабыл алуу жөнүндө жобо” (КР Өкмөтүнүн 27.05.2011-ж. №256 токтому) менен бекитилген формула боюнча эсептөөлөрдүн негизинде өзүнчө категорияларда катталган абитуриенттердин саны жөнүндө маалыматты карап чыгып, төмөнкү категориялар үчүн бөлүп берүүнү чечти:
+</div>
+<br> 
+<table class="tb1">
+    {{#each obja}}
+    <tr>
+        <td class="td1" width =50%>
+{{#ifCond  id_PlaseSertORT '==' 1}}
+Бишкек ш. мектептердин бүтүрүүчүлөрү
+{{/ifCond}}
+{{#ifCond  id_PlaseSertORT '==' 2}}
+кичи шаарлардагы мектептердин бүтүрүүчүлөрү
+{{/ifCond}}
+{{#ifCond id_PlaseSertORT '==' 3}}
+айылдагы мектептердин бүтүрүүчүлөрү
+{{/ifCond}}
+{{#ifCond id_PlaseSertORT '==' 4}}
+бийик тоолуу райондордогу мектептердин бүтүрүүчүлөрү{{/ifCond}}
+{{#ifCond id_PlaseSertORT '==' 5}}
+алтын сертификат
+{{/ifCond}}
+
+        </td>
+        <td class="td1" ><center>{{kol_reg}}</center></td>
+    </tr>
+    {{/each}}
+</table>
+<br>
+
+<br>
+<table>
+    {{#each objb}}
+        <tr>
+          <td width =40% height=25px; style="vertical-align:top;" colspan=3 rowspan={{maxindex this}}>
+        {{@key}}
+        </td>
+        </tr>
+        {{#each this}}
+        <tr>
+ 
+            <td  height=25px; width =20%><center><input type="text" size="15" value="_________________"></center></td>
+            <td height=25px; > <input type="text" size="15" style="text-align:left;" value="{{grant_commission}}"></td>
+        </tr>
+        
+        {{/each}}
+    {{/each}}
+</table>
+<br>
+ </div>
+ </div>
+<script type="text/javascript" src="/javascripts/export2word.js"></script>

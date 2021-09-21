@@ -1,0 +1,212 @@
+<script>
+    let region = document.getElementById("region");
+    let district = document.getElementById("district");
+    let school = document.getElementById("school");
+    let usersert = document.getElementById("usersert");
+    let abitfio = document.getElementById("abitfio");
+    let abitphone = document.getElementById("abitphone");
+    let abitphonecheck = document.getElementById("abitphonecheck");
+    let message = document.getElementById("message");
+    let answer = document.getElementById("answer");
+    let checksertbutton = document.getElementById("checksertbutton");
+   // let widget = document.getElementById("widget");   
+    
+    var onloadCallback = function() {
+    }
+  /*  function callback(response){
+        checksertbutton.disabled=false;
+        emtydiv.innerHTML = response
+    }
+    function recaptchaExpired(){
+        emtydiv.innerHTML = '';
+        checksertbutton.disabled=true;
+    }
+*/
+
+    checksertbutton.addEventListener('click', addListItem);
+    function addListItem() {
+        getFetch();
+    }
+
+    function getFetch() {
+        grecaptcha.execute('6LfTPq8ZAAAAAC6pmmVMNC6oSgSbR3Pdya_faHaE', {action: 'authmessage'}).then(function(token) {
+
+        if (usersert.value.length < 7 || 
+            abitphone.value.length < 10 || 
+            abitphone.value != abitphonecheck.value ||
+            abitfio.value.length < 5){
+                 answer.innerHTML = "Проверьте введенные данные!!!";
+                 $('#modalcheck').modal('show');
+            } else {
+
+
+                let promise = fetch('/authA/?numberSert=' + usersert.value 
+                                    + '&numberPhone=' + abitphone.value 
+                                    + '&abitphonecheck=' + abitphonecheck.value
+                                    + '&act=' + 5 
+                                    + '&grecaptcharesponse=' +token
+                                    + '&id_school=' + school.value 
+                                    + '&abitfio=' + abitfio.value 
+                                    + '&message=' + message.value);
+                promise.then(
+                    response => {
+                        return response.json();
+                    }
+                ).then(
+                    text => {
+                            console.log(text)
+                        if (text.responseCode == 0){
+                            answer.style.display = 'block';
+                            answer.style.color = 'green';
+                            answer.innerHTML = "Ваше сообщение отправлено директору Вашей школы";
+                            $('#modalOk').modal('show');
+                           // grecaptcha.reset(widget);
+                        } else {
+                            answer.style.display = 'block';
+                            answer.style.color = 'red';
+                            answer.innerHTML = "Ваше сообщение НЕ ОТПРАВЛЕНО!!! Проверьте веденные данные!!!";
+                            $('#modalError').modal('show');
+                           // grecaptcha.reset(widget);
+                        }
+
+                        }
+                        );
+            }
+        });
+    }
+
+{{!-- Filter --}}
+
+  window.addEventListener("load", function(event) {
+    getRegions('fio','region');
+  });
+
+
+function auto_grow(element) {
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight)+"px";
+}
+
+
+document.getElementById('school').addEventListener("click", function(){document.getElementById('usersert').disabled = false;},); 
+document.getElementById('usersert').addEventListener("click", function(){document.getElementById('abitfio').disabled = false;},);
+document.getElementById('abitfio').addEventListener("click", function(){document.getElementById('abitphone').disabled = false;},);
+document.getElementById('abitphone').addEventListener("click", function(){document.getElementById('abitphonecheck').disabled = false;},);
+document.getElementById('abitphonecheck').addEventListener("click", function(){document.getElementById('message').disabled = false;},);
+document.getElementById('message').addEventListener("click", function(){document.getElementById('checksertbutton').disabled = false;},);
+
+function addOption(elem, arrFromServer){
+    var select = document.getElementById(elem);
+        switch(elem) {
+                  case 'region':  
+                        for(i = 0; i < arrFromServer.length; i = i + 1) {
+                            select.options[select.options.length] = new Option(arrFromServer[i].region, arrFromServer[i].id_region);
+                        };
+                    break;
+                  case 'district':   
+                        for(i = 0; i < arrFromServer.length; i = i + 1) {
+                            select.options[select.options.length] = new Option(arrFromServer[i].district, arrFromServer[i].id_district);
+                        };
+                        district.disabled = false;
+                    break;
+                  case 'school':   
+                        for(i = 0; i < arrFromServer.length; i = i + 1) {
+                            select.options[select.options.length] = new Option(arrFromServer[i].school, arrFromServer[i].id_school);
+                        };
+                        school.disabled = false;
+                    break;
+        }
+}
+
+function removeAllOptions(elem){
+    var select = document.getElementById(elem);
+    select.options.length = 1;
+}
+
+function getRegions(fromelem, toelem) {
+    var abfio = '';
+    var selid = '';
+    var nameschool = '';
+    var abphone = '';
+    var message = '';
+    var idregion = document.getElementById('region').value;
+    var iddistrict = document.getElementById('district').value;
+    switch(toelem) {
+            case 'region':
+                removeAllOptions('region');
+                removeAllOptions('district');
+                removeAllOptions('school');
+                district.disabled = true; 
+                school.disabled = true; 
+                abitfio.disabled = true; 
+                abitfio.value = '';
+                abitphone.disabled = true; 
+                abitphone.value = '';
+                abitphonecheck.disabled = true; 
+                abitphonecheck.value = '';
+                message.disabled = true; 
+                message.value = '';
+                selid = 0;
+                break;
+            case 'district':  
+                removeAllOptions('district');
+                removeAllOptions('school');
+                district.disabled = true;
+                school.disabled = true;
+                abitfio.disabled = true; 
+                abitfio.value = '';
+                abitphone.disabled = true; 
+                abitphone.value = '';
+                abitphonecheck.disabled = true; 
+                abitphonecheck.value = '';
+                message.disabled = true; 
+                message.value = ''; 
+                selid = document.getElementById(fromelem).value;
+                break;
+            case 'school':
+                removeAllOptions('school');
+                school.disabled = true;
+                abitfio.disabled = true; 
+                abitfio.value = '';
+                abitphone.disabled = true; 
+                abitphone.value = '';
+                abitphonecheck.disabled = true; 
+                abitphonecheck.value = '';
+                message.disabled = true; 
+                message.value = ''; 
+                selid = document.getElementById(fromelem).value;
+                break;
+    }
+    var xmlhttp = new XMLHttpRequest();
+    var arrFromServer;
+    var body = 'elem=' + toelem + '&selid=' + selid + '&abfio=' + abfio + '&idregion=' + idregion + '&iddistrict=' + iddistrict + '&nameschool=' + nameschool + '&abphone=' + abphone + '&message=' + message;
+    xmlhttp.onreadystatechange=function(){
+        if(xmlhttp.readyState === XMLHttpRequest.DONE && xmlhttp.status === 200) {
+        arrFromServer = JSON.parse(xmlhttp.responseText);
+        addOption(toelem, arrFromServer);
+        };
+    }; 
+    xmlhttp.open('post', '/getelements', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded', 'charset=utf-8');
+    xmlhttp.send(body);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

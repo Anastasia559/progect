@@ -1,0 +1,120 @@
+<script type="text/javascript" defer src="/javascripts/mask.js"></script>
+
+<script>
+    function showAlert(text, cls) {
+        document.getElementById("message_content").innerHTML = text;
+        $('#message').addClass(cls);
+        $("#message").fadeTo(2000, 500).slideUp(500, function () {
+            $("#message").slideUp(500);
+        });
+    }
+    $(document).ready(function () {
+        $("#message").hide();
+    });
+    var labels = document.getElementsByTagName('LABEL');
+    for (var i = 0; i < labels.length; i++) {
+        if (labels[i].htmlFor != '') {
+            var elem = document.getElementById(labels[i].htmlFor);
+            if (elem)
+                elem.label = labels[i];
+        }
+    }
+
+
+
+    let search_form = document.getElementById("search_form");
+    let update_form = document.getElementById("update_form");
+    let phone_form = document.getElementById("phone_form");
+    $('#update_form').hide();
+    next = 0;
+    let checksertbutton = document.getElementById("checksertbutton");
+    checksertbutton.addEventListener('click', addListItem);
+
+    function addListItem() {
+        let phone = $("#phone").val();
+        let ns = $("#numberSert").val();
+        let ball = $("#ball").val();
+        let ob = $("#ort_biology").val();
+        let oh = $("#ort_history").val();
+        let oc = $("#ort_chemistry").val();
+        let op = $("#ort_physics").val();
+        let om = $("#ort_math").val();
+        let oe = $("#ort_english").val();
+        let ok = $("#ort_kyrgyz").val();
+        let or = $("#ort_russian").val();
+
+        let nsn = $("#numberSertn").val();
+        let balln = $("#balln").val();
+        let obn = $("#ort_biologyn").val();
+        let ohn = $("#ort_historyn").val();
+        let ocn = $("#ort_chemistryn").val();
+        let opn = $("#ort_physicsn").val();
+        let omn = $("#ort_mathn").val();
+        let oen = $("#ort_englishn").val();
+        let okn = $("#ort_kyrgyzn").val();
+        let orn = $("#ort_russiann").val();
+
+        url = '/restore_sert_search?numberSert=' + ns + '&phone=' + phone + '&next=' + next +
+            '&ball=' + ball + '&ort_biology=' + ob + '&ort_history=' + oh +
+            '&ort_chemistry=' + oc + '&ort_physics=' + op + '&ort_math=' + om +
+            '&ort_english=' + oe + '&ort_kyrgyz=' + ok + '&ort_russian=' + or +
+            '&numberSertn=' + nsn +
+            '&balln=' + balln + '&ort_biologyn=' + obn + '&ort_historyn=' + ohn +
+            '&ort_chemistryn=' + ocn + '&ort_physicsn=' + opn + '&ort_mathn=' + omn +
+            '&ort_englishn=' + oen + '&ort_kyrgyzn=' + okn + '&ort_russiann=' + orn;
+        let promise = fetch(url);
+        promise.then(
+            response => {
+                return response.text();
+            }
+        ).then(text => {
+            switch (text) {
+                case 'NEXT':
+                    next = 0;
+                    topFunction();
+                    console.log('next');
+                    $('#update_form').hide();
+                    $('#checksertbutton').hide();
+                    showAlert({{{ __ "'Успешно обновлен!!!'" }}}, 'alert-success');
+                    setTimeout(function(){window.location.href = "/restoresert"; },2500); 
+                    break;
+                case 'FALSE':
+                    showAlert({{{ __ "'Введите правильные данные!!!'" }}}, 'alert-danger');
+                    topFunction();
+                    next = 0;
+                    break;
+                default:
+                    console.log('default');
+                    topFunction();
+                    $('#update_form').show();
+                    $('#search_form').hide();
+                    next = 1;
+                    document.getElementById("phonetHelp").innerHTML = {{{ __ "'Введите  номер телефона, старый номер: '" }}} + text;
+                    $("#phone").inputmask({ "mask": "9999999999" });
+                    checksertbutton.innerHTML = {{{ __ "'Изменить'" }}}
+                    document.getElementById('numberSertn').label.innerHTML += '<strong> ' + ns + '</strong>';
+                    document.getElementById('balln').label.innerHTML += '<strong> ' + ball + '</strong>';
+                    document.getElementById('ort_biologyn').label.innerHTML += '<strong> ' + ob + '</strong>';
+                    document.getElementById('ort_historyn').label.innerHTML += '<strong> ' + oh + '</strong>';
+                    document.getElementById('ort_chemistryn').label.innerHTML += '<strong> ' + oc + '</strong>';
+                    document.getElementById('ort_physicsn').label.innerHTML += '<strong> ' + op + '</strong>';
+                    document.getElementById('ort_mathn').label.innerHTML += '<strong> ' + om + '</strong>';
+                    document.getElementById('ort_englishn').label.innerHTML += '<strong> ' + oe + '</strong>';
+                    document.getElementById('ort_kyrgyzn').label.innerHTML += '<strong> ' + ok + '</strong>';
+                    document.getElementById('ort_russiann').label.innerHTML += '<strong> ' + or + '</strong>';
+                    $("#phone").val(text);
+                    $("#numberSertn").val(ns);
+                    $("#balln").val(ball);
+                    $("#ort_biologyn").val(ob);
+                    $("#ort_historyn").val(oh);
+                    $("#ort_chemistryn").val(oc);
+                    $("#ort_physicsn").val(op);
+                    $("#ort_mathn").val(om);
+                    $("#ort_englishn").val(oe);
+                    $("#ort_kyrgyzn").val(ok);
+                    $("#ort_russiann").val(or);
+                    break;
+}});
+         }
+
+</script>

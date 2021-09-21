@@ -1,0 +1,139 @@
+ 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+
+<div id="inner">
+
+<style>
+html {    font-family: Roboto !important;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    background: linear-gradient(45deg, rgba(238, 207, 186, 0.3), rgba(197, 221, 232, 0.3));
+ 
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding:2px 2px 2px 5px;
+}
+th {
+font-size:15px;
+}
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 15px 15px 15px 60px;  /* this affects the margin in the printer settings */
+}
+ 
+
+@media print {
+    div.do-not-print {display: none;}
+html{display: none;}
+}
+
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f8f9fa!important;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 12px 20px;  
+  text-decoration: none;
+  font-size: 12px;
+  color: #818181;
+  display: block;
+  border: 1px solid rgba(0,0,0,.125);
+
+}
+.active {
+  background-color: #007bff4d !important;
+  color: #000;
+
+}
+.sidenav a:hover {
+  color: #000;
+  background-color: rgb(218, 224, 229)!important;
+
+}
+
+ 
+</style>
+<div class="sidenav">
+    <a class="active" href="/vuzabittelefon">{{{__ "Телефоны абитуриентов"}}}</a>
+</div>
+
+   <center style="margin-left: 200px;"> 
+<h1>{{title}}</h1>  
+
+{{#each obj}}
+<h1>{{@key}}</h1>
+{{#each this}}
+<br>
+<h3>
+{{this.0.direction_cipher}}-{{@key}}
+</h3>
+  <table class="do-not-print">
+                  <tr>
+
+                    <th>№</th>
+                    <th>{{{__ "Тур"}}}</th>
+                    <th>{{{__ "Сертификат"}}}</th>
+                    <th>{{{__ "ФИО"}}}</th>
+                    <th>{{{__ "Телефон"}}}</th>
+                    <th>Рекомендован</th>
+                    <th>Абитуриент</th>
+                    <th>Вуз</th>
+                    <th>Абитуриент</th>
+
+
+                  </tr>  
+          
+               	  <tr>
+                    <td colspan="5" style="  text-align:center;"><b>  </b></td>
+                  </tr>
+                {{#each this}}
+                  <tr>
+
+                    <td style="  text-align:center;">{{incremented @index}}</td>
+                    <td style="  text-align:left;">{{tour}}</a></td>
+                    <td style="  text-align:left;">{{NumberSert}}</a></td>
+                    <td style="  text-align:left;">{{fio}}</td>
+                    <td style="  text-align:center;">{{phone}}</td>
+                    <td style="  text-align:center;">{{recom}}</td>
+                    <td style="  text-align:center;">{{confabit}}</td>
+                    <td style="  text-align:center;">{{confvuz}}</td>
+                    <td style="  text-align:center;">{{backdocs}}</td>
+
+                </tr>
+                {{/each}}
+                 
+ 
+        </table>
+ 
+{{/each}}
+{{/each}}
+    </center>  
+    <br><br><br><br><br><br>
+
+</div> 
+<script>
+document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener("keydown", function(e) {
+  if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+    e.preventDefault();
+  }
+}, false);
+</script>

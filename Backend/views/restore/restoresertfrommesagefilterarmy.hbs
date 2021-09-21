@@ -1,0 +1,361 @@
+  <div class="main" style="margin-top: -40px;">
+        <div class="content">
+                <div class="title mt-5">
+                        <p class="secondary-text tn-text "> <a href="/spuz" class="yellow_text underline">{{{__ "Главная"}}}</a>
+                            &nbsp;/&nbsp; <a href="/spuz/soomo" class="yellow_text underline">{{{__ "ЦООМО"}}}</a>
+                            &nbsp;/&nbsp;  <span class="secondary-text">{{title}} </span>
+                          </p>
+                        <h2 class="white-text  title_text mt-5">{{title}}</h2>
+
+   <div class="row" style="margin-left: -5px;">
+
+                    <div class="btn-group col-11 col-sm-3 col-md-2 white my-3 rounded mx-1 p-0" style="height: 60px;">
+                        <a class="btn  m-0 dropdown-toggle font-weight-bold opacity-5 px-1" id="filter"
+                            style="line-height: 40px;" data-toggle="dropdown" href="#">Фильтр <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu filter-status">
+                             <li class="pt-1 px-3"><a href="/spuz/restoresertfrommesagesoomoarmy?type=0" class="filter-link">{{{__ "Отклонен"}}}</a></li>
+                            <li class="pt-1 px-3"><a href="/spuz/restoresertfrommesagesoomoarmy?type=1" class="filter-link">{{{__ "Изменен"}}}</a></li>
+                            <li class="pt-1 px-3"><a href="/spuz/restoresertfrommesagesoomoarmy" class="filter-link">{{{__ "В процессе"}}}</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="  white my-3 rounded  col-11  col-sm-3  col-md-3 mx-1 mr-4" style="height: 60px;">
+
+                        <input type="text" style="height: 60px;" id="search_input" class="quicksearch px-0 rounded w-100"
+                            placeholder="{{{__ 'Поиск № сертификата'}}}" />
+
+                    </div>
+                    <button style="height: 60px;width:100px !important;" onclick="searchSert()"
+                        class="yellow-color btn sm-text font-weight-bold white-text float-right isotope-reset m-3 px-1">{{{__ "Поиск"}}}</button>
+
+
+
+                </div>
+
+
+
+                    </div>
+        </div>
+    </div>
+
+
+<div id="content" class="content">
+
+
+  <div class="container-fluid">
+            <div class="scrolling-wrapper row flex-row  mt-4 pb-4">
+
+                <div class="rows my-0 mx-1">
+                    <div class="d-lg-flex">
+                        <div class="d-flex">
+                            <div class="cell   sm-text opacity-5" style="width: 10px">№</div>
+                            <div class="cell   sm-text opacity-5" style="width: 300px">{{{__ "ФИО"}}}</div>
+                            <div class="cell   sm-text opacity-5" style="width: 140px">{{{__ "№ сертификата"}}}</div>
+                            <div class="cell   sm-text opacity-5" style="width: 150px">{{{__ "Номер телефона"}}}</div>
+                            <div class="cell   sm-text opacity-5" style="width: 200px">{{{__ "Сообщение"}}}</div>
+                            <div class="cell   sm-text opacity-5" style="width: 100px">{{{__ "Статус"}}}</div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="iso bg-white" id="searched">
+        {{#each messages}}
+
+                    <div class="rows my-0 mx-1 bg-white border-bottom iso-item   {{#ifCond action '==' 0}}rejected{{else}}{{#ifCond action '==' 1}}edited{{else}}waiting{{/ifCond}}{{/ifCond}}">
+                        <div class="d-lg-flex">
+                            <div class="d-flex">
+                                <div class="cell sm-text" style="width: 10px">{{id_message_soomo}}</div>
+                                <div class="cell sm-text" style="width: 300px">{{ab_fio}}</div>
+                                <div class="cell sm-text" style="width: 140px">{{NumberSert}}</div>
+                                <div class="cell sm-text" style="width: 150px">{{abit_phone}}</div>
+                                <div class="cell sm-text" style="width: 200px">
+                                  {{#ifCond message '==' 0 }}
+                                  {{{../__ "Нет сообщений"}}}
+                                  {{else}}
+                                  <div class="border-r4  underline" data-toggle="popover" title='{{{../__ "Нажмите еще раз чтобы закрыть"}}}'
+                                        data-content="{{message}}">
+                                        <span title="{{{../__ 'Нажмите чтобы посмотреть полностью'}}}">{{{trimString message 0 15}}}...</span>
+                                    </div>
+                                  {{/ifCond}}
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="sm-text mr-2 mb-2">
+                                <div class="border-r4 show-btn text-danger " style="padding-left:7px;" title="Статус">
+                                {{#ifCond action '==' 0}} <span class="text-danger" title="{{{../__ 'Статус'}}}">{{{../__ "Отклонен"}}}</span>
+                                {{else}}{{#ifCond action '==' 1}} <span class="text-success" title="{{{../__ 'Статус'}}}">{{{../__ "Изменен"}}}</span>
+                                {{else}} <span class="color-blue" title="{{{../__ 'Статус'}}}">{{{../__ "В процессе"}}}</span>{{/ifCond}}{{/ifCond}} 
+                                </div>
+
+                            </div>
+                            
+                            <div class="sm-text  mb-2">
+                                <div class="yellow-color text-center border-r4 show-btn">
+                                    <a class="white-text" title="{{{../__ 'Посмотреть'}}}"  target="_self"
+                                    href="/spuz/restoresertfrommesagesoomosearchidarmy?id={{id_message_soomo}}&number={{NumberSert}}"
+                                    data-id="{{id_message_soomo}}" data-number="{{NumberSert}}">{{{../__ "Посмотреть"}}}</a>
+                                </div>
+                                  
+                                 
+                            </div>
+                        </div>
+
+                    </div>
+    {{/each}}
+                </div>
+
+            </div>
+        </div>
+
+
+
+ {{!-- pagination --}}
+{{#ifCond pageCount '>' 1}}
+<nav aria-label="Page navigation" class="mt-5 text-center">
+<p> {{currentPage}} из {{pageCount}} страниц</p>
+  <ul class="pagination pg-blue justify-content-center">
+
+   {{#ifCond currentPage '>' 1}}
+      <li class="page-item">
+      <a class="page-link" href="/spuz/restoresertfrommesagesoomoarmy?page=1&&type={{{type}}}" aria-label="Previous">
+        <span aria-hidden="true">{{{__ "Первый"}}}</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+ {{/ifCond}}
+ {{#ifCond currentPage '>' 2}}
+    <li class="page-item"><a class="page-link" href="/spuz/restoresertfrommesagesoomoarmy?page={{math currentPage '-' 1}}&&type={{{type}}}">&laquo;</a></li>
+ {{/ifCond}}
+   
+ <li class="page-item"><a class="page-link active" href="/spuz/restoresertfrommesagesoomoarmy?page={{currentPage}}&&type={{{type}}}">{{currentPage}}</a></li>
+ 
+ {{#ifCond pageCount '>=' nextPage}}
+    <li class="page-item"><a class="page-link" href="/spuz/restoresertfrommesagesoomoarmy?page={{nextPage}}&&type={{{type}}}">&raquo;</a></li>
+ {{/ifCond}}
+
+{{#ifCond currentPage '!=' pageCount}}  
+  <li class="page-item">
+      <a class="page-link" href="/spuz/restoresertfrommesagesoomoarmy?page={{pageCount}}&&type={{{type}}}" aria-label="Next">
+        <span aria-hidden="true">{{{__ "Последний"}}}</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+{{/ifCond}}
+  </ul>
+</nav>
+{{/ifCond}}
+{{!-- end pagination--}}
+ 
+<div class="modal fade mt-5" tabindex="-1" role="dialog" id="modalOk">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+ <div class="p-2 m-2 md-text">
+{{{__ "Ошибка"}}}
+<button  data-toggle="modal" data-target="#modalOk"
+                                class="close float-right p-0 animated fadeIn">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="#234182"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 18.1818L18.1818 0L20 1.81818L1.81818 20L0 18.1818Z" fill="#234182" />
+                                    <path d="M0 1.81818L1.81818 0L20 18.1818L18.1818 20L0 1.81818Z" fill="#234182" />
+                                </svg>
+            </button>
+      </div>
+
+      <div class="modal-body">
+        <p class="sm-text">{{{__ "Не найдено!"}}} </p>
+      </div>
+      <div class="modal-footer">
+ 
+        <button type="button" class="btn bg-blue btn-sm white-text" onclick='window.location.replace("/restoresertfrommesagesoomoarmy")' data-dismiss="modal">OK</button>
+       </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+</div>
+
+
+    <script type="text/javascript" src="/spuz/js/isotope.min.js"></script>
+    <script>
+        var qsRegex;
+        var buttonFilter;
+        // init Isotope
+  /*      var $grid = $('.iso').isotope({
+            itemSelector: '.iso-item',
+            layoutMode: 'fitRows',
+            filter: function () {
+                var $this = $(this);
+                var searchResult = qsRegex ? $this.text().match(qsRegex) : true;
+                 return searchResult;
+            },
+        });
+
+
+        // use value of search field to filter
+        var $quicksearch = $('.quicksearch').keyup(debounce(function () {
+            qsRegex = new RegExp($quicksearch.val(), 'gi');
+            $grid.isotope();
+        }, 200));
+
+        // debounce so filtering doesn't happen every millisecond
+        function debounce(fn, threshold) {
+            var timeout;
+            threshold = threshold || 100;
+            return function debounced() {
+                clearTimeout(timeout);
+                var args = arguments;
+                var _this = this;
+                function delayed() {
+                    fn.apply(_this, args);
+                }
+                timeout = setTimeout(delayed, threshold);
+            };
+        }
+
+
+      $(".isotope-reset").click(function () {
+            $("#search_input").val("");
+            $("#filter").html('Фильтр <span class="caret"></span>');
+            buttonFilter = "*";
+            qsRegex = "";
+            $grid.isotope();
+
+        });
+
+
+*/
+        $(".dropdown-menu li a").click(function () {
+            var selText = $(this).text();
+            $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+        });
+
+
+  
+
+
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
+
+
+
+ 
+
+
+
+<script>
+
+
+function searchSert(){
+     
+    var searchText = document.getElementById('search_input').value;
+    if (searchText.length < 7) {
+    //alert('please enter at least 5 characters');
+    return false;
+   }
+    let ajaxcontent = document.getElementById("searched");
+     ajaxcontent.innerHTML="";
+    var nodelist = ajaxcontent.getElementsByTagName("li");
+    console.log(nodelist.length);
+   
+
+    if(nodelist.length) {
+        while (ajaxcontent.firstChild) {
+            ajaxcontent.removeChild(ajaxcontent.firstChild);
+        }
+    }
+   
+   
+
+
+    var xmlhttp = new XMLHttpRequest();
+    var arrFromServer;
+    var body = 'searchText=' + searchText;
+    xmlhttp.onreadystatechange=function(){
+
+        if(xmlhttp.readyState === XMLHttpRequest.DONE && xmlhttp.status === 200) {
+        arrFromServer = JSON.parse(xmlhttp.responseText);
+ if (arrFromServer.error) {$('#modalOk').modal('show');};
+console.log('arrFromServer '+arrFromServer)
+                    
+                    for (let i = 0; i <= arrFromServer.length; i++) {
+                        let row = document.createElement('div');
+                        row.className = "rows my-0 mx-1 bg-white border-bottom";
+                         let status="";
+                      if (arrFromServer[i].action == 0) {
+                                status='Отклонен'} 
+                      else {
+                           if (arrFromServer[i].action == 1) {
+                              status='Изменен'} 
+                           else {
+                              status='В процессе'
+                                } 
+                           };
+console.log('status'+status)
+
+                  let htmltext=`
+                        <div class="d-lg-flex">
+                            <div class="d-flex">
+                                <div class="cell sm-text" style="width: 10px">`+arrFromServer[i].id_message_soomo+`</div>
+                                <div class="cell sm-text" style="width: 300px">`+arrFromServer[i].ab_fio+`</div>
+                                <div class="cell sm-text" style="width: 140px">`+arrFromServer[i].NumberSert+`</div>
+                                <div class="cell sm-text" style="width: 150px">`+arrFromServer[i].abit_phone+`</div>
+                                <div class="cell sm-text" style="width: 200px">
+                                  <div class="border-r4  underline" data-toggle="popover" title='Нажмите еще раз чтобы закрыть'
+                                        data-content="`+arrFromServer[i].message+`">
+                                        <span title="Нажмите чтобы посмотреть полностью">Сообщение...</span>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="sm-text mr-2 mb-2">
+                                <div class="border-r4 show-btn text-danger " style="padding-left:7px;" title="Статус">
+                                 <span class="text-danger" title="Статус">
+        `+status+`
+                                 </span>
+                                </div>
+                            </div>
+                            <div class="sm-text  mb-2">
+                                <div class="yellow-color text-center border-r4 show-btn">
+                                    <a class="white-text" title="Посмотреть"  target="_self"
+                                    href="/spuz/restoresertfrommesagesoomosearchidarmy?id=`+arrFromServer[i].id_message_soomo+`&number=`+arrFromServer[i].NumberSert+`"
+                                    data-id="`+arrFromServer[i].id_message_soomo+`" data-number="`+arrFromServer[i].NumberSert+`">Посмотреть</a>
+                                </div>   
+                            </div>
+                        </div>`;
+                        row.innerHTML=htmltext;
+ 
+
+                        ajaxcontent.appendChild(row); 
+                    }
+        };
+    }; 
+    xmlhttp.open('post', '/spuz/serchsert', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded', 'charset=utf-8');
+    xmlhttp.send(body);
+}
+
+
+
+
+
+
+
+
+
+</script>
+
+
+

@@ -1,0 +1,87 @@
+{{#each obja}}
+{{#ifCond @index '==' 0}}
+
+<link rel=" stylesheet" href="/stylesheets/protocol.css" /> 
+ <div id="control" class="do-not-print">
+<button title="Кабыл алууга сунушталган абитуриенттердин тизмесин бекитүү жөнүндө {{this.0.tout}}-Тур.doc" onclick="export2Word(window.inner, 'Кабыл алууга сунушталган абитуриенттердин тизмесин бекитүү жөнүндө '+{{this.0.tout}}+'-Тур')">Экспорт Word</button> 
+<button title="Печать" onclick="window.print()">Печать</button>
+
+</div> 
+ 
+<div id="inner">
+
+<center>
+<h3  class="b">
+{{this.0.university_name}}
+<br><br>
+№ <input type="text" size="4" value="_____"> ПРОТОКОЛ 
+<br>
+<input type="text" size="25" value="2020-жылдын 10-июлундагы">
+ <br><br>
+
+{{this.0.tout}} ТУР
+<br>
+«Об утверждении списка абитуриентов, рекомендованных к зачислению»
+</h3>
+<div class="indent">
+Комиссия на основе конкурсного отбора абитуриентов решила рекомендовать к зачислению на контрактной основе следующих абитуриентов: 
+</div>
+</center>
+ 
+{{/ifCond}} 
+
+<p>
+ <span style="font-weight: bolder;text-decoration:underline;  font-style: italic;">{{this.0.specialty_cipher}} {{this.0.specialty}}</span> даярдоо багыты / адистиги боюнча:
+<table class="tb1">
+     <tr>
+        <th class="td1" width =5%>№</th>
+        <th class="td1" ><center>Сертификаттын номери</center></>
+        <th class="td1" ><center>Негизги тест боюнча баллдардын суммасы</center></>
+        <th class="td1" ><center>Предметтик тест боюнча баллдардын суммасы</center></>
+        <th class="td1" ><center>Негизги жана предметтик тест боюнча баллдардын суммасы</center></>
+        <th class="td1" ><center>Жердин категориясы</center></>
+
+    </tr>
+
+{{#each this}}
+ 
+    <tr>
+        <td class="td1" width =5%><center>{{incremented @index}}</center></td>
+        <td class="td1" ><center>{{NumberSert}}</center></td>
+        <td class="td1" ><center>{{BallOnRepsTest}}</center></td>
+        <td class="td1" ><center>{{summ}}</center></td>
+        <td class="td1" ><center>{{summ_dop}}</center></td>
+        <td class="td1" ><center>{{nameplase}}</center></td>
+    </tr>
+ 
+ {{/each}}
+
+</table>
+{{/each}}
+
+<br>
+<br>
+<table>
+        <tbody>
+    {{#each objb}}
+        <tr>
+        <td width =40%  height=25px; style="vertical-align:top;" rowspan={{maxindex this}}>
+        {{@key}}  
+        </td>
+        </tr>
+        {{#each this}}
+        <tr>
+ 
+            <td  height=25px; width =20%><center><input type="text" size="15" value="_________________"></center></td>
+            <td  height=25px;><input type="text" size="15" style="text-align:left;" value="{{grant_commission}}"></td>
+        </tr>
+        
+        {{/each}}
+    {{/each}}
+  </tbody>
+</table>
+<br>
+ </div>
+ </div>
+
+<script type="text/javascript" src="/javascripts/export2word.js"></script>

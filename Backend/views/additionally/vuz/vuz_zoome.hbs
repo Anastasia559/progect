@@ -1,0 +1,273 @@
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="1.js"></script>
+<script src="2.js"></script>
+
+ 
+ <script src= "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"> 
+</script> 
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"> 
+</script> 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js">
+  </script>
+
+<script src= "https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"> 
+</script> 
+ <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js">
+  </script>
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
+
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="https://2020.edu.gov.kg/personalcabinet/lib/bootstrap/dist/css/bootstrap.min.css">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"> </head>
+
+<script type="text/javascript">
+     window.export.onclick = function() {
+ 
+   if (!window.Blob) {
+      alert('Your legacy browser does not support this action.');
+      return;
+   }
+
+   var html, link, blob, url, css;
+
+   
+   html = window.docx.innerHTML;
+   blob = new Blob(['\ufeff', css + html], {
+     type: 'application/msword'
+   });
+   url = URL.createObjectURL(blob);
+   link = document.createElement('A');
+   link.href = url;
+   // Set default file name. 
+   // Word will append file extension - do not add an extension here.
+   link.download = 'Enrolle2020';   
+   document.body.appendChild(link);
+   if (navigator.msSaveOrOpenBlob ) navigator.msSaveOrOpenBlob( blob, 'Enrolle2020.doc'); // IE10-11
+        else link.click();  // other browsers
+   document.body.removeChild(link);
+ };
+</script>
+<style>
+  .parent {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    
+}
+
+.block {
+   width: 50%;
+    position: relative;
+    top: 10%;
+    left: 18%;
+    right: 18%;
+    margin: -60px 0 0 -60px;
+}
+body {
+   background: #F9FBFF;
+}
+</style>
+<center> 
+
+  <h5>{{{__ "Отчет для ЦООМО"}}}<br><p style="color: #234182">  {{obj.0.univ}} <p <p style="color: brown">{{obj.0.bk}}</p> </h5></center>
+   
+<div class="parent">
+    <div class="block">
+ <div id="docx">
+  <div class="WordSection1">
+      <div id="control" class="do-not-print">
+
+<button onclick="window.print()" class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="example1"><span>Print</span></button>
+<button id="export" class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="example1"><span>Word</span></button>
+<button  onclick="tableToExcel('example1', 'W3C Example Table')" class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="example1"><span>Excel</span></button>
+</div>
+<center> 
+   <table border="1" id="example1" style="max-width:100%; border-collapse: collapse;">
+ 
+<thead style="font-size: 12pt">
+
+
+            <tr style="font-weight: bold; text-align: center">
+                    <th  >{{{__ "№"}}}</th>
+                    <th  >{{{__ "Номер сертификата"}}}</th>
+                    <th  >{{{__ "Ф.И.О."}}}</th>
+                    <th  >{{{__ "Сумма баллов за основной тест"}}}</th>
+                    <th style='width: 10px;-moz-transform: rotate(-270deg); 
+-ms-transform: rotate(-270deg);
+-webkit-transform: rotate(-270deg); 
+-o-transform: rotate(-270deg);
+transform: rotate(-270deg);
+'>{{{__ "Биология"}}}</th>
+                    <th style='-moz-transform: rotate(-270deg); 
+-ms-transform: rotate(-270deg);
+-webkit-transform: rotate(-270deg); 
+-o-transform: rotate(-270deg);
+transform: rotate(-270deg);
+'>{{{__ "История"}}}</th>
+                    <th style='-moz-transform: rotate(-270deg); 
+-ms-transform: rotate(-270deg);
+-webkit-transform: rotate(-270deg); 
+-o-transform: rotate(-270deg);
+transform: rotate(-270deg);
+' >{{{__ "Химия"}}}</th>
+                    <th style='-moz-transform: rotate(-270deg); 
+-ms-transform: rotate(-270deg);
+-webkit-transform: rotate(-270deg); 
+-o-transform: rotate(-270deg);
+transform: rotate(-270deg);
+'>{{{__ "Физика"}}}</th>
+                    <th style='-moz-transform: rotate(-270deg); 
+-ms-transform: rotate(-270deg);
+-webkit-transform: rotate(-270deg); 
+-o-transform: rotate(-270deg);
+transform: rotate(-270deg);
+'>{{{__ "Англ. язык"}}}</th>
+                    <th style='width: 10px;width: 10px;-moz-transform: rotate(-270deg); 
+-ms-transform: rotate(-270deg);
+-webkit-transform: rotate(-270deg); 
+-o-transform: rotate(-270deg);
+transform: rotate(-270deg); width: 10%;width: 10px;font-size: 8pt
+' >{{{__ "Математика"}}}</th>
+                    <th style='-moz-transform: rotate(-270deg); 
+-ms-transform: rotate(-270deg);
+-webkit-transform: rotate(-270deg); 
+-o-transform: rotate(-270deg);
+transform: rotate(-270deg);
+' >{{{__ "Кыргы. язык"}}}</th>
+                    <th  style='-moz-transform: rotate(-270deg); 
+-ms-transform: rotate(-270deg);
+-webkit-transform: rotate(-270deg); 
+-o-transform: rotate(-270deg);
+transform: rotate(-270deg);
+'>{{{__ "Русс. язык"}}}</th>
+                    <th  >{{{__ "Категория"}}}</th>
+                    <th  >{{{__ "Направления"}}}</th>
+                  </tr>  
+                    
+</thead> 
+
+
+      <tbody style="font-size: 9pt">
+                  
+                
+    {{#each obj}}           
+               <tr style="background: #FFFFFF">
+                    <td style="  text-align:center;">{{incremented @index}}</td>
+                    <td style="  text-align:center;">{{NumberSert}}</td>
+                    <td style="  text-align:center;">{{fio}} </td>
+                    <td style="  text-align:center;">{{ball}} </td>
+                    <td style="  text-align:center;">{{biology}} </td>
+                    <td style="  text-align:center;">{{history}} </td>
+                    <td style="  text-align:center;">{{chemistry}} </td>
+                    <td style="  text-align:center;">{{physics}} </td>
+                    <td style="  text-align:center;">{{english}} </td>
+                    <td style="  text-align:center;">{{mathem}}</td>
+                    <td style="  text-align:center;">{{kyrgyz}} </td>
+                    <td style="  text-align:center;">{{russian}} </td>
+                    <td style="  text-align:center;">{{NamePlase}} </td>
+                    <td style="  text-align:left;">{{spec}} </td>
+                 </tr>
+    {{/each}}      
+          </tbody>
+       </table>
+       </center>
+       
+  </center> 
+      </html>
+                           </div>
+                             </div
+                             
+
+							
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+<br><br><br><br><br>
+        </div>
+    </div>
+	
+</body>
+        <script type="text/javascript">
+     window.export.onclick = function() {
+ 
+   if (!window.Blob) {
+      alert('Your legacy browser does not support this action.');
+      return;
+   }
+
+   var html, link, blob, url, css;
+   
+   // EU A4 use: size: 841.95pt 595.35pt;
+   // US Letter use: size:11.0in 8.5in;
+   
+   css = (
+     '<style>' +
+     '@page WordSection1{size: 841.95pt 595.35pt;mso-page-orientation: landscape;}' +
+     'div.WordSection1 {page: WordSection1;}' +
+     'table{border-collapse:collapse;}td,th{border:1px gray solid;width:5em;padding:2px;}'+
+     '</style>'
+   );
+   
+   html = window.docx.innerHTML;
+   blob = new Blob(['\ufeff', css + html], {
+     type: 'application/msword'
+   });
+   url = URL.createObjectURL(blob);
+   link = document.createElement('A');
+   link.href = url;
+   // Set default file name. 
+   // Word will append file extension - do not add an extension here.
+   link.download = 'Enrolle2020';   
+   document.body.appendChild(link);
+   if (navigator.msSaveOrOpenBlob ) navigator.msSaveOrOpenBlob( blob, 'Enrolle2020.doc'); // IE10-11
+        else link.click();  // other browsers
+   document.body.removeChild(link);
+ };
+</script>
+  <script src="/js_export/jquery-3.5.1.js"></script>
+
+  <script src="/js_export/jquery.dataTables.min.js"></script>
+  <script src="/js_export/dataTables.buttons.min.js"></script>
+  <script src="/js_export/buttons.html5.min.js"></script>
+  <script src="/js_export/jszip.min.js"></script>
+  <script src="/js_export/pdfmake.min.js"></script>
+  <script src="/js_export/vfs_fonts.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+</script>
+<script type="text/javascript">
+    var tableToExcel = (function() {
+          var uri = 'data:application/vnd.ms-excel;base64,'
+            , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+            , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+            , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+          return function(table, name) {
+            if (!table.nodeType) table = document.getElementById(table)
+            var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+            window.location.href = uri + base64(format(template, ctx))
+          }
+        })()
+</script> 

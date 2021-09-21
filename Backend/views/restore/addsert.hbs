@@ -1,0 +1,227 @@
+   <div class="main" style="margin-top: -40px;">
+        <div class="content">
+                <div class="title mt-5">
+                        <p class="secondary-text tn-text "> <a href="/" class="yellow_text underline">{{{__ "Главная"}}}</a>
+                            &nbsp;/&nbsp; <a href="/soomo" class="yellow_text underline">{{{__ "ЦООМО"}}}</a>
+                            &nbsp;/&nbsp;  <span class="secondary-text">{{title}} </span>
+                          </p>
+                        <h2 class="white-text  title_text mt-5">{{title}}</h2>
+                    </div>
+        </div>
+    </div>
+
+
+<div id="content" class="mt-4">
+    <style>
+        @media only screen and (min-width: 992px) {
+            #forms {
+                max-width: 75%;
+            }
+        }
+    </style>
+{{!--    <div class="bg-color text-center py-3 mt-4">
+        <h4 class="white-text font-weight-normal px-2"> {{title}}</h4>
+    </div>
+--}}
+    <div id="message" style="display:none;" class="alert animated fadeIn text-center">
+        {{!-- <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> --}}
+        <h6 id="message_content"> </h6>
+    </div>
+    <div class="container my-4 mx-auto" id="forms">
+
+
+ 
+        <div class="form-group animated fadeIn" >
+            <div class="form-row">
+                <div class="form-group col-md-3">
+
+                    <label for="numberSert">{{{__ "Номер  сертификата "}}}</label>
+                    <input type="text" size="3" value="0" id="numberSert" name="numberSert" maxlength="9"
+                        class="form-control" placeholder={{{__ "Номер сертификата"}}}>
+ 
+                </div>
+                <div class="form-group col-md-3">
+
+                    <label for="ball">{{{__ "Основной балл"}}}</label>
+                    <input type="number" size="2" value="0" id="ball" name="ball" min="0" max="246" class="form-control"
+                        placeholder={{{__ "Основной балл"}}}>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="phone">{{{__ "Номер  телефона"}}}</label>
+                    <input type="tel" value="0" required id="phone" name="phone" pattern="[0-9]{10}" minlength="10"
+                    maxlength="10" class="form-control" placeholder={{{__ "Номер телефона"}}}>
+                                    <small id="phonetHelp" class n ="form-text text-muted">{{{__ "Введите номер телефона в формате: 0xxxXXXXXX Пример: 0500123456"}}}</small>
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="place">{{{__ "Категория местности"}}}</label>
+                    <input type="number" required size="2" value="0" id="place" name="place" min="0" pattern="[1-4]{1}"  max="4"minlength="1" maxlength="1" class="form-control"
+                        placeholder={{{__ "Категория местности"}}}>
+                                    <small id="placeHelp" class n ="form-text text-muted">{{{__ "Введите 1 если г.Бишкек,  2-Малый город, 3-Село, 4-Высокогорье"}}}</small>
+
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+
+                    <label for="ort_biology">{{{__ "Биология"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_biology" name="ort_biology" min="0" max="150"
+                        class="form-control">
+
+                </div>
+
+
+                <div class="form-group col-md-3">
+
+                    <label for="ort_history"> {{{__ "История"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_history" name="ort_history" min="0" max="150"
+                        class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+
+
+                    <label for="ort_chemistry">{{{__ "Химия"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_chemistry" name="ort_chemistry" min="0" max="150"
+                        class="form-control">
+
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="ort_physics"> {{{__ "Физика"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_physics" name="ort_physics" min="0" max="150"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="form-row">
+
+
+
+                <div class="form-group col-md-3">
+                    <label for="ort_english"> {{{__ "Английский язык"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_english" name="ort_english" min="0" max="150"
+                        class="form-control">
+
+                </div>
+                <div class="form-group col-md-3">
+
+                    <label for="ort_math"> {{{__ "Математика"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_math" name="ort_math" min="0" max="150"
+                        class="form-control">
+
+                </div>
+                <div class="form-group col-md-3">
+
+                    <label for="ort_kyrgyz"> {{{__ "Кыргызский язык"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_kyrgyz" name="ort_kyrgyz" min="0" max="150"
+                        class="form-control">
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="ort_russian"> {{{__ "Русский язык"}}}</label>
+                    <input type="number" size="2" value="0" id="ort_russian" name="ort_russian" min="0" max="150"
+                        class="form-control">
+
+                </div>
+
+
+
+            </div>
+        </div>
+ 
+ 
+
+        <button type="submit" id="createtbutton" disabled class="checksertbutton bg-yellow btn btn-primary btn-block waves-effect waves-light">{{{__ "Добавить"}}}</button>
+     </div>
+
+</div>
+
+<div class="modal fade mt-5" tabindex="-1" role="dialog" id="modalOk">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+ <div class="p-2 m-2 md-text">
+     <span id="modalName"></span>
+<button  data-toggle="modal" data-target="#modalOk"
+                                class="close float-right p-0 animated fadeIn">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="#234182"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 18.1818L18.1818 0L20 1.81818L1.81818 20L0 18.1818Z" fill="#234182" />
+                                    <path d="M0 1.81818L1.81818 0L20 18.1818L18.1818 20L0 1.81818Z" fill="#234182" />
+                                </svg>
+            </button>
+      </div>
+
+      <div class="modal-body">
+        <p class="sm-text" id="responseText"></p>
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn bg-blue btn-sm white-text" onclick='window.location.replace("/addsert")' data-dismiss="modal">OK</button>
+       </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+ 
+ <script>
+let ns=document.getElementById("numberSert");
+let phone=document.getElementById("phone");
+let createtbutton=document.getElementById("createtbutton");
+
+ns.addEventListener("input", function(){ if (phone.value.length==10&&ns.value.length>6){ createtbutton.disabled = false;};});
+phone.addEventListener("input", function(){ if (phone.value.length==10&&ns.value.length>6){ createtbutton.disabled = false;};});
+document.getElementById("forms").addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    createtbutton.click();
+  }
+});
+createtbutton.addEventListener('click', postData);
+
+        function postData() {
+        let place = $("#place").val();
+        let phone = $("#phone").val();
+        let ns = $("#numberSert").val();
+        let ball = $("#ball").val();
+        let ob = $("#ort_biology").val();
+        let oh = $("#ort_history").val();
+        let oc = $("#ort_chemistry").val();
+        let op = $("#ort_physics").val();
+        let om = $("#ort_math").val();
+        let oe = $("#ort_english").val();
+        let ok = $("#ort_kyrgyz").val();
+        let or = $("#ort_russian").val();
+
+console.log(place);
+        url = '/add_sert?numberSert=' + ns +  '&phone=' + phone + '&place=' + place + 
+            '&ball=' + ball + '&ort_biology=' + ob + '&ort_history=' + oh +
+            '&ort_chemistry=' + oc + '&ort_physics=' + op + '&ort_math=' + om +
+            '&ort_english=' + oe + '&ort_kyrgyz=' + ok + '&ort_russian=' + or;
+        let promise = fetch(url);
+        promise.then(
+            response => {
+                return response.text();
+            }
+        ).then(text => {
+                                console.log(text)
+
+                     res = JSON.parse(text);
+                    console.log(res)
+                    if (res.message==1)
+                    {
+                    document.getElementById("modalName").innerHTML = 'Успешно сохранен!';
+                    document.getElementById("responseText").innerHTML = 'Номер сертификата: '+res.numbersert;
+                    $('#modalOk').modal('show');
+
+                    }
+                    else {
+                          if (res.message==0)
+                            document.getElementById("modalName").innerHTML = 'Ошибка!';
+                            document.getElementById("responseText").innerHTML = 'Ошибка: '+res.error;
+                            $('#modalOk').modal('show');
+                    }
+ });
+         }
+
+
+
+ </script>

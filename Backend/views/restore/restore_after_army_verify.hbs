@@ -1,0 +1,424 @@
+   <div class="main" style="margin-top: -40px;">
+        <div class="content">
+                <div class="title mt-5">
+                        <p class="secondary-text tn-text "> <a href="/" class="yellow_text underline">{{{__ "Главная"}}}</a>
+                            &nbsp;/&nbsp; <a href="/soomo" class="yellow_text underline">{{{__ "ЦООМО"}}}</a>
+                            &nbsp;/&nbsp;  <span class="secondary-text">{{title}} </span>
+                          </p>
+                        <h2 class="white-text  title_text mt-5">{{title}}</h2>
+                    </div>
+        </div>
+    </div>
+
+
+<div id="content" class="conatiner text-center mt-4">
+{{!--
+    <div class="text-center py-3 mt-4">
+        <h4 class="color-blue font-weight-normal px-2"> {{title}}</h4>
+    </div>
+--}}
+    <div id="message" style="display:none;" class="alert animated fadeIn text-center">
+        {{!-- <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> --}}
+        <h6 id="message_content"> </h6>
+    </div>
+
+    {{!-- <div class="btn-group-vertical"> --}}
+{{#if notEmpty}}
+    {{#each students}}
+    <button type="button" class="btn 
+{{#if date_verified}}
+{{#if verified}}
+btn-success
+{{else}}
+btn-danger
+{{/if}}
+{{else}}
+btn-primary 
+{{ date_verified}} /{{verified}}
+{{/if}}
+btn-lg" data-toggle="modal" data-target="#exampleModal"
+{{#if date_verified}}
+{{#if verified}}
+data-verified="2"
+{{else}}
+data-verified="1"
+{{/if}}
+{{else}}
+data-verified="0"
+{{/if}}
+        data-id="{{id_new_enrollee_ORT}}" data-number="{{NumberSert}}">{{NumberSert}}</button>
+    {{/each}}
+{{/if}}
+{{#if notEmpty}}
+{{!-- pagination --}}
+{{#ifCond pageCount '>' 1}}
+<nav aria-label="Page navigation" class="mt-5">
+<p> {{currentPage}} из {{pageCount}} страниц</p>
+  <ul class="pagination pg-blue justify-content-center">
+
+   {{#ifCond currentPage '>' 1}}
+      <li class="page-item">
+      <a class="page-link" href="\restorearmyverify?page=1" aria-label="Previous">
+        <span aria-hidden="true">{{{__ "Первый"}}}</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+ {{/ifCond}}
+ {{#ifCond currentPage '>' 2}}
+    <li class="page-item"><a class="page-link" href="/restorearmyverify?page={{math currentPage '-' 1}}">&laquo;</a></li>
+ {{/ifCond}}
+   
+ <li class="page-item"><a class="page-link active" href="/restorearmyverify?page={{currentPage}}">{{currentPage}}</a></li>
+ 
+ {{#ifCond pageCount '>=' nextPage}}
+    <li class="page-item"><a class="page-link" href="/restorearmyverify?page={{nextPage}}">&raquo;</a></li>
+ {{/ifCond}}
+
+{{#ifCond currentPage '!=' pageCount}}  
+  <li class="page-item">
+      <a class="page-link" href="\restorearmyverify?page={{pageCount}}" aria-label="Next">
+        <span aria-hidden="true">{{{__ "Последний"}}}</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+{{/ifCond}}
+  </ul>
+</nav>
+{{/ifCond}}
+{{!-- end pagination--}}
+{{/if}}
+
+    {{!-- </div> --}}
+    <div class="modal fade  bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{{__ "Подтверждение"}}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{{__ "Закрыть"}}}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+            
+                    <div class="form-group animated fadeIn" id="search_form">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label>{{{__ "Директор"}}}</label>
+                                <label id="director"></label>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>{{{__ "Телефон"}}}</label>
+                                <label id="phone"></label>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>{{{__ "Школа"}}}</label>
+                                <label id="school"></label>
+                            </div>
+                        </div>
+
+<hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>{{{__ "Номер  сертификата"}}}</label>
+                                <label id="numberSert"></label>
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label>{{{__ "Сертификат"}}}</label>
+                                <label id="place"></label>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label>{{{__ "Основной балл"}}}</label>
+                                <label id="ball"></label>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label>{{{__ "Биология"}}}</label>
+                                <label id="ort_biology"></label>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label> {{{__ "История"}}}</label>
+                                <label id="ort_history"> </label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>{{{__ "Химия"}}}</label>
+                                <label id="ort_chemistry"> </label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label> {{{__ "Физика"}}}</label>
+                                <label id="ort_physics"> </label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label> {{{__ "Английский язык"}}}</label>
+                                <label id="ort_english"> </label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label> {{{__ "Математика"}}}</label>
+                                <label id="ort_math"> </label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label> {{{__ "Кыргызский язык"}}}</label>
+                                <label id="ort_kyrgyz"> </label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label> {{{__ "Русский язык"}}}</label>
+                                <label id="ort_russian"> </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <img id="ort_image" draggable="true" class="img-fluid zoom animated fadeIn" src="" alt="ORT">
+                        <p>{{{__ "ОРТ Сертификат"}}}</p>
+                        <hr>
+                    </div>
+                    <div>
+                        <img id="pas_image" class="img-fluid zoom animated fadeIn" src="" alt="Passport">
+                        <p>Паспорт</p>
+                        <hr>
+                    </div>
+                    <div>
+                        <img id="pas2_image" class="img-fluid zoom animated fadeIn" src="" alt="Passport2">
+                        <p>Паспорт 2</p>
+                        <hr>
+                    </div>
+                    <div>
+                        <img id="mil_image" class="img-fluid zoom animated fadeIn" src="" alt="Military">
+                        <p>{{{__ "Военный билет"}}}</p>
+                        <hr>
+                    </div>
+                    <div>
+                        <img id="ate_image" class="img-fluid zoom animated fadeIn" src="" alt="Atestat">
+                        <p>Аттестат</p>
+                        <hr>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="cancel" class="btn btn-secondary cancel"
+                        data-dismiss="modal">{{{__ "Закрыть"}}}</button>
+                    <button type="button" id="reject" data-active="0"  data-number="0" data-id="0" data-saved="0"  class="btn btn-danger  post">{{{__ "Отклонить"}}}</button>
+                    <button type="button" id="verify"  data-active="1"  data-number="0" data-id="0" data-saved="0" class="btn btn-success post">{{{__ "Подтвердить"}}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    $('#verify').on('click', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var id = $("#verify").data("id"); // Extract info from data-* attributes
+        var number = $("#verify").data("number"); // Extract info from data-* attributes
+        var active = $("#verify").data("active"); // Extract info from data-* attributes
+        if (id != "0") {
+        $.ajax({
+            url: "/restorearmyverifyajaxres",
+            type: "post",
+            dataType: "text",
+            data: {
+                id: id,
+                number: number,
+                active: active
+            },
+            success: function (a) {
+                const res = JSON.parse(a);
+                showAlert(res.message, 'alert-success');
+                $('#exampleModal').modal('hide');
+                setTimeout(function() { window.location.href = "/restorearmyverify";}, 3000);
+
+            },
+           error : function(error){
+                console.log(error);
+            }
+        });};
+
+    })
+    $('#reject').on('click', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var id = $("#reject").data("id"); // Extract info from data-* attributes
+        var number = $("#reject").data("number"); // Extract info from data-* attributes
+        var active = $("#reject").data("active"); // Extract info from data-* attributes
+       if (id != "0"){
+        $.ajax({
+            url: "/restorearmyverifyajaxres",
+            type: "post",
+            dataType: "text",
+            data: {
+                id: id,
+                number: number,
+                active: active,
+            },
+            success: function (a) {
+                const res = JSON.parse(a);
+                showAlert(res.message, 'alert-danger');
+                $('#exampleModal').modal('hide');
+                setTimeout(function() { window.location.href = "/restorearmyverify";}, 3000);
+            }
+        });};
+
+    })
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var id = button.data('id') // Extract info from data-* attributes
+        var number = button.data('number') // Extract info from data-* attributes
+
+        if (button.data('verified')=="2"){
+         $('#reject').hide();
+         $('#verify').hide();
+        }
+        else if  (button.data('verified')=="1"){
+         $('#reject').hide();  
+         $('#verify').data('id',id);
+         $('#verify').data('number',number);
+         $('#verify').show();
+        }
+        else {
+//      var id = button.data('id') // Extract info from data-* attributes
+//      var number = button.data('number') // Extract info from data-* attributes
+        $('#reject').show();
+        $('#verify').show();
+        $('#reject').data('id',id);
+        $('#reject').data('number',number);
+        $('#verify').data('id',id);
+        $('#verify').data('number',number);
+        //console.log(number);
+
+       // console.log($("#verify").data("number")); //  yes change you atribute
+       };
+     
+          $.ajax({
+            url: "/restorearmyverifyajax",
+            type: "post",
+            dataType: "text",
+            data: {
+                id: id,
+                number: number
+            },
+            success: function (a) {
+                const res = JSON.parse(a);
+                $('#numberSert').html('<strong> ' + res.number + '</strong>');
+                $('#ball').html('<strong> ' + res.ball + '</strong>');
+                $('#director').html('<strong> ' + res.director +'</strong>');
+                $('#phone').html('<strong> ' + + res.phone+ '</strong>');
+                $('#school').html('<strong> ' + res.school+' ('+res.district+')</strong>');
+ 
+               let place_all="";//"{{{__ 'Тип не выбран'}}}";
+               switch(res.place) {
+                 case 1: 
+                   place_all="{{{__ 'Бишкек - Красный'}}}";
+                   break;
+
+                 case 2: 
+                   place_all="{{{__ 'Малый город - Синий'}}}";
+                   break;
+
+                 case 3:
+                   place_all="{{{__ 'Село - Желтый'}}}";
+                   break;
+
+                 case 4:
+                   place_all="{{{__ 'Высокогорье - Фиолетовый'}}}";
+                   break;
+
+                 case 5:
+                   place_all="{{{__ 'Золотой сертификат - Золотой'}}}";
+                   break;
+
+	         default:
+                   place_all="{{{__ 'Тип не выбран'}}}";
+                   break;
+                 }
+                $('#place').html('<strong> ' + place_all + '</strong>'); 
+                $('#ort_biology').html('<strong> ' + res.bio + '</strong>');
+                $('#ort_history').html('<strong> ' + res.his + '</strong>');
+                $('#ort_chemistry').html('<strong> ' + res.che + '</strong>');
+                $('#ort_physics').html('<strong> ' + res.phi + '</strong>');
+                $('#ort_english').html('<strong> ' + res.eng + '</strong>');
+                $('#ort_math').html('<strong> ' + res.mat + '</strong>');
+                $('#ort_kyrgyz').html('<strong> ' + res.kgz + '</strong>');
+                $('#ort_russian').html('<strong> ' + res.rus + '</strong>');
+                $("#ort_image").attr("src", "data:img/png;base64," + res.ort);
+                $("#pas_image").attr("src", "data:img/png;base64," + res.pas);
+                $("#pas2_image").attr("src", "data:img/png;base64," + res.pas2);
+                $("#mil_image").attr("src", "data:img/png;base64," + res.mil);
+                $("#ate_image").attr("src", "data:img/png;base64," + res.ate);
+            },
+               error: function (jqXHR, exception) {
+                 if (jqXHR.status === 404){ window.location.href = "/soomo";}
+           }
+        });
+     
+    })
+
+    $('#exampleModal').on('hidden.bs.modal', function () {
+        $("#ort_image").attr("src", "");
+        $("#ate_image").attr("src", "");
+        $("#pas_image").attr("src", "");
+        $("#pas2_image").attr("src", "");
+        $("#mil_image").attr("src", "");
+        $('#numberSert').html("");
+        $('#ball').html("");
+        $('#director').html("");
+        $('#phone').html("");
+        $('#school').html("");
+        $('#place').html("");
+        $('#ort_biology').html("");
+        $('#ort_history').html("");
+        $('#ort_chemistry').html("");
+        $('#ort_physics').html("");
+        $('#ort_english').html("");
+        $('#ort_math').html("");
+        $('#ort_kyrgyz').html("");
+        $('#ort_russian').html("");
+    });
+
+    $('img').bind('contextmenu', function (e) {
+        return false;
+    });
+
+    $('.zoom').on('mousemove', function (event) {
+        // This gives you the position of the image on the page
+        var bbox = event.target.getBoundingClientRect();
+
+        // Then we measure how far into the image the mouse is in both x and y directions
+        var mouseX = event.clientX - bbox.left;
+        var mouseY = event.clientY - bbox.top;
+
+        // Then work out how far through the image as a percentage the mouse is
+        var xPercent = (mouseX / bbox.width) * 100;
+        var yPercent = (mouseY / bbox.height) * 100;
+
+        // Then we change the `transform-origin` css property on the image to center the zoom effect on the mouse position
+        //event.target.style.transformOrigin = xPercent + '% ' + yPercent + '%';
+        // It's a bit clearer in jQuery:
+        $(this).css('transform-origin', (xPercent + '% ' + yPercent + '%'));
+        // We add the '%' units to make sure the string looks exactly like the css declaration it becomes.
+
+    });
+
+    function showAlert(text, cls) {
+        document.getElementById("message_content").innerHTML = text;
+        $('#message').addClass(cls);
+        $("#message").fadeTo(2000, 500).slideUp(500, function () {
+            $("#message").slideUp(500);
+        });
+    }
+    $(document).ready(function () {
+        $("#message").hide();
+    });
+
+</script>
+
+{{!-- data:image/png;base64, --}}
+

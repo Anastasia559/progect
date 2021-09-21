@@ -1,0 +1,95 @@
+<script>
+$('#search_input').focus(function() {
+    $(this).attr('placeholder', "{{{__ 'Минимальная длина 3 символа'}}}")
+}).blur(function() {
+    $(this).attr('placeholder',  "{{{__ 'Поиск ВУЗов'}}}")
+})
+
+function searchuniver(){
+     
+    var searchText = document.getElementById('search_input').value;
+    if (searchText.length < 3) {
+    //alert('please enter at least 5 characters');
+    return false;
+   }
+    var content = document.getElementById('content')
+    content.style.display = 'none';
+    let ajaxcontent = document.getElementById("emtyul");
+    var nodelist = ajaxcontent.getElementsByTagName("li");
+    console.log(nodelist.length);
+   
+
+    if(nodelist.length) {
+        while (ajaxcontent.firstChild) {
+            ajaxcontent.removeChild(ajaxcontent.firstChild);
+        }
+    }
+   
+   
+
+
+    var xmlhttp = new XMLHttpRequest();
+    var arrFromServer;
+    var body = 'searchText=' + searchText;
+    xmlhttp.onreadystatechange=function(){
+        if(xmlhttp.readyState === XMLHttpRequest.DONE && xmlhttp.status === 200) {
+        arrFromServer = JSON.parse(xmlhttp.responseText);
+
+                    
+                    for (let i = 0; i <= arrFromServer.length; i++) {
+                        let li = document.createElement('li');
+                        li.className = "universities-item";
+                            let p1 = document.createElement('p'); 
+                                let a1 = document.createElement('a');
+                                a1.className = "university-name";
+                                a1.innerHTML = (i+1) + ". " + arrFromServer[i].university_name;
+                                a1.setAttribute('href', `/reports?id_university=` + arrFromServer[i].id_university);
+                                p1.appendChild(a1);
+                            li.appendChild(p1);
+                            
+                            let d1 = document.createElement('div'); 
+                            d1.innerHTML = `{{{__ "Адрес"}}}:`; 
+                            d1.className = "tn-text opacity-5";
+                            li.appendChild(d1);
+                            
+                            let p2 = document.createElement('p'); 
+                            p2.innerHTML = arrFromServer[i].university_address; 
+                            p2.className = "sm-text";
+                            li.appendChild(p2);
+
+                            let d2 = document.createElement('div'); 
+                            d2.innerHTML = `{{{__ "Ректор"}}}:`; 
+                            d2.className = "tn-text opacity-5";
+                            li.appendChild(d2);
+                            
+                            let p3 = document.createElement('p'); 
+                            p3.innerHTML = arrFromServer[i].university_supervisor; 
+                            p3.className = "sm-text";
+                            li.appendChild(p3);
+
+                            let d3 = document.createElement('div'); 
+                            d3.innerHTML = `Сайт:`; 
+                            d3.className = "tn-text opacity-5";
+                            li.appendChild(d3);
+                            
+                            let p4 = document.createElement('p'); 
+                                let a2 = document.createElement('a');
+                                a2.className = "sm-text";
+                                a2.innerHTML = arrFromServer[i].university_url;
+                                a2.setAttribute('href', arrFromServer[i].university_url);
+                                a2.setAttribute('target', "blank");
+                                p4.appendChild(a2);
+                            li.appendChild(p4);
+                        ajaxcontent.appendChild(li); 
+                    }
+        };
+    }; 
+    xmlhttp.open('post', '/serchuniver', true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded', 'charset=utf-8');
+    xmlhttp.send(body);
+}
+
+</script>
+
+
+

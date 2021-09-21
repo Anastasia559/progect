@@ -1,0 +1,211 @@
+<style>
+    .mainNew {
+    max-width: 1440px !important;
+    /* background: #2f3841 !important; */
+    padding: 10px 0;
+    margin: 0 auto;
+    width: 100%;
+    box-shadow: 10px 5px 8px 1px rgb(1 2 2 / 20%);
+    border-radius: 4px;
+    background: #12212f;
+    background: linear-gradient(
+130deg
+, #12212f, #204766 41.07%, #12212f 76.05%)!important;
+}
+
+.yellow_text {
+    color: #FDD743!important;
+}
+</style>
+
+{{#if show}}
+
+<div class="m-md-2 d-flex justify-content-center" style="">
+    <div class="mainNew p-2" style="">
+        <div class="content p-md-2">
+            <div class="title mt-5">
+                <p class="secondary-text tn-text "> <a href="/spuz" class="yellow_text underline">{{{__ "Главная"}}}</a>
+                    &nbsp;/ <a href="/spuz/universities" class="yellow_text underline">{{{__ "СПУЗЫ"}}}</a>
+                    &nbsp;/&nbsp; <span class="brown_text"> {{title}} </span>
+                </p>
+
+                <h2 class="white-text  title_text mt-5"> {{title}}</h2>
+
+                <p class="brown_text tn-text  pr-4 d-inline-block">{{{__ "Директор"}}}:&nbsp;{{university_supervisor}}
+                </p>
+                <p class="brown_text tn-text  pr-4  d-inline-block">{{{__ "Адрес"}}}:&nbsp;{{university_address}}
+
+                </p>
+                <p class="d-inline-block tn-text"> <a target="_blank" href="{{university_url}}"
+                        class="yellow_text pr-4  d-inline-block underline">{{{__ "Сайт"}}}:&nbsp;{{university_url}}
+                    </a>
+                </p>
+                {{!-- <p class="d-inline-block tn-text">
+                    <a href="/reportuseraccess?id_university={{id_university}}"
+                        class="yellow_text d-inline-block underline">{{{__ "Состав приемной коммиссии"}}} </i>
+                    </a>
+                </p> --}}
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="content" class="content">
+
+
+    <ul class="d-flex flex-wrap  justify-content-start mt-3" style="list-style-type: none;padding-inline-start:0;">
+        {{#each obj}}
+        {{#each this}}
+        <li class="card-item ml-2 mt-4">
+            <div class="scrolling-wrapper">
+                <div class="row mx-0">
+                    {{!-- <div class="rows">
+                        <p class="university-name color-blue" id="{{@key}}">{{incremented @index}}. {{@key}}</p>
+                    </div> --}}
+                    <div class="rows">
+                        <div style="width:70px" class="cell   sm-text opacity-5">{{{../../__ "Шифр"}}}</div>
+                        <div class="cell napr sm-text opacity-5">{{{../../__ "Направление/специальность"}}}</div>
+                        <div class="cell oplata sm-text opacity-5">{{{../../__ "Форма оплаты"}}}</div>
+                        <div class="cell oplata sm-text opacity-5">{{{../../__ "Сумма оплаты (сом) <br> 1 год"}}}</div>
+                        <div style="width:70px" class="cell   sm-text opacity-5">{{{../../__ "План набора"}}}</div>
+                        <!-- <div style="width:70px" class="cell   sm-text opacity-5">{{{../../__ "Вакант ные места"}}}</div> -->
+                        <div class="cell porog sm-text opacity-5">{{{../../__ "Профилирующие дисциплины"}}}</div>
+                        <div class="cell plan sm-text opacity-5">{{{../../__ "Количество зарегистрированных"}}}
+                            {{#if this.0.tour}}({{this.0.tour}}-тур){{/if}}
+                        </div>
+                    </div>
+
+
+                    {{#each this}}
+                    <div class="rows {{#ifCond @index '!=' 0}} border-top pt-4{{/ifCond}}">
+                        <div class="d-lg-flex">
+                            <div class="d-flex">
+                                <div style="width:70px" class="cell   sm-text">{{direction_cipher}} {{specialty_cipher}}</div>
+                                <div class="cell napr sm-text">{{specialty}} ({{learning}})</div>
+                                <div class="cell oplata sm-text">{{bk}}</div>
+                                <div class="cell oplata sm-text">{{smeta_education}}</div>
+                                <!-- <div  style="width:70px" class="cell   sm-text">{{kol_plan}}</div> -->
+                                <div style="width:70px" class="cell   sm-text">{{kol_vacansi}}</div>
+                                <div class="cell porog sm-text">{{discipline}} {{#ifCond necessarily_kol '>' 0}} {{#if
+                                    internal_test}} {{else}} <br> <span class="tn-text"> {{{../../../__ "Для поступления необходимо пройти внутренние или творческие испытания"}}}</span> {{/if}} {{/ifCond}} <br>
+
+                                </div>
+                                <div class="cell plan sm-text">{{#if tour}}{{kol_reg}}{{else}}0{{/if}} </div>
+                            </div>
+                            <div class="d-flex"> 
+                                <div class="sm-text mr-2 mb-2">
+                                    {{#if tour}}
+                                    {{#if bk_sel}}
+                                    <div class="yellow-color text-center" style="background: #204766;color: #fff;
+                                       border-radius: 4px; padding: 12px 15px; width: 120px;">
+                                        {{#if Beneficiary_plan}}
+                                        {{#if kol_reg}}
+                                        <a class="white-text" title="{{{../../../__ 'Конкурс'}}}"
+                                            href="/personalcabinet/report/Ranjirk?i={{id_admission_plan}}&t={{tour}}">{{{../../../__
+                                            "Посмотреть"}}}</a>
+                                        {{else}}
+                                        {{{../../../__ "Посмотреть"}}}
+                                        {{/if}}
+
+
+                                        {{else}}
+                                        {{#if kol_reg}}
+                                        <a class="white-text" title="{{{../../../__ 'Конкурс'}}}"
+                                            href="/personalcabinet/report/Ranjirb?i={{id_admission_plan}}&t={{tour}}">{{{../../../__
+                                            "Посмотреть"}}}
+                                        </a>
+                                        {{else}}
+                                        {{{../../../__ "Посмотреть"}}}
+                                        {{/if}}
+                                        {{/if}}
+
+                                    </div>
+                                    {{else}}
+                                    <div class="yellow-color text-center" style="background: #204766;color: #fff;
+                                       border-radius: 4px; padding: 12px 15px; width: 120px;">
+                                        {{#if kol_reg}}
+                                        <a class="white-text" title="{{{../../../__ 'Конкурс'}}}"
+                                            href="/personalcabinet/report/Ranjirk?i={{id_admission_plan}}&t={{tour}}">{{{../../../__
+                                            "Посмотреть"}}}</a>
+                                        {{else}}
+                                        {{{../../../__ "Посмотреть"}}}
+                                        {{/if}}
+
+                                    </div>
+                                    {{/if}}
+                                    {{/if}}
+
+                                </div>
+
+                                <div class="sm-text ">
+                                    <div class="yellow-color text-center" style="background: #1f425fb0;
+                                       border-radius: 4px; padding: 12px 15px; width: 120px;">
+                                        <a class="white-text" title="{{{../../../__ 'Контакты приемной коммиссии'}}}"
+                                            href="/spuz/contact?u={{id_university}}">{{{../../../__
+                                            "Связаться"}}}</a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    {{/each}}
+
+
+                </div>
+            </div>
+        </li>
+        {{/each}}
+        {{/each}}
+
+    </ul>
+
+
+</div>
+{{else}}
+{{!-- <div class="m-md-2 d-flex justify-content-center" style="">
+    <div class="mainNew p-2" style="">
+        <div class="content p-md-2">
+            <div class="title mt-5">
+                <p> <a href="/spuz" class="yellow_text underline">{{{__ "Главная"}}}</a>
+                    &nbsp;/ <a href="/spuz/universities" class="yellow_text underline">{{{__ "СПУЗЫ"}}}</a>
+                </p>
+                <h2 style="color: #fff;"> {{title}}</h2>
+            </div>
+        </div>
+    </div>
+</div>  --}}
+
+<div class="m-md-2 d-flex justify-content-center" style="width:100%">
+    <div class="mainNew p-2" style="">
+        <div class="content p-md-2">
+            <div class="title mt-5">
+                <p class="secondary-text tn-text "> <a href="/spuz" class="yellow_text underline">{{{__ "Главная"}}}</a>
+                    &nbsp;/ <a href="/spuz/universities" class="yellow_text underline">{{{__ "СПУЗЫ"}}}</a>
+                    &nbsp;/&nbsp; <span class="brown_text"> {{university_name}} </span>
+                </p>
+
+                <h2 class="white-text  title_text mt-5"> {{university_name}}</h2>
+
+                <p class="brown_text tn-text  pr-4 d-inline-block">{{{__ "Директор"}}}:&nbsp;{{university_supervisor}}
+                </p>
+                <p class="brown_text tn-text  pr-4  d-inline-block">{{{__ "Адрес"}}}:&nbsp;{{university_address}}
+
+                </p>
+                <p class="d-inline-block tn-text"> <a target="_blank" href="{{university_url}}"
+                        class="yellow_text pr-4  d-inline-block underline">{{{__ "Сайт"}}}:&nbsp;{{university_url}}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <h2>{{title}}</h2>
+</div>
+{{/if}}

@@ -1,0 +1,29 @@
+
+
+
+<table border="1px">
+                  <tr>
+                    <th>№</th>
+                    <th>{{{__ "Тур"}}}</th>
+                    <th>{{{__ "Сертификат"}}}</th>
+                    <th>{{{__ "ФИО"}}}</th>
+                    <th>{{{__ "Телефон"}}}</th>
+                    <th>Факультет</th>
+                    <th>Шифр - Направление</th>
+                    <th>Рекомендован</th>
+                    <th>Абитуриент</th>
+                    <th>Вуз</th>
+
+                  </tr>  
+{{#each obj}}
+                <tr>
+                 
+                    <td style="  text-align:left;">{{tour}}</td>
+                    <td style="  text-align:left;">{{id_bk}}</td>
+                    <td style="  text-align:left;">{{bk}}</td>
+
+                </tr>
+
+{{/each}}
+               
+</table>
